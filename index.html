@@ -11,7 +11,7 @@
   <link rel="apple-touch-icon" href="./icon-192.png" />
   <link rel="icon" type="image/png" sizes="192x192" href="./icon-192.png" />
   <link rel="icon" type="image/png" sizes="512x512" href="./icon-512.png" />
-  <title>Mascot Spark V59 — Shade Lab Logic</title>
+  <title>Mascot Spark V62 — Shade Lab Logic</title>
   <style>
     /* =========================================================
        STITCHED HALO BLOOM — EXACT 3 MODE VARIABLES
@@ -2931,7 +2931,7 @@
 
   
 /* =========================
-   V59 Shade Lab Logic Placement
+   V62 Shade Lab Logic Placement
    Lighting logic moved out of Lesson and into Shade Lab.
    ========================= */
 
@@ -2949,7 +2949,7 @@
 
   
 /* =========================
-   V59 Universal Blueprint Modes
+   V62 Universal Blueprint Modes
    Principle-based trace guides.
    ========================= */
 
@@ -2959,7 +2959,7 @@
 
   
 /* =========================
-   V59 Drawing Path System
+   V62 Drawing Path System
    Guided steps now follow selected path.
    ========================= */
 
@@ -2976,7 +2976,7 @@
     <section class="hero">
       <div class="hero-content">
         <div>
-          <div class="badge">Stitched Halo Bloom · V59</div>
+          <div class="badge">Stitched Halo Bloom · V62</div>
           <h1>Mascot Spark</h1>
           <p class="subtitle">
             A cozy Procreate mascot drawing teacher with clearer draw-first guidance, expanded subject categories, duo emotions, tiny twists, specific palette profiles, blueprint variations, AI help modes, tabs, Surprise Me, and iPad-friendly layouts.
@@ -3059,20 +3059,25 @@
           <div class="panel">
             <label for="bodyBuild">Body Build</label>
             <select id="bodyBuild"></select>
-            <p class="small">Construction logic for the body before details.</p>
+            <p class="small">Construction logic before details.</p>
           </div>
           <div class="panel">
-            <label for="emotion">Duo emotion</label>
-            <select id="emotion"></select>
+            <label for="limbStyle">Limb Style</label>
+            <select id="limbStyle"></select>
+            <p class="small">How arms, feet, or tiny appendages are built.</p>
           </div>
           <div class="panel">
-            <label for="funTwist">Tiny twist</label>
-            <select id="funTwist"></select>
+            <label for="backdropStyle">Backdrop Elements</label>
+            <select id="backdropStyle"></select>
+            <p class="small">Simple support only. Mascot stays the hero.</p>
           </div>
           <div class="panel">
-            <label for="twistAmount">Twist amount</label>
-            <select id="twistAmount"></select>
+            <label for="backdropDensity">Backdrop Density</label>
+            <select id="backdropDensity"></select>
+            <p class="small">How much atmosphere appears around the mascot.</p>
           </div>
+
+
           <div class="panel">
             <label for="level">Lesson size</label>
             <select id="level"></select>
@@ -3080,9 +3085,16 @@
           <div class="panel">
             <label for="creativeMode">Drawing Style</label>
             <select id="creativeMode">
-              <option value="cozy">Cozy: easy</option>
-              <option value="cozyPlus">Cozy+: a bit more advanced</option>
-              <option value="remix">Remix: playful but simple</option>
+              <option value="cozy">Cozy easy</option>
+              <option value="cozyPlus">Cozy+ shaped</option>
+              <option value="remix">Playful remix</option>
+              <option value="stickerPop">Sticker pop</option>
+              <option value="plushToy">Plush toy</option>
+              <option value="glossyIcon">Glossy icon</option>
+              <option value="spookyCute">Spooky cute</option>
+              <option value="storybookDoodle">Storybook doodle</option>
+              <option value="softChaos">Soft chaos</option>
+              <option value="tinyCharm">Tiny charm</option>
             </select>
           </div>
           <div class="panel">
@@ -3090,26 +3102,7 @@
             <select id="skillFocus"></select>
             <p class="small">This turns each lesson into targeted practice, not just a prompt.</p>
           </div>
-          <div class="panel">
-            <label for="surpriseType">Mascot Energy</label>
-            <select id="surpriseType"></select>
-            <p class="small">Controls what the Surprise Me button favors.</p>
-          </div>
-          <div class="panel">
-            <label for="moodDrift">Mood Drift</label>
-            <select id="moodDrift"></select>
-            <p class="small">Atmosphere layer: dreamy, eerie, glittery, tender, chaotic, or cozy.</p>
-          </div>
-          <div class="panel">
-            <label for="backdropStyle">Drawing Paths</label>
-            <select id="backdropStyle"></select>
-            <p class="small">Simple support only. Mascot stays the hero.</p>
-          </div>
-          <div class="panel">
-            <label for="backdropDensity">Backdrop Density</label>
-            <select id="backdropDensity"></select>
-            <p class="small">Controls how much atmosphere appears around the mascot.</p>
-          </div>
+
           <div class="panel v48-remove-session-select">
             <label for="sessionTimer">Session timer</label>
             <select id="sessionTimer"></select>
@@ -3172,13 +3165,32 @@
       </div>
 
       <div id="tab-character" class="tab-panel">
-        <p class="tab-hint">Choose one personality direction and one small twist. Do not overdecorate.</p>
+        <p class="tab-hint">Shape the mascot’s expression, twist, energy, and atmosphere. Keep the Start tab focused on structure.</p>
         <section class="controls">
           <div class="panel">
-            <label for="limbStyle">Limb style</label>
-            <select id="limbStyle" onchange="newLesson()"></select>
-            <p class="small">Choose how arms/feet are built. This replaces the old default limbs.</p>
+            <label for="emotion">Duo emotion</label>
+            <select id="emotion"></select>
           </div>
+          <div class="panel">
+            <label for="funTwist">Tiny twist</label>
+            <select id="funTwist"></select>
+          </div>
+          <div class="panel">
+            <label for="twistAmount">Twist amount</label>
+            <select id="twistAmount"></select>
+          </div>
+          <div class="panel">
+            <label for="surpriseType">Mascot Energy</label>
+            <select id="surpriseType"></select>
+            <p class="small">Controls what the Surprise Me button favors.</p>
+          </div>
+          <div class="panel">
+            <label for="moodDrift">Mood Drift</label>
+            <select id="moodDrift"></select>
+            <p class="small">Atmosphere layer: dreamy, eerie, glittery, tender, chaotic, or cozy.</p>
+          </div>
+
+
           <div class="panel">
             <label for="ideaPreset">Optional flavor only</label>
             <select id="ideaPreset"></select>
@@ -3794,7 +3806,7 @@
     </section>
 
       <footer class="final-footer" aria-label="App version">
-      <span id="finalBuildBadge">Mascot Spark V59 · Shade Lab Lighting + Shadow Logic · Cache mascot-spark-v54</span>
+      <span id="finalBuildBadge">Mascot Spark V62 · Shade Lab Lighting + Shadow Logic · Cache mascot-spark-v54</span>
     </footer>
   </main>
   <script src="./app.js"></script>

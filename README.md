@@ -1131,3 +1131,81 @@ Service worker cache:
 ```js
 const CACHE_NAME = "mascot-spark-v59";
 ```
+
+
+## V60 UI Control Rebalance
+
+Changed:
+
+- Moved Duo Emotion into Personality.
+- Moved Tiny Twist into Personality.
+- Moved Twist Amount into Personality.
+- Moved Mascot Energy into Personality.
+- Moved Mood Drift into Personality.
+- Moved Limb Style into Start/Create.
+- Expanded Drawing Style options.
+
+Drawing Style now includes:
+
+- Cozy easy
+- Cozy+ shaped
+- Playful remix
+- Sticker pop
+- Plush toy
+- Glossy icon
+- Spooky cute
+- Storybook doodle
+- Soft chaos
+- Tiny charm
+
+Service worker cache:
+
+```js
+const CACHE_NAME = "mascot-spark-v60";
+```
+
+
+## V61 Expanded Palettes
+
+Added 30 named color palettes, mostly 6-color controlled mascot palettes.
+
+Palette philosophy:
+
+- Default range stays readable and mascot-first.
+- Most palettes use 6 colors.
+- Palettes support body, accent, face/detail, shadow, highlight, and optional backdrop accent.
+- More colors do not mean better mascot readability.
+
+Service worker cache:
+
+```js
+const CACHE_NAME = "mascot-spark-v61";
+```
+
+
+## V62 Visible Control Restore
+
+Patch build.
+
+Restored visible Start/Create controls:
+
+- Shape Base
+- Body Build
+- Limb Style
+- Backdrop Elements
+- Backdrop Density
+
+Preserved:
+
+- Personality control moves
+- Expanded Drawing Style
+- 30 expanded palettes
+- Drawing Paths
+- Universal Blueprints
+- Backdrop logic
+
+Service worker cache:
+
+```js
+const CACHE_NAME = "mascot-spark-v62";
+```

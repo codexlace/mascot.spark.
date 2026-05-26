@@ -658,20 +658,44 @@ const moodDriftMap = {
 
     const palettes = {
       auto: { label: "Auto", colors: [] },
-      gummyHalo: { label: "Gummy Halo Morning", colors: ["#F27BA6", "#FFB7D0", "#FFF7FB", "#8EDAF7", "#D7C4F4"] },
+
+      gummyHalo: { label: "Gummy Halo Morning", colors: ["#F27BA6", "#FFB7D0", "#FFF7FB", "#8EDAF7", "#D7C4F4", "#7D6D79"] },
       rainthread: { label: "Rainthread Veil", colors: ["#B97195", "#8FA79D", "#8EBFD2", "#F3F0F2", "#BFAFD0", "#6F6870"] },
-      bleedingHope: { label: "Bleeding Hope Afterglow", colors: ["#140F18", "#221928", "#E785B3", "#74D6F7", "#C9526E", "#F8F2F8", "#7D62A8"] },
-      gummySky: { label: "Mushy Gummybear Sky", colors: ["#FF8FBA", "#FFD1E5", "#AEE7FF", "#FFF5C8", "#BDA7FF"] },
-      rainGrass: { label: "Clouded Raindrop Grass", colors: ["#DCE8E5", "#9DC8B2", "#8EDAF7", "#F7F6FB", "#7D6D79", "#CDE7D8"] },
-      cutGrin: { label: "Cut-Grin Candy", colors: ["#F25787", "#352733", "#FFF7FB", "#FFD166", "#8EDAF7"] },
-      holoThread: { label: "Holographic Thread", colors: ["#D7C4F4", "#8EDAF7", "#F27BA6", "#FDEEF5", "#9DC8B2", "#FFFFFF"] },
-      bleedingBeauty: { label: "Bleeding Beauty", colors: ["#D95A72", "#F27BA6", "#FFF7FB", "#7D62A8", "#140F18", "#F8F2F8"] },
-      ghostCandy: { label: "Ghost Candy", colors: ["#F8F2F8", "#B8A9B8", "#74D6F7", "#E785B3", "#221928", "#7D62A8"] },
-      blackberry: { label: "Blackberry Lilac Luxe", colors: ["#140F18", "#2D2333", "#B97195", "#D7C4F4", "#F8F2F8", "#C9A8FF", "#74D6F7"] },
-      strawberry: { label: "Strawberry Pistachio", colors: ["#FFB7D0", "#F27BA6", "#CDE7D8", "#9DC8B2", "#FFF7E8"] },
-      storm: { label: "Storm Cloud Soft", colors: ["#2D3A4A", "#8EBFD2", "#DDDDE2", "#F3F0F2", "#FFE8A3", "#6F6870"] },
-      luxury: { label: "Tiny — 5 min Luxury Mascot", colors: ["#140F18", "#F8F2F8", "#E785B3", "#D6B96A", "#7D62A8"] },
-      beach: { label: "Beach Trinket", colors: ["#8EDAF7", "#FDEEF5", "#F3D9B1", "#9DC8B2", "#FFF7FB", "#B97195"] }
+      bleedingHope: { label: "Bleeding Hope Afterglow", colors: ["#140F18", "#221928", "#E785B3", "#74D6F7", "#7FB2A3", "#F8F2F8"] },
+
+      candySoft: { label: "Candy Soft", colors: ["#FFB7D0", "#F27BA6", "#FFF1F8", "#AEE6F8", "#CDB8F4", "#6F5B68"] },
+      arcadePop: { label: "Arcade Pop", colors: ["#FF4FA3", "#45D9FF", "#FFE45C", "#7D5CFF", "#1F1B3A", "#FFFFFF"] },
+      dustyPlush: { label: "Dusty Plush", colors: ["#D9A7B8", "#B98FA2", "#F2D7DF", "#A7B6A3", "#7B6B72", "#FFF8F2"] },
+      moonlitMascot: { label: "Moonlit Mascot", colors: ["#2B2440", "#5A4B7A", "#8FA7FF", "#D9D7FF", "#F2E9FF", "#11101A"] },
+      stickerShop: { label: "Sticker Shop", colors: ["#FFFFFF", "#FF7DB5", "#53D6FF", "#FFE06B", "#5B4B66", "#CDB8F4"] },
+      pastelChaos: { label: "Pastel Chaos", colors: ["#FFB3C7", "#B8F2E6", "#FFF2A8", "#C7B6FF", "#FFCF9E", "#6E6170"] },
+      warmStorybook: { label: "Warm Storybook", colors: ["#E9B872", "#D98282", "#F8E7C9", "#8FAF8A", "#705449", "#FFF8EA"] },
+      ghostGlow: { label: "Ghost Glow", colors: ["#F8F7FF", "#CFE9FF", "#BBA7FF", "#6F5A8E", "#2A2238", "#A9FFF1"] },
+      toyShelf: { label: "Toy Shelf", colors: ["#F4B6C2", "#9ED2A3", "#F7D774", "#8DB7E8", "#A7795F", "#FFF4E8"] },
+      rainyCozy: { label: "Rainy Cozy", colors: ["#A7B8C8", "#71879A", "#DCE7EF", "#B98FA2", "#F4D6DE", "#4E5362"] },
+
+      velvetBerry: { label: "Velvet Berry", colors: ["#3B1230", "#7A2555", "#D64F8C", "#F2A7C4", "#6C4B7A", "#FFF0F7"] },
+      melonCream: { label: "Melon Cream", colors: ["#FFB3A7", "#FFD6B8", "#CDEB8B", "#8FD6A4", "#FFF7D6", "#6A6F57"] },
+      blueberryMilk: { label: "Blueberry Milk", colors: ["#6A77D9", "#A6B3FF", "#DCE2FF", "#F9F7FF", "#3C4168", "#F5B7D3"] },
+      peachFuzz: { label: "Peach Fuzz", colors: ["#FFB38A", "#FFD1B8", "#FFF1E6", "#D98F78", "#8F5F5A", "#FFE6A8"] },
+      mintButton: { label: "Mint Button", colors: ["#92D9C3", "#C8F2E5", "#F7FFF9", "#F2B6C8", "#5E7B74", "#D9C7FF"] },
+      lemonCharm: { label: "Lemon Charm", colors: ["#FFE66D", "#FFF4A8", "#FFB86B", "#A7D98D", "#5E5A36", "#FFFBE8"] },
+      cocoaSprout: { label: "Cocoa Sprout", colors: ["#6B4A3A", "#A9785B", "#E8C9A8", "#94B77A", "#DDEAC2", "#FFF7EC"] },
+      cherrySoda: { label: "Cherry Soda", colors: ["#E84873", "#FF8AA8", "#FFF0F4", "#48D6D2", "#3D2C47", "#FFE066"] },
+      lavenderFog: { label: "Lavender Fog", colors: ["#B9A7D9", "#D9CFF2", "#F5F0FF", "#A7B7C8", "#6A607A", "#EFAAC4"] },
+      mossyPocket: { label: "Mossy Pocket", colors: ["#6D8B5F", "#A8C58A", "#E0E8C8", "#C49A6C", "#5B4638", "#FFF5DE"] },
+
+      hologramCute: { label: "Hologram Cute", colors: ["#B8F7FF", "#E0C3FF", "#FFBDE6", "#FFF6B8", "#7A6CFF", "#202033"] },
+      spookyCandy: { label: "Spooky Candy", colors: ["#2A1733", "#6E3B8F", "#FF7DB8", "#99F0D0", "#F7F2FF", "#F6C85F"] },
+      cloudPudding: { label: "Cloud Pudding", colors: ["#FFF5D6", "#F9DFA7", "#D8ECFF", "#B7D8F2", "#A68B73", "#FFFFFF"] },
+      crayonBox: { label: "Crayon Box", colors: ["#E85D75", "#F4A261", "#F2E86D", "#5CB85C", "#4DA3FF", "#3D405B"] },
+      paperDoll: { label: "Paper Doll", colors: ["#F6E7D8", "#E3B7A0", "#B7C9A8", "#A8B7D8", "#5D5360", "#FFFDF8"] },
+      midnightSticker: { label: "Midnight Sticker", colors: ["#101827", "#27364F", "#5FE3FF", "#FF77B7", "#FFE66D", "#F8FAFF"] },
+      syrupGloom: { label: "Syrup Gloom", colors: ["#34243A", "#6D466B", "#B86E8A", "#F0A6B8", "#D8B87A", "#FFF2DC"] },
+      gardenToy: { label: "Garden Toy", colors: ["#8FCB9B", "#D5F2B6", "#F8E08E", "#F4A6A6", "#6A7D59", "#FFF9E8"] },
+      pearlWish: { label: "Pearl Wish", colors: ["#F7F3FF", "#D8E2FF", "#FAD9FF", "#C5FFF1", "#B7A6C8", "#5E5570"] },
+      pumpkinPlush: { label: "Pumpkin Plush", colors: ["#F28C38", "#FFC07A", "#5D7A46", "#2F3B2D", "#7A4A2E", "#FFF0D8"] },
+      sleepyArcade: { label: "Sleepy Arcade", colors: ["#4B4E8A", "#7B8CFF", "#FF8BCB", "#89F7D1", "#FFF08A", "#1D1B35"] }
     };
 
     const flavors = {
@@ -5986,6 +6010,55 @@ function generalLessonFallback() {
         );
       }
 
+      if (mode === "stickerPop") {
+        phases.splice(Math.min(3, phases.length), 0,
+          ["Sticker pop style", "Use a bolder outline, cleaner silhouette, and one glossy highlight.", "Do not add tiny interior clutter."],
+          ["Sticker edge check", "Keep details inside a safe rounded boundary.", "Do not let props or limbs touch the edge."]
+        );
+      }
+
+      if (mode === "plushToy") {
+        phases.splice(Math.min(3, phases.length), 0,
+          ["Plush toy style", "Round off corners and make the body feel softly stuffed.", "Do not use hard metallic shadows."],
+          ["Soft seam cue", "Add one seam, patch, or blush mark if it supports the mascot.", "Do not texture the whole body."]
+        );
+      }
+
+      if (mode === "glossyIcon") {
+        phases.splice(Math.min(3, phases.length), 0,
+          ["Glossy icon style", "Use simple color blocking and one strong shine shape.", "Do not use texture that disappears at small size."],
+          ["App icon check", "Zoom out and remove anything that weakens the silhouette.", "Do not keep details just because they are cute."]
+        );
+      }
+
+      if (mode === "spookyCute") {
+        phases.splice(Math.min(3, phases.length), 0,
+          ["Spooky cute style", "Use eerie softness: moon glow, tiny fangs, wisps, or underlight.", "Do not make the face unreadably dark."],
+          ["Cute safety pass", "Keep the mouth small and the eyes readable.", "Do not let spooky effects overpower cuteness."]
+        );
+      }
+
+      if (mode === "storybookDoodle") {
+        phases.splice(Math.min(3, phases.length), 0,
+          ["Storybook doodle style", "Use gentle asymmetry, soft line wobble, and a small story cue.", "Do not build a full scene."],
+          ["Paper-soft finish", "Use muted color or light texture only after the shape reads.", "Do not muddy the palette."]
+        );
+      }
+
+      if (mode === "softChaos") {
+        phases.splice(Math.min(3, phases.length), 0,
+          ["Soft chaos style", "Add one strange-cute idea while keeping the body simple.", "Do not make every part chaotic."],
+          ["Tame the chaos", "Use calm shape language or calm color to balance the weird detail.", "Do not stack weirdness everywhere."]
+        );
+      }
+
+      if (mode === "tinyCharm") {
+        phases.splice(Math.min(3, phases.length), 0,
+          ["Tiny charm style", "Make the mascot feel like a small charm, keychain, or collectible token.", "Do not add big scene details."],
+          ["Charm loop or tag", "Use one loop, tag, shine, or little charm cue if it helps.", "Do not cover the face."]
+        );
+      }
+
       if (drawOrderMode === "extraGuided") {
         phases.unshift(
           ["Before anything: body only", "Draw only the outside shape for one minute. No eyes, mouth, limbs, color, or accessory yet.", "Do not decorate before the body works."],
@@ -6212,7 +6285,16 @@ const skillInfo = skillFocusData[skillFocus] || skillFocusData.shapeControl;
         styleRecipe: palette && palette.label !== "Auto" ? `${palette.label} · ${palette.colors.length} colors` : pick(styleRecipes),
         paletteKey: document.getElementById("paletteMood").value,
         complexity: mode === "cozyPlus" ? 68 : mode === "remix" ? 56 : 42,
-        meterText: mode === "cozyPlus" ? "Cozy+ difficulty: more design thinking, still beginner-safe." : mode === "remix" ? "Remix difficulty: playful, one change at a time." : "Cozy difficulty: easy and drawable.",
+        meterText: mode === "cozyPlus" ? "Cozy+ difficulty: more design thinking, still beginner-safe."
+          : mode === "remix" ? "Remix difficulty: playful, one change at a time."
+          : mode === "stickerPop" ? "Sticker pop: bold, clean, and icon-safe."
+          : mode === "plushToy" ? "Plush toy: soft, rounded, and cuddly."
+          : mode === "glossyIcon" ? "Glossy icon: readable silhouette with controlled shine."
+          : mode === "spookyCute" ? "Spooky cute: eerie atmosphere without losing the face."
+          : mode === "storybookDoodle" ? "Storybook doodle: handmade charm, simple story cue."
+          : mode === "softChaos" ? "Soft chaos: one weird idea, gently controlled."
+          : mode === "tinyCharm" ? "Tiny charm: collectible, small, and readable."
+          : "Cozy difficulty: easy and drawable.",
         drawOrderMode,
         drawOrderName: drawOrders[drawOrderMode]?.[0] || "Shape-first path",
         drawOrder: drawOrders[drawOrderMode]?.[1] || drawOrders.shapeFirst[1],
