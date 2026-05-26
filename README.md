@@ -1228,3 +1228,33 @@ Service worker cache:
 ```js
 const CACHE_NAME = "mascot-spark-v64";
 ```
+
+
+## V65 Theme Token Refresh
+
+Changed theme tokens.
+
+Added global token groups:
+
+- Base tokens
+- Accent tokens
+- Support tokens
+- Semantic tokens
+
+Themes:
+
+- Light
+- Dark
+- Random
+
+Compatibility preserved:
+
+- Existing `--color-*` variables now map to the new token system.
+- Existing UI components continue using the same selectors.
+- `neutral` theme remains aliased to `random` for safety.
+
+Service worker cache:
+
+```js
+const CACHE_NAME = "mascot-spark-v65";
+```

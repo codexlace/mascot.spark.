@@ -1224,25 +1224,27 @@ const moodDriftMap = {
 
     function themeLabel(mode) {
       if (mode === "light") return "Theme: Light";
-      if (mode === "neutral") return "Theme: Neutral";
+      if (mode === "random" || mode === "neutral") return "Theme: Random";
       return "Theme: Dark";
     }
 
     function setTheme(mode) {
-      document.documentElement.setAttribute("data-theme", mode);
-      localStorage.setItem("mascotSparkTheme", mode);
-      document.getElementById("themeBtn").textContent = themeLabel(mode);
-      document.querySelector('meta[name="theme-color"]').setAttribute("content", mode === "light" ? "#F27BA6" : mode === "neutral" ? "#B97195" : "#E785B3");
+      const safeMode = mode === "neutral" ? "random" : mode;
+      document.documentElement.setAttribute("data-theme", safeMode);
+      localStorage.setItem("mascotSparkTheme", safeMode);
+      document.getElementById("themeBtn").textContent = themeLabel(safeMode);
+      const themeColor = safeMode === "light" ? "#2A4CFF" : safeMode === "random" ? "#4A7CFF" : "#3A5BFF";
+      document.querySelector('meta[name="theme-color"]').setAttribute("content", themeColor);
     }
 
     function toggleTheme() {
       const current = document.documentElement.getAttribute("data-theme") || "light";
-      setTheme(current === "light" ? "neutral" : current === "neutral" ? "dark" : "light");
+      setTheme(current === "light" ? "random" : current === "random" || current === "neutral" ? "dark" : "light");
     }
 
     function loadTheme() {
       const saved = localStorage.getItem("mascotSparkTheme") || "light";
-      setTheme(["light", "neutral", "dark"].includes(saved) ? saved : "light");
+      setTheme(["light", "random", "neutral", "dark"].includes(saved) ? saved : "light");
     }
 
     function setMotionStyle(style) {

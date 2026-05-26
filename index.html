@@ -11,49 +11,137 @@
   <link rel="apple-touch-icon" href="./icon-192.png" />
   <link rel="icon" type="image/png" sizes="192x192" href="./icon-192.png" />
   <link rel="icon" type="image/png" sizes="512x512" href="./icon-512.png" />
-  <title>Mascot Spark V64 — Shade Lab Logic</title>
+  <title>Mascot Spark V65 — Theme Token Refresh</title>
   <style>
     /* =========================================================
        STITCHED HALO BLOOM — EXACT 3 MODE VARIABLES
     ========================================================= */
 
-    :root[data-theme="light"] {
-      --color-primary: #F27BA6;
-      --color-secondary: #9DC8B2;
-      --color-accent: #8EDAF7;
-      --color-background: #FFF7FB;
-      --color-surface: #FDEEF5;
-      --color-surface-2: #F7F6FB;
-      --color-text: #352733;
-      --color-muted: #7D6D79;
-      --color-border: #D7C4F4;
-      --color-danger-accent: #D95A72;
+    /* =========================================================
+       V65 THEME TOKEN REFRESH
+       New global tokens mapped into existing Mascot Spark vars.
+    ========================================================= */
+
+    :root {
+      /* Base Tokens */
+      --bg-base: #F5F4F2;
+      --bg-alt: #FFFFFF;
+      --text-base: #2A2A2A;
+      --text-muted: #6A6A6A;
+      --border-base: #DADADA;
+      --shadow-base: rgba(0,0,0,0.08);
+
+      /* Accent Tokens */
+      --accent-pink: #FF6CBB;
+      --accent-sapphire: #2A4CFF;
+      --accent-red: #C45A5A;
+      --accent-navy: #0F1A3A;
+      --accent-purple: #A78BFF;
+
+      /* Support Tokens */
+      --support-gold: #E8D7A8;
+      --support-teal: #4FFFE0;
+      --support-mint: #CFE8E2;
+      --support-lavender: #D9D4E8;
+
+      /* Semantic Tokens */
+      --primary-base: var(--accent-sapphire);
+      --primary-hover: #3A5CFF;
+      --primary-active: var(--accent-navy);
+
+      --secondary-base: var(--accent-pink);
+      --secondary-hover: #FF7CCC;
+      --secondary-active: var(--accent-red);
+
+      --info-base: var(--accent-purple);
+      --warning-base: var(--support-gold);
+      --danger-base: var(--accent-red);
+      --success-base: var(--support-mint);
+
+      /* Existing app compatibility tokens */
+      --color-primary: var(--secondary-base);
+      --color-secondary: var(--support-mint);
+      --color-accent: var(--support-teal);
+      --color-background: var(--bg-base);
+      --color-surface: color-mix(in srgb, var(--bg-alt) 86%, var(--support-lavender) 14%);
+      --color-surface-2: var(--bg-alt);
+      --color-text: var(--text-base);
+      --color-muted: var(--text-muted);
+      --color-border: var(--border-base);
+      --color-danger-accent: var(--danger-base);
     }
 
-    :root[data-theme="neutral"] {
-      --color-primary: #B97195;
-      --color-secondary: #8FA79D;
-      --color-accent: #8EBFD2;
-      --color-background: #F3F0F2;
-      --color-surface: #E7E1E5;
-      --color-surface-2: #DDDDE2;
-      --color-text: #2F2A30;
-      --color-muted: #6F6870;
-      --color-border: #BFAFD0;
-      --color-danger-accent: #A55C6E;
+    :root[data-theme="light"],
+    .theme-light {
+      --bg-base: #F5F4F2;
+      --bg-alt: #FFFFFF;
+      --text-base: #2A2A2A;
+      --text-muted: #6A6A6A;
+      --border-base: #DADADA;
+      --shadow-base: rgba(0,0,0,0.08);
+
+      --accent-pink: #FF6CBB;
+      --accent-sapphire: #2A4CFF;
+      --accent-red: #C45A5A;
+      --accent-navy: #0F1A3A;
+      --accent-purple: #A78BFF;
+
+      --support-gold: #E8D7A8;
+      --support-teal: #4FFFE0;
+      --support-mint: #CFE8E2;
+      --support-lavender: #D9D4E8;
+
+      --primary-hover: #3A5CFF;
+      --secondary-hover: #FF7CCC;
     }
 
-    :root[data-theme="dark"] {
-      --color-primary: #E785B3;
-      --color-secondary: #7FB2A3;
-      --color-accent: #74D6F7;
-      --color-background: #140F18;
-      --color-surface: #221928;
-      --color-surface-2: #2D2333;
-      --color-text: #F8F2F8;
-      --color-muted: #B8A9B8;
-      --color-border: #7D62A8;
-      --color-danger-accent: #C9526E;
+    :root[data-theme="dark"],
+    .theme-dark {
+      --bg-base: #130E2E;
+      --bg-alt: #1C163F;
+      --text-base: #EDEDED;
+      --text-muted: #A8A8A8;
+      --border-base: #2E2A4A;
+      --shadow-base: rgba(0,0,0,0.4);
+
+      --accent-pink: #FF4FAE;
+      --accent-sapphire: #3A5BFF;
+      --accent-red: #A33F4F;
+      --accent-navy: #0A1128;
+      --accent-purple: #8C5CFF;
+
+      --support-gold: #D8C27A;
+      --support-teal: #4FFFE0;
+      --support-mint: #CFE8E2;
+      --support-lavender: #B9A8E8;
+
+      --primary-hover: #4A6AFF;
+      --secondary-hover: #FF6BC0;
+    }
+
+    :root[data-theme="random"],
+    :root[data-theme="neutral"],
+    .theme-random {
+      --bg-base: #EDEBF0;
+      --bg-alt: #FFFFFF;
+      --text-base: #1F1F1F;
+      --text-muted: #5A5A5A;
+      --border-base: #D5D2DD;
+      --shadow-base: rgba(0,0,0,0.06);
+
+      --accent-pink: #FF7CCF;
+      --accent-sapphire: #4A7CFF;
+      --accent-red: #B45A4A;
+      --accent-navy: #1A2F4F;
+      --accent-purple: #C3A0FF;
+
+      --support-gold: #F5E38A;
+      --support-teal: #4FFFE0;
+      --support-mint: #CFE8E2;
+      --support-lavender: #E3D8FF;
+
+      --primary-hover: #5A8CFF;
+      --secondary-hover: #FF96DA;
     }
 
     :root {
@@ -2931,7 +3019,7 @@
 
   
 /* =========================
-   V64 Shade Lab Logic Placement
+   V64 Theme Token Refresh Placement
    Lighting logic moved out of Lesson and into Shade Lab.
    ========================= */
 
@@ -2969,7 +3057,7 @@
 
   
 /* =========================
-   V64 Celestial Atmosphere Skin
+   V64 Theme Token Refresh
    Visual-only surface pass. No layout/logic rewrite.
    ========================= */
 
@@ -3981,7 +4069,7 @@
     </section>
 
       <footer class="final-footer" aria-label="App version">
-      <span id="finalBuildBadge">Mascot Spark V64 · Shade Lab Lighting + Shadow Logic · Cache mascot-spark-v54</span>
+      <span id="finalBuildBadge">Mascot Spark V65 · Shade Lab Lighting + Shadow Logic · Cache mascot-spark-v54</span>
     </footer>
   </main>
   <script src="./app.js"></script>
