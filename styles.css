@@ -2709,21 +2709,41 @@
     }
   
 
-/* =========================================================
-   V46 CONTAINED TAB WORKSPACE
-   Keeps generated lesson/export/blueprint content inside Trace Guide
-   instead of exposing it beneath every tab.
-========================================================= */
 
-.tab-contained-workspace {
-  margin-top: 16px;
+/* =========================
+   V47 UI Trim Layer
+   Conservative visibility cleanup only.
+   ========================= */
+
+.v47-ui-trim .hero-description,
+.v47-ui-trim .app-description,
+.v47-ui-trim .hero-copy p,
+.v47-ui-trim .session-timer-panel,
+.v47-ui-trim .before-after-tracker,
+.v47-ui-trim .practice-memory,
+.v47-ui-trim .drawing-path,
+.v47-ui-trim .today-drawing-path,
+.v47-ui-trim .redraw-tracker {
+    display: none !important;
 }
 
-.tab-contained-workspace > .actions {
-  margin-top: 14px;
+/* Hide large descriptive helper text blocks */
+.v47-ui-trim .hero-subtitle,
+.v47-ui-trim .hero-text,
+.v47-ui-trim .mode-description,
+.v47-ui-trim .theme-description {
+    display: none !important;
 }
 
-.tab-contained-workspace > .main {
-  margin-top: 14px;
+/* Compact top controls */
+.v47-ui-trim .hero-controls,
+.v47-ui-trim .top-controls {
+    gap: 10px !important;
 }
 
+/* Slightly tighter vertical rhythm */
+.v47-ui-trim .panel,
+.v47-ui-trim .card,
+.v47-ui-trim .section {
+    margin-bottom: 14px !important;
+}

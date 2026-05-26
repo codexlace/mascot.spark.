@@ -11,17 +11,17 @@
   <link rel="apple-touch-icon" href="./icon-192.png" />
   <link rel="icon" type="image/png" sizes="192x192" href="./icon-192.png" />
   <link rel="icon" type="image/png" sizes="512x512" href="./icon-512.png" />
-  <title>Mascot Spark V46 — Contained Tabs</title>
+  <title>Mascot Spark V44 — Tabular Motion</title>
   <link rel="stylesheet" href="./styles.css" />
 </head>
 
-<body>
+<body class="v47-ui-trim">
   <a class="skip-link" href="#lessonOutput">Skip to lesson</a>
   <main class="app">
     <section class="hero">
       <div class="hero-content">
         <div>
-          <div class="badge">Stitched Halo Bloom · V46 contained tabs</div>
+          <div class="badge">Stitched Halo Bloom · V44 tabular motion</div>
           <h1>Mascot Spark</h1>
           <p class="subtitle">
             A cozy Procreate mascot drawing teacher with clearer draw-first guidance, expanded subject categories, duo emotions, tiny twists, specific palette profiles, blueprint variations, AI help modes, tabs, Surprise Me, and iPad-friendly layouts.
@@ -254,182 +254,6 @@
             <p class="small">Screenshot the blueprint, import it, lower opacity, draw above it.</p>
           </div>
         </section>
-
-        <div class="tab-contained-workspace">
-          <p class="tab-hint">Generated lesson, export actions, trace blueprint, and guided practice live here instead of continuing as one long page.</p>
-
-          <div class="actions">
-
-            <button class="primary main-action" onclick="newLesson(true)">Give me a mascot lesson</button>
-            <button class="surprise playful-action" onclick="surpriseMe()">Surprise me</button>
-            <button class="ai-btn coach-action" data-advanced-only="true" onclick="aiLesson()" id="aiBtn">AI help this lesson</button>
-            <button class="utility-action" data-advanced-only="true" onclick="saveSettings()">Save AI key</button>
-            <button class="utility-action" onclick="resetChecks()">Reset checks</button>
-            <button class="utility-action" onclick="exportWorksheet()">Export text worksheet</button>
-            <button class="utility-action" onclick="exportHtmlWorksheet()">Export HTML worksheet</button>
-            <button class="utility-action" onclick="openBlueprintStudio()">Blueprint Studio</button>
-            <button class="utility-action" onclick="downloadCurrentBlueprintPng()">Export PNG</button>
-            <button class="utility-action" onclick="downloadCurrentBlueprintTransparentPng()">Export transparent PNG</button>
-            <button class="utility-action" onclick="showVersionTools()">Version tools</button>
-            <button class="utility-action" onclick="window.print()">Print / save</button>
-            <button class="utility-action" onclick="installApp()" id="installBtn" style="display:none;">Install app</button>
-          </div>
-
-          <section class="main">
-            <article class="card" id="lessonOutput" tabindex="-1">
-              <div class="lesson-head">
-                <h2 id="title">Mascot Lesson</h2>
-                <div id="meta" class="meta">Subject · emotion · lesson</div>
-              </div>
-
-              <div class="lesson-body">
-                <div id="goal" class="goal"></div>
-                <div id="emotionLessonHint" class="emotion-lesson-hint"></div>
-
-                <div class="info-grid">
-                  <div class="mini-card">
-                    <strong>Shape spell</strong>
-                    <span id="shapeSpell"></span>
-                    <div class="meter"><div id="meterFill" class="meter-fill"></div></div>
-                    <p class="small" id="meterText"></p>
-                  </div>
-                  <div class="mini-card">
-                    <strong>Style recipe</strong>
-                    <span id="styleRecipe"></span>
-                  </div>
-                  <div class="mini-card lesson-palette-card">
-                    <strong>Lesson palette</strong>
-                    <div id="lessonPaletteSwatches" class="lesson-palette-swatches"></div>
-                    <span id="lessonPaletteName" class="small"></span>
-                    <div id="paletteRoleGuide" class="palette-role-grid"></div>
-                  </div>
-                </div>
-
-                <h3>Practice intelligence</h3>
-                <div class="practice-intel-grid">
-                  <div class="intel-card">
-                    <strong>Skill focus</strong>
-                    <div id="skillFocusCard"></div>
-                  </div>
-                  <div class="intel-card">
-                    <strong>Mascot anatomy</strong>
-                    <div id="anatomyCard"></div>
-                  </div>
-                  <div class="intel-card">
-                    <strong>Subject mini-rules</strong>
-                    <div id="subjectRulesCard"></div>
-                  </div>
-                  <div class="intel-card">
-                    <strong>Version 2 challenge</strong>
-                    <div id="version2Card"></div>
-                  </div>
-                </div>
-
-                <h3>Creative amplifiers</h3>
-                <div class="amplifier-grid">
-                  <button onclick="makeItMore('cuter')">Make it cuter</button>
-                  <button onclick="makeItMore('spookier')">Make it spookier</button>
-                  <button onclick="makeItMore('simpler')">Make it simpler</button>
-                  <button onclick="makeItMore('icon')">Make it icon-readable</button>
-                  <button onclick="makeItMore('plush')">Make it more plush</button>
-                  <button onclick="makeItMore('chaos')">Make it chaotic-cute</button>
-                </div>
-
-                <h3>Session timer</h3>
-                <div class="timer-card">
-                  <div>
-                    <strong id="timerLabel">No timer selected</strong>
-                    <p id="timerPlan" class="small">Choose a timer to get a session pacing plan.</p>
-                  </div>
-                  <div class="timer-actions">
-                    <button onclick="startSessionTimer()">Start</button>
-                    <button onclick="pauseSessionTimer()">Pause</button>
-                    <button onclick="resetSessionTimer()">Reset</button>
-                  </div>
-                  <div class="timer-display" id="timerDisplay">--:--</div>
-                </div>
-
-                <h3>Before / after redraw tracker</h3>
-                <div class="redraw-tracker">
-                  <button onclick="markRedrawStage('v1')">I drew Version 1</button>
-                  <button onclick="markRedrawStage('v2')">I drew Version 2</button>
-                  <textarea id="redrawReflection" placeholder="What improved? What still feels off?"></textarea>
-                  <button class="primary" onclick="saveRedrawReflection()">Save redraw note</button>
-                </div>
-
-                <h3>Practice memory</h3>
-                <div id="practiceMemoryCard" class="compact-help">Practice suggestions will appear here after you generate lessons.</div>
-
-                <h3>Today's drawing path</h3>
-                <div class="path-grid">
-                  <label class="path-card"><input type="checkbox"> <span><strong>Warm-up</strong> Draw 3 base shapes.</span></label>
-                  <label class="path-card"><input type="checkbox"> <span><strong>Main mascot</strong> Follow the lesson phases.</span></label>
-                  <label class="path-card"><input type="checkbox"> <span><strong>Tiny remix</strong> Change one feature only.</span></label>
-                  <label class="path-card"><input type="checkbox"> <span><strong>Save thought</strong> Write what improved.</span></label>
-                </div>
-
-                <h3>Draw this first, then this</h3>
-                <div id="drawFirstPanels" class="draw-first-grid"></div>
-
-                <h3>Traceable step blueprints</h3>
-                <div id="traceStepPanels" class="trace-panel-grid"></div>
-
-                <h3>Guided step mode</h3>
-                <section class="guided-card" id="guidedCard">
-                  <div class="guided-topline">
-                    <span id="guidedProgress">Step 1 of 1</span>
-                    <span id="guidedLayer">Layer: Rough sketch</span>
-                  </div>
-                  <h4 id="guidedTitle">Step title</h4>
-                  <p id="guidedDraw">Draw instruction appears here.</p>
-                  <div class="guided-note"><strong>Avoid:</strong> <span id="guidedAvoid">Avoid note appears here.</span></div>
-                  <div class="guided-note"><strong>Canvas check:</strong> <span id="guidedCheck">Check note appears here.</span></div>
-                  <div class="guided-actions">
-                    <button class="utility-action" onclick="previousGuidedStep()">Previous</button>
-                    <button class="primary" onclick="nextGuidedStep()">Next step</button>
-                    <button class="utility-action" onclick="toggleAllSteps()">Show all steps</button>
-                  </div>
-                </section>
-
-                <h3>All phases</h3>
-                <div id="phases" class="phases-collapsed"></div>
-
-                <h3>Check before moving on</h3>
-                <div id="checks" class="check-grid"></div>
-
-                <h3>What to avoid</h3>
-                <div id="avoid" class="coach-card"></div>
-
-                <div class="fun-grid">
-                  <div class="coach-card"><strong>Mini quest</strong><span id="quest"></span></div>
-                  <div class="coach-card"><strong>Gremlin coach note</strong><span id="praise"></span></div>
-                </div>
-              </div>
-            </article>
-
-            <aside>
-              <section class="blueprint">
-                <h3>Traceable blueprint</h3>
-                <svg id="blueprintSvg" viewBox="0 0 520 560" aria-label="Traceable mascot construction blueprint"></svg>
-                <div id="traceNote" class="blue-note"></div>
-                <div class="blueprint-actions">
-                  <button onclick="copyLessonText()">Copy lesson text</button>
-                  <button onclick="resetChecks()">Reset practice</button>
-                </div>
-              </section>
-
-              <section class="coach">
-                <h3>Mini remix lab</h3>
-                <div class="coach-grid">
-                  <div class="coach-card"><strong>One change</strong><span id="remixOne"></span></div>
-                  <div class="coach-card"><strong>Second version</strong><span id="remixTwo"></span></div>
-                  <div class="coach-card"><strong>Procreate layers</strong>Guide → rough sketch → clean line → flat color → shadow → highlight.</div>
-                </div>
-              </section>
-            </aside>
-          </section>
-  
-        </div>
       </div>
 
       
@@ -728,7 +552,177 @@
 
     </section>
 
+    <div class="actions">
 
+      <button class="primary main-action" onclick="newLesson(true)">Give me a mascot lesson</button>
+      <button class="surprise playful-action" onclick="surpriseMe()">Surprise me</button>
+      <button class="ai-btn coach-action" data-advanced-only="true" onclick="aiLesson()" id="aiBtn">AI help this lesson</button>
+      <button class="utility-action" data-advanced-only="true" onclick="saveSettings()">Save AI key</button>
+      <button class="utility-action" onclick="resetChecks()">Reset checks</button>
+      <button class="utility-action" onclick="exportWorksheet()">Export text worksheet</button>
+      <button class="utility-action" onclick="exportHtmlWorksheet()">Export HTML worksheet</button>
+      <button class="utility-action" onclick="openBlueprintStudio()">Blueprint Studio</button>
+      <button class="utility-action" onclick="downloadCurrentBlueprintPng()">Export PNG</button>
+      <button class="utility-action" onclick="downloadCurrentBlueprintTransparentPng()">Export transparent PNG</button>
+      <button class="utility-action" onclick="showVersionTools()">Version tools</button>
+      <button class="utility-action" onclick="window.print()">Print / save</button>
+      <button class="utility-action" onclick="installApp()" id="installBtn" style="display:none;">Install app</button>
+    </div>
+
+    <section class="main">
+      <article class="card" id="lessonOutput" tabindex="-1">
+        <div class="lesson-head">
+          <h2 id="title">Mascot Lesson</h2>
+          <div id="meta" class="meta">Subject · emotion · lesson</div>
+        </div>
+
+        <div class="lesson-body">
+          <div id="goal" class="goal"></div>
+          <div id="emotionLessonHint" class="emotion-lesson-hint"></div>
+
+          <div class="info-grid">
+            <div class="mini-card">
+              <strong>Shape spell</strong>
+              <span id="shapeSpell"></span>
+              <div class="meter"><div id="meterFill" class="meter-fill"></div></div>
+              <p class="small" id="meterText"></p>
+            </div>
+            <div class="mini-card">
+              <strong>Style recipe</strong>
+              <span id="styleRecipe"></span>
+            </div>
+            <div class="mini-card lesson-palette-card">
+              <strong>Lesson palette</strong>
+              <div id="lessonPaletteSwatches" class="lesson-palette-swatches"></div>
+              <span id="lessonPaletteName" class="small"></span>
+              <div id="paletteRoleGuide" class="palette-role-grid"></div>
+            </div>
+          </div>
+
+          <h3>Practice intelligence</h3>
+          <div class="practice-intel-grid">
+            <div class="intel-card">
+              <strong>Skill focus</strong>
+              <div id="skillFocusCard"></div>
+            </div>
+            <div class="intel-card">
+              <strong>Mascot anatomy</strong>
+              <div id="anatomyCard"></div>
+            </div>
+            <div class="intel-card">
+              <strong>Subject mini-rules</strong>
+              <div id="subjectRulesCard"></div>
+            </div>
+            <div class="intel-card">
+              <strong>Version 2 challenge</strong>
+              <div id="version2Card"></div>
+            </div>
+          </div>
+
+          <h3>Creative amplifiers</h3>
+          <div class="amplifier-grid">
+            <button onclick="makeItMore('cuter')">Make it cuter</button>
+            <button onclick="makeItMore('spookier')">Make it spookier</button>
+            <button onclick="makeItMore('simpler')">Make it simpler</button>
+            <button onclick="makeItMore('icon')">Make it icon-readable</button>
+            <button onclick="makeItMore('plush')">Make it more plush</button>
+            <button onclick="makeItMore('chaos')">Make it chaotic-cute</button>
+          </div>
+
+          <h3>Session timer</h3>
+          <div class="timer-card">
+            <div>
+              <strong id="timerLabel">No timer selected</strong>
+              <p id="timerPlan" class="small">Choose a timer to get a session pacing plan.</p>
+            </div>
+            <div class="timer-actions">
+              <button onclick="startSessionTimer()">Start</button>
+              <button onclick="pauseSessionTimer()">Pause</button>
+              <button onclick="resetSessionTimer()">Reset</button>
+            </div>
+            <div class="timer-display" id="timerDisplay">--:--</div>
+          </div>
+
+          <h3>Before / after redraw tracker</h3>
+          <div class="redraw-tracker">
+            <button onclick="markRedrawStage('v1')">I drew Version 1</button>
+            <button onclick="markRedrawStage('v2')">I drew Version 2</button>
+            <textarea id="redrawReflection" placeholder="What improved? What still feels off?"></textarea>
+            <button class="primary" onclick="saveRedrawReflection()">Save redraw note</button>
+          </div>
+
+          <h3>Practice memory</h3>
+          <div id="practiceMemoryCard" class="compact-help">Practice suggestions will appear here after you generate lessons.</div>
+
+          <h3>Today's drawing path</h3>
+          <div class="path-grid">
+            <label class="path-card"><input type="checkbox"> <span><strong>Warm-up</strong> Draw 3 base shapes.</span></label>
+            <label class="path-card"><input type="checkbox"> <span><strong>Main mascot</strong> Follow the lesson phases.</span></label>
+            <label class="path-card"><input type="checkbox"> <span><strong>Tiny remix</strong> Change one feature only.</span></label>
+            <label class="path-card"><input type="checkbox"> <span><strong>Save thought</strong> Write what improved.</span></label>
+          </div>
+
+          <h3>Draw this first, then this</h3>
+          <div id="drawFirstPanels" class="draw-first-grid"></div>
+
+          <h3>Traceable step blueprints</h3>
+          <div id="traceStepPanels" class="trace-panel-grid"></div>
+
+          <h3>Guided step mode</h3>
+          <section class="guided-card" id="guidedCard">
+            <div class="guided-topline">
+              <span id="guidedProgress">Step 1 of 1</span>
+              <span id="guidedLayer">Layer: Rough sketch</span>
+            </div>
+            <h4 id="guidedTitle">Step title</h4>
+            <p id="guidedDraw">Draw instruction appears here.</p>
+            <div class="guided-note"><strong>Avoid:</strong> <span id="guidedAvoid">Avoid note appears here.</span></div>
+            <div class="guided-note"><strong>Canvas check:</strong> <span id="guidedCheck">Check note appears here.</span></div>
+            <div class="guided-actions">
+              <button class="utility-action" onclick="previousGuidedStep()">Previous</button>
+              <button class="primary" onclick="nextGuidedStep()">Next step</button>
+              <button class="utility-action" onclick="toggleAllSteps()">Show all steps</button>
+            </div>
+          </section>
+
+          <h3>All phases</h3>
+          <div id="phases" class="phases-collapsed"></div>
+
+          <h3>Check before moving on</h3>
+          <div id="checks" class="check-grid"></div>
+
+          <h3>What to avoid</h3>
+          <div id="avoid" class="coach-card"></div>
+
+          <div class="fun-grid">
+            <div class="coach-card"><strong>Mini quest</strong><span id="quest"></span></div>
+            <div class="coach-card"><strong>Gremlin coach note</strong><span id="praise"></span></div>
+          </div>
+        </div>
+      </article>
+
+      <aside>
+        <section class="blueprint">
+          <h3>Traceable blueprint</h3>
+          <svg id="blueprintSvg" viewBox="0 0 520 560" aria-label="Traceable mascot construction blueprint"></svg>
+          <div id="traceNote" class="blue-note"></div>
+          <div class="blueprint-actions">
+            <button onclick="copyLessonText()">Copy lesson text</button>
+            <button onclick="resetChecks()">Reset practice</button>
+          </div>
+        </section>
+
+        <section class="coach">
+          <h3>Mini remix lab</h3>
+          <div class="coach-grid">
+            <div class="coach-card"><strong>One change</strong><span id="remixOne"></span></div>
+            <div class="coach-card"><strong>Second version</strong><span id="remixTwo"></span></div>
+            <div class="coach-card"><strong>Procreate layers</strong>Guide → rough sketch → clean line → flat color → shadow → highlight.</div>
+          </div>
+        </section>
+      </aside>
+    </section>
+  
     <section id="blueprintStudio" class="modal-shell" aria-hidden="true" role="dialog" aria-modal="true" aria-labelledby="blueprintStudioTitle">
       <div class="modal-card blueprint-studio-card">
         <div class="modal-head">
