@@ -1,7 +1,7 @@
 {
-  "name": "Mascot Spark V44 \u2014 Tabular Motion",
+  "name": "Mascot Spark V46 — Contained Tabs",
   "short_name": "Mascot Spark",
-  "description": "Adds segmented pill tab navigation, active sliding indicator, tab transitions, staggered cards, and motion-style controls.",
+  "description": "Contains generated lesson, export actions, trace blueprint, and guided practice inside the Trace Guide tab to avoid one long vertical page.",
   "start_url": "./index.html",
   "scope": "./",
   "display": "standalone",
