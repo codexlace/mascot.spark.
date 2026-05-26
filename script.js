@@ -185,6 +185,298 @@
 
     };
 
+
+    const limbStyles = {
+      nubs: {
+        label: "Tiny nubs",
+        phrase: "tiny rounded nub limbs",
+        guide: "Place four tiny rounded nubs close to the body. Keep them smaller than the face.",
+        svg: '<ellipse class="feature" cx="145" cy="312" rx="26" ry="18"></ellipse><ellipse class="feature" cx="375" cy="312" rx="26" ry="18"></ellipse><ellipse class="feature" cx="218" cy="420" rx="22" ry="15"></ellipse><ellipse class="feature" cx="302" cy="420" rx="22" ry="15"></ellipse>',
+        overlay: '<ellipse class="guide" cx="145" cy="312" rx="30" ry="22"></ellipse><ellipse class="guide" cx="375" cy="312" rx="30" ry="22"></ellipse><ellipse class="guide" cx="218" cy="420" rx="26" ry="18"></ellipse><ellipse class="guide" cx="302" cy="420" rx="26" ry="18"></ellipse>'
+      },
+      beanArms: {
+        label: "Bean arms",
+        phrase: "soft bean-shaped arms",
+        guide: "Use short bean arms that hug the sides.",
+        svg: '<path class="feature" d="M152 290 C112 292 100 335 135 350 C168 360 174 313 152 290 Z"></path><path class="feature" d="M368 290 C408 292 420 335 385 350 C352 360 346 313 368 290 Z"></path>',
+        overlay: '<path class="guide" d="M150 288 C112 296 104 336 136 350"></path><path class="guide" d="M370 288 C408 296 416 336 384 350"></path>'
+      },
+      noodleArms: {
+        label: "Noodle arms",
+        phrase: "loose noodle arms",
+        guide: "Draw two simple curved noodle arms. Keep the curve readable.",
+        svg: '<path class="feature" d="M155 292 C110 300 105 350 132 374"></path><path class="feature" d="M365 292 C410 300 415 350 388 374"></path>',
+        overlay: '<path class="guide" d="M155 292 C110 300 105 350 132 374"></path><path class="guide" d="M365 292 C410 300 415 350 388 374"></path>'
+      },
+      tuckedHands: {
+        label: "Tucked hands",
+        phrase: "hands tucked close to the body",
+        guide: "Tuck both hands just inside the lower body edge.",
+        svg: '<path class="feature" d="M190 330 Q210 350 230 332"></path><path class="feature" d="M290 332 Q310 350 330 330"></path>',
+        overlay: '<circle class="guide" cx="210" cy="336" r="24"></circle><circle class="guide" cx="310" cy="336" r="24"></circle>'
+      },
+      raisedArms: {
+        label: "Raised arms",
+        phrase: "small raised arms",
+        guide: "Lift both arms, but keep them short and rounded.",
+        svg: '<path class="feature" d="M165 260 Q130 220 105 240"></path><path class="feature" d="M355 260 Q390 220 415 240"></path>',
+        overlay: '<path class="guide" d="M165 260 Q130 220 105 240"></path><path class="guide" d="M355 260 Q390 220 415 240"></path>'
+      },
+      shyPaws: {
+        label: "Shy paws",
+        phrase: "tiny shy paws near the cheeks",
+        guide: "Place tiny paws near the face to make the pose shy.",
+        svg: '<ellipse class="feature" cx="192" cy="305" rx="18" ry="14"></ellipse><ellipse class="feature" cx="328" cy="305" rx="18" ry="14"></ellipse>',
+        overlay: '<ellipse class="guide" cx="192" cy="305" rx="22" ry="18"></ellipse><ellipse class="guide" cx="328" cy="305" rx="22" ry="18"></ellipse>'
+      },
+      mittenHands: {
+        label: "Mitten hands",
+        phrase: "rounded mitten hands",
+        guide: "Use two soft mitten shapes. Avoid finger detail.",
+        svg: '<path class="feature" d="M145 298 C118 272 92 298 108 330 C124 354 162 340 145 298 Z"></path><path class="feature" d="M375 298 C402 272 428 298 412 330 C396 354 358 340 375 298 Z"></path>',
+        overlay: '<path class="guide" d="M145 298 C118 272 92 298 108 330 C124 354 162 340 145 298 Z"></path><path class="guide" d="M375 298 C402 272 428 298 412 330 C396 354 358 340 375 298 Z"></path>'
+      },
+      ovalFeet: {
+        label: "Oval feet",
+        phrase: "two simple oval feet",
+        guide: "Only add two oval feet at the base.",
+        svg: '<ellipse class="feature" cx="210" cy="425" rx="35" ry="18"></ellipse><ellipse class="feature" cx="310" cy="425" rx="35" ry="18"></ellipse>',
+        overlay: '<ellipse class="guide" cx="210" cy="425" rx="39" ry="22"></ellipse><ellipse class="guide" cx="310" cy="425" rx="39" ry="22"></ellipse>'
+      },
+      stubbyLegs: {
+        label: "Stubby legs",
+        phrase: "two stubby little legs",
+        guide: "Attach two stubby legs under the body.",
+        svg: '<path class="feature" d="M205 390 L230 390 L228 440 L198 440 Z"></path><path class="feature" d="M290 390 L315 390 L322 440 L292 440 Z"></path>',
+        overlay: '<path class="guide" d="M205 390 L230 390 L228 440 L198 440 Z"></path><path class="guide" d="M290 390 L315 390 L322 440 L292 440 Z"></path>'
+      },
+      tinyBoots: {
+        label: "Tiny boots",
+        phrase: "tiny boot-shaped feet",
+        guide: "Block in two boot feet with flat bottoms.",
+        svg: '<path class="feature" d="M190 405 L230 405 L230 435 L178 435 Z"></path><path class="feature" d="M290 405 L330 405 L342 435 L290 435 Z"></path>',
+        overlay: '<path class="guide" d="M190 405 L230 405 L230 435 L178 435 Z"></path><path class="guide" d="M290 405 L330 405 L342 435 L290 435 Z"></path>'
+      },
+      floatingHands: {
+        label: "Floating hands",
+        phrase: "detached floating hands",
+        guide: "Float the hands just off the sides. Do not connect them.",
+        svg: '<ellipse class="feature" cx="112" cy="310" rx="20" ry="16"></ellipse><ellipse class="feature" cx="408" cy="310" rx="20" ry="16"></ellipse>',
+        overlay: '<ellipse class="guide" cx="112" cy="310" rx="24" ry="20"></ellipse><ellipse class="guide" cx="408" cy="310" rx="24" ry="20"></ellipse>'
+      },
+      wingArms: {
+        label: "Wing arms",
+        phrase: "small wing-like arms",
+        guide: "Use wing curves on both sides, like soft little flaps.",
+        svg: '<path class="feature" d="M150 285 C100 245 92 322 145 335"></path><path class="feature" d="M370 285 C420 245 428 322 375 335"></path>',
+        overlay: '<path class="guide" d="M150 285 C100 245 92 322 145 335"></path><path class="guide" d="M370 285 C420 245 428 322 375 335"></path>'
+      },
+      finArms: {
+        label: "Fin arms",
+        phrase: "small fin-shaped side limbs",
+        guide: "Use triangular rounded fins on the sides.",
+        svg: '<path class="feature" d="M150 300 L92 270 L112 345 Z"></path><path class="feature" d="M370 300 L428 270 L408 345 Z"></path>',
+        overlay: '<path class="guide" d="M150 300 L92 270 L112 345 Z"></path><path class="guide" d="M370 300 L428 270 L408 345 Z"></path>'
+      },
+      leafArms: {
+        label: "Leaf arms",
+        phrase: "leaf-shaped arms",
+        guide: "Shape each arm like a tiny leaf.",
+        svg: '<path class="feature" d="M152 300 C105 275 95 330 145 342 C124 325 126 308 152 300 Z"></path><path class="feature" d="M368 300 C415 275 425 330 375 342 C396 325 394 308 368 300 Z"></path>',
+        overlay: '<path class="guide" d="M152 300 C105 275 95 330 145 342"></path><path class="guide" d="M368 300 C415 275 425 330 375 342"></path>'
+      },
+      vineArms: {
+        label: "Vine arms",
+        phrase: "curly vine arms",
+        guide: "Use one curl per side. More curls will clutter the mascot.",
+        svg: '<path class="feature" d="M155 300 C110 290 105 350 140 350 C162 350 158 325 140 330"></path><path class="feature" d="M365 300 C410 290 415 350 380 350 C358 350 362 325 380 330"></path>',
+        overlay: '<path class="guide" d="M155 300 C110 290 105 350 140 350 C162 350 158 325 140 330"></path><path class="guide" d="M365 300 C410 290 415 350 380 350 C358 350 362 325 380 330"></path>'
+      },
+      stickArms: {
+        label: "Stick arms",
+        phrase: "simple stick arms",
+        guide: "Use two clean stick lines. Keep the ends rounded in the final art.",
+        svg: '<path class="feature" d="M155 300 L105 335"></path><path class="feature" d="M365 300 L415 335"></path>',
+        overlay: '<path class="guide" d="M155 300 L105 335"></path><path class="guide" d="M365 300 L415 335"></path>'
+      },
+      noodleLegs: {
+        label: "Noodle legs",
+        phrase: "loose noodle legs",
+        guide: "Use two soft dangling leg curves.",
+        svg: '<path class="feature" d="M220 392 Q198 425 210 455"></path><path class="feature" d="M300 392 Q322 425 310 455"></path>',
+        overlay: '<path class="guide" d="M220 392 Q198 425 210 455"></path><path class="guide" d="M300 392 Q322 425 310 455"></path>'
+      },
+      pegLegs: {
+        label: "Peg legs",
+        phrase: "tiny peg legs",
+        guide: "Use two short peg legs with clear spacing.",
+        svg: '<rect class="feature" x="206" y="392" width="28" height="52" rx="14"></rect><rect class="feature" x="286" y="392" width="28" height="52" rx="14"></rect>',
+        overlay: '<rect class="guide" x="206" y="392" width="28" height="52" rx="14"></rect><rect class="guide" x="286" y="392" width="28" height="52" rx="14"></rect>'
+      },
+      dotFeet: {
+        label: "Dot feet",
+        phrase: "small dot feet",
+        guide: "Put two dot feet under the body. This is the cleanest icon-safe option.",
+        svg: '<circle class="feature" cx="215" cy="425" r="16"></circle><circle class="feature" cx="305" cy="425" r="16"></circle>',
+        overlay: '<circle class="guide" cx="215" cy="425" r="20"></circle><circle class="guide" cx="305" cy="425" r="20"></circle>'
+      },
+      oneFootOut: {
+        label: "One foot out",
+        phrase: "one foot stepping out",
+        guide: "Keep one foot tucked and one foot stepping outward.",
+        svg: '<ellipse class="feature" cx="215" cy="423" rx="22" ry="16"></ellipse><ellipse class="feature" cx="330" cy="420" rx="40" ry="17"></ellipse>',
+        overlay: '<ellipse class="guide" cx="215" cy="423" rx="26" ry="20"></ellipse><ellipse class="guide" cx="330" cy="420" rx="44" ry="21"></ellipse>'
+      },
+      sittingFeet: {
+        label: "Sitting feet",
+        phrase: "feet turned outward",
+        guide: "Turn both feet outward for a seated mascot pose.",
+        svg: '<ellipse class="feature" cx="200" cy="418" rx="38" ry="18" transform="rotate(-15 200 418)"></ellipse><ellipse class="feature" cx="320" cy="418" rx="38" ry="18" transform="rotate(15 320 418)"></ellipse>',
+        overlay: '<ellipse class="guide" cx="200" cy="418" rx="42" ry="22" transform="rotate(-15 200 418)"></ellipse><ellipse class="guide" cx="320" cy="418" rx="42" ry="22" transform="rotate(15 320 418)"></ellipse>'
+      },
+      pawsAndFeet: {
+        label: "Paws + feet",
+        phrase: "tiny paws and tiny feet",
+        guide: "Use two little paws and two little feet, all very small.",
+        svg: '<ellipse class="feature" cx="158" cy="315" rx="20" ry="14"></ellipse><ellipse class="feature" cx="362" cy="315" rx="20" ry="14"></ellipse><ellipse class="feature" cx="220" cy="422" rx="24" ry="15"></ellipse><ellipse class="feature" cx="300" cy="422" rx="24" ry="15"></ellipse>',
+        overlay: '<ellipse class="guide" cx="158" cy="315" rx="24" ry="18"></ellipse><ellipse class="guide" cx="362" cy="315" rx="24" ry="18"></ellipse><ellipse class="guide" cx="220" cy="422" rx="28" ry="19"></ellipse><ellipse class="guide" cx="300" cy="422" rx="28" ry="19"></ellipse>'
+      },
+      sleeveHands: {
+        label: "Sleeve hands",
+        phrase: "hands inside soft sleeves",
+        guide: "Draw sleeve flaps instead of detailed hands.",
+        svg: '<path class="feature" d="M155 300 L110 325 L150 350 Z"></path><path class="feature" d="M365 300 L410 325 L370 350 Z"></path>',
+        overlay: '<path class="guide" d="M155 300 L110 325 L150 350 Z"></path><path class="guide" d="M365 300 L410 325 L370 350 Z"></path>'
+      },
+      scarfArms: {
+        label: "Scarf arms",
+        phrase: "ribbon-like scarf arms",
+        guide: "Let the arms read like soft ribbon ends.",
+        svg: '<path class="feature" d="M155 315 C115 335 110 370 150 382"></path><path class="feature" d="M365 315 C405 335 410 370 370 382"></path>',
+        overlay: '<path class="guide" d="M155 315 C115 335 110 370 150 382"></path><path class="guide" d="M365 315 C405 335 410 370 370 382"></path>'
+      },
+      tentacleArms: {
+        label: "Tentacle arms",
+        phrase: "two soft tentacle arms",
+        guide: "Use gentle tentacle curves, not many extra limbs.",
+        svg: '<path class="feature" d="M155 315 C110 335 120 390 165 370"></path><path class="feature" d="M365 315 C410 335 400 390 355 370"></path>',
+        overlay: '<path class="guide" d="M155 315 C110 335 120 390 165 370"></path><path class="guide" d="M365 315 C410 335 400 390 355 370"></path>'
+      },
+      shadowOnly: {
+        label: "No limbs, shadow only",
+        phrase: "no visible limbs, only a contact shadow",
+        guide: "Skip limbs completely and use a contact shadow to ground the mascot.",
+        svg: '<path class="feature" d="M178 430 C225 450 298 450 342 430"></path>',
+        overlay: '<path class="guide" d="M178 430 C225 450 298 450 342 430"></path>'
+      },
+      noLimbs: {
+        label: "No limbs",
+        phrase: "no visible limbs",
+        guide: "Do not draw limbs. Let the face and silhouette carry the character.",
+        svg: '',
+        overlay: '<text class="label" x="156" y="438">No limbs: silhouette + face only.</text>'
+      },
+      sideTabs: {
+        label: "Side tabs",
+        phrase: "tiny side-tab limbs",
+        guide: "Attach flat rounded tabs to both sides.",
+        svg: '<rect class="feature" x="104" y="288" width="58" height="42" rx="21"></rect><rect class="feature" x="358" y="288" width="58" height="42" rx="21"></rect>',
+        overlay: '<rect class="guide" x="104" y="288" width="58" height="42" rx="21"></rect><rect class="guide" x="358" y="288" width="58" height="42" rx="21"></rect>'
+      },
+      lowHands: {
+        label: "Low hands",
+        phrase: "hands low on the body",
+        guide: "Place the hands low so the face stays clean.",
+        svg: '<ellipse class="feature" cx="185" cy="350" rx="22" ry="16"></ellipse><ellipse class="feature" cx="335" cy="350" rx="22" ry="16"></ellipse>',
+        overlay: '<ellipse class="guide" cx="185" cy="350" rx="26" ry="20"></ellipse><ellipse class="guide" cx="335" cy="350" rx="26" ry="20"></ellipse>'
+      },
+      oneWave: {
+        label: "One wave",
+        phrase: "one waving arm",
+        guide: "Use one waving arm and one tiny balancing hand.",
+        svg: '<path class="feature" d="M155 300 Q115 260 92 280"></path><ellipse class="feature" cx="364" cy="320" rx="20" ry="14"></ellipse>',
+        overlay: '<path class="guide" d="M155 300 Q115 260 92 280"></path><ellipse class="guide" cx="364" cy="320" rx="24" ry="18"></ellipse>'
+      },
+      onePoint: {
+        label: "One pointing arm",
+        phrase: "one tiny pointing arm",
+        guide: "Point with one short arm. Keep the opposite side simple.",
+        svg: '<path class="feature" d="M365 300 L430 282"></path><ellipse class="feature" cx="156" cy="322" rx="18" ry="13"></ellipse>',
+        overlay: '<path class="guide" d="M365 300 L430 282"></path><ellipse class="guide" cx="156" cy="322" rx="22" ry="17"></ellipse>'
+      },
+      crossedArms: {
+        label: "Crossed arms",
+        phrase: "tiny crossed arms",
+        guide: "Cross two short lines over the lower face/body zone.",
+        svg: '<path class="feature" d="M210 335 L310 365"></path><path class="feature" d="M310 335 L210 365"></path>',
+        overlay: '<path class="guide" d="M210 335 L310 365"></path><path class="guide" d="M310 335 L210 365"></path>'
+      },
+      pocketHands: {
+        label: "Pocket hands",
+        phrase: "hands hidden like pockets",
+        guide: "Use two small pocket arcs. The hands are implied, not drawn.",
+        svg: '<path class="feature" d="M180 330 Q205 350 230 330"></path><path class="feature" d="M290 330 Q315 350 340 330"></path>',
+        overlay: '<path class="guide" d="M180 330 Q205 350 230 330"></path><path class="guide" d="M290 330 Q315 350 340 330"></path>'
+      },
+      danglingFeet: {
+        label: "Dangling feet",
+        phrase: "tiny dangling feet",
+        guide: "Hang two tiny feet from the lower body.",
+        svg: '<ellipse class="feature" cx="220" cy="445" rx="18" ry="26"></ellipse><ellipse class="feature" cx="300" cy="445" rx="18" ry="26"></ellipse>',
+        overlay: '<ellipse class="guide" cx="220" cy="445" rx="22" ry="30"></ellipse><ellipse class="guide" cx="300" cy="445" rx="22" ry="30"></ellipse>'
+      },
+      chunkyShoes: {
+        label: "Chunky shoes",
+        phrase: "small chunky shoes",
+        guide: "Use chunky shoes only if the body is simple.",
+        svg: '<path class="feature" d="M190 418 L238 418 L245 442 L178 442 Z"></path><path class="feature" d="M282 418 L330 418 L342 442 L275 442 Z"></path>',
+        overlay: '<path class="guide" d="M190 418 L238 418 L245 442 L178 442 Z"></path><path class="guide" d="M282 418 L330 418 L342 442 L275 442 Z"></path>'
+      },
+      tinyClaws: {
+        label: "Tiny claws",
+        phrase: "tiny soft claw hands",
+        guide: "Use two tiny claw marks per side. Keep them cute, not sharp.",
+        svg: '<path class="feature" d="M145 310 L112 300 M145 325 L112 335"></path><path class="feature" d="M375 310 L408 300 M375 325 L408 335"></path>',
+        overlay: '<path class="guide" d="M145 310 L112 300 M145 325 L112 335"></path><path class="guide" d="M375 310 L408 300 M375 325 L408 335"></path>'
+      },
+      plushSeams: {
+        label: "Plush seam limbs",
+        phrase: "stitched plush seam limbs",
+        guide: "Use seam-like limb marks instead of full arms.",
+        svg: '<path class="feature" d="M155 310 Q125 330 150 355"></path><path class="feature" d="M365 310 Q395 330 370 355"></path><path class="feature" d="M142 326 L154 338 M378 326 L366 338"></path>',
+        overlay: '<path class="guide" d="M155 310 Q125 330 150 355"></path><path class="guide" d="M365 310 Q395 330 370 355"></path>'
+      },
+      starHands: {
+        label: "Star hands",
+        phrase: "tiny star-shaped hands",
+        guide: "Use tiny star hands only with a very simple body.",
+        svg: '<path class="feature" d="M112 300 L118 314 L133 315 L121 324 L126 340 L112 330 L98 340 L103 324 L91 315 L106 314 Z"></path><path class="feature" d="M408 300 L414 314 L429 315 L417 324 L422 340 L408 330 L394 340 L399 324 L387 315 L402 314 Z"></path>',
+        overlay: '<path class="guide" d="M112 300 L118 314 L133 315 L121 324 L126 340 L112 330 L98 340 L103 324 L91 315 L106 314 Z"></path><path class="guide" d="M408 300 L414 314 L429 315 L417 324 L422 340 L408 330 L394 340 L399 324 L387 315 L402 314 Z"></path>'
+      },
+      ghostWiggle: {
+        label: "Ghost wiggle base",
+        phrase: "ghost wiggle bottom instead of limbs",
+        guide: "Replace limbs with a wavy ghost-like lower edge cue.",
+        svg: '<path class="feature" d="M178 402 L210 430 L242 402 L274 430 L306 402 L342 430"></path>',
+        overlay: '<path class="guide" d="M178 402 L210 430 L242 402 L274 430 L306 402 L342 430"></path>'
+      },
+      accessoryHold: {
+        label: "Holding accessory",
+        phrase: "tiny hands holding the twist",
+        guide: "Place small hands as if holding the tiny twist. Do not cover the face.",
+        svg: '<ellipse class="feature" cx="200" cy="352" rx="18" ry="13"></ellipse><ellipse class="feature" cx="320" cy="352" rx="18" ry="13"></ellipse><path class="guide" d="M200 352 Q260 382 320 352"></path>',
+        overlay: '<ellipse class="guide" cx="200" cy="352" rx="22" ry="17"></ellipse><ellipse class="guide" cx="320" cy="352" rx="22" ry="17"></ellipse><path class="guide" d="M200 352 Q260 382 320 352"></path>'
+      }
+    };
+
+    function getSelectedLimbStyleKey() {
+      return document.getElementById("limbStyle")?.value || "nubs";
+    }
+
+    function getLimbStyle(key = getSelectedLimbStyleKey()) {
+      return limbStyles[key] || limbStyles.nubs;
+    }
+
     const palettes = {
       auto: { label: "Auto", colors: [] },
       gummyHalo: { label: "Gummy Halo Morning", colors: ["#F27BA6", "#FFB7D0", "#FFF7FB", "#8EDAF7", "#D7C4F4"] },
@@ -441,6 +733,7 @@
       populateSelect("emotion", emotions, "happy");
       populateSelect("level", lessonSizes, "normal");
       populateSelect("funTwist", twists, "sparkle");
+      populateSelect("limbStyle", limbStyles, "nubs");
       populateSelect("ideaPreset", flavors, "");
       populateSelect("paletteMood", palettes, "gummyHalo");
       renderPalettePreview();
@@ -1165,6 +1458,9 @@
       const body = makeBody(type);
       const [eyes, mouth] = makeFace(emotion);
       const twistSvg = twists[twist] ? twists[twist][3] : "";
+      const limb = getLimbStyle();
+      const limbSvg = limb.svg || "";
+      const limbGuide = limb.overlay || "";
       const variant = getBlueprintVariant();
       const subjectGuide = getSubjectGuide(type);
       const emotionGuide = getEmotionBlueprintGuide(emotion);
@@ -1211,19 +1507,18 @@
         <line class="guide" x1="130" y1="275" x2="390" y2="275"></line>
         ${style === "autoSubject" ? '' : '<ellipse class="guide" cx="260" cy="265" rx="145" ry="180"></ellipse>'}
         ${body}
-        <path class="feature" d="M155 300 Q112 305 105 342"></path>
-        <path class="feature" d="M365 300 Q408 305 415 342"></path>
-        <path class="feature" d="M215 392 Q205 425 178 435"></path>
-        <path class="feature" d="M305 392 Q315 425 342 435"></path>
+        ${wrapBlueprintLayer(limbSvg, "body")}
         ${eyes}
         ${mouth}
         ${emotionGuide.overlay}
         ${twistGuide.overlay}
+        ${limbGuide}
         ${twistSvg}
         ${overlay}
         <text class="label" x="35" y="486">${emotionGuide.label}</text>
         <text class="label" x="35" y="510">${twistGuide.label}</text>
-        <text class="label" x="35" y="508">Import into Procreate, lower opacity, draw on a new layer.</text>
+        <text class="label" x="35" y="532">Limb guide: ${limb.label} — ${limb.guide}</text>
+        <text class="label" x="35" y="556">Import into Procreate, lower opacity, draw on a new layer.</text>
       `;
     }
 
@@ -1234,24 +1529,22 @@
       const eyes = face[0];
       const mouth = face[1];
       const twistSvg = twists[twist] ? twists[twist][3] : "";
+      const limb = getLimbStyle();
+      const limbSvg = limb.svg || "";
+      const limbGuide = limb.overlay || "";
       const emotionGuide = getEmotionBlueprintGuide(emotion);
       const twistGuide = getTwistBlueprintGuide(twist);
 
       const guides = getStageGuides(type, stage);
 
-      const limbs = `
-        <path class="feature" d="M155 300 Q112 305 105 342"></path>
-        <path class="feature" d="M365 300 Q408 305 415 342"></path>
-        <path class="feature" d="M215 392 Q205 425 178 435"></path>
-        <path class="feature" d="M305 392 Q315 425 342 435"></path>
-      `;
+      const limbs = limbSvg;
 
       let content = "";
       if (stage === "body") content = `${body}`;
       if (stage === "guide") content = `${guides}${body}`;
       if (stage === "face") content = `${guides}${body}${eyes}${mouth}${emotionGuide.overlay}`;
-      if (stage === "limbs") content = `${guides}${body}${limbs}${eyes}${mouth}${emotionGuide.overlay}`;
-      if (stage === "final") content = `${guides}${wrapBlueprintLayer(body + limbs, "body")}${wrapBlueprintLayer(eyes + mouth, "face")}${wrapBlueprintLayer(emotionGuide.overlay, "emotion")}${wrapBlueprintLayer(twistGuide.overlay + twistSvg, "twist")}<path class="guide" d="M165 360 C220 415 315 415 365 360"></path>`;
+      if (stage === "limbs") content = `${guides}${body}${limbGuide}${limbs}${eyes}${mouth}${emotionGuide.overlay}`;
+      if (stage === "final") content = `${guides}${limbGuide}${wrapBlueprintLayer(body + limbs, "body")}${wrapBlueprintLayer(eyes + mouth, "face")}${wrapBlueprintLayer(emotionGuide.overlay, "emotion")}${wrapBlueprintLayer(twistGuide.overlay + twistSvg, "twist")}<path class="guide" d="M165 360 C220 415 315 415 365 360"></path>`;
 
       return `<svg viewBox="0 0 520 520" aria-hidden="true">${content}</svg>`;
     }
@@ -1261,7 +1554,7 @@
         ["1. Body only", "body"],
         ["2. Guide lines", "guide"],
         ["3. Face placement", "face"],
-        ["4. Tiny limbs", "limbs"],
+        ["4. Limb style", "limbs"],
         ["5. Twist + polish", "final"]
       ];
 
@@ -1689,6 +1982,7 @@
       randomizeIfUnlocked("lessonType", locked.subject);
       randomizeIfUnlocked("emotion", locked.emotion);
       randomizeIfUnlocked("funTwist", locked.twist);
+      randomFromOptions("limbStyle");
       randomizeIfUnlocked("paletteMood", locked.palette);
       randomizeIfUnlocked("blueprintStyle", locked.blueprint);
       randomizeIfUnlocked("skillFocus", locked.skill);
@@ -2120,6 +2414,7 @@
 
       randomizeIfUnlocked("emotion", locked.emotion);
       randomizeIfUnlocked("funTwist", locked.twist);
+      randomFromOptions("limbStyle");
       randomizeIfUnlocked("paletteMood", locked.palette);
       randomizeIfUnlocked("blueprintStyle", locked.blueprint);
       randomizeIfUnlocked("skillFocus", locked.skill);
@@ -2178,6 +2473,7 @@
       // Final freshening, still respecting locks.
       randomizeIfUnlocked("emotion", locked.emotion);
       randomizeIfUnlocked("funTwist", locked.twist);
+      randomFromOptions("limbStyle");
 
       document.getElementById("customIdea").value = "";
       renderPalettePreview();
@@ -4309,6 +4605,8 @@ function generalLessonFallback() {
       const level = document.getElementById("level").value;
       const mode = document.getElementById("creativeMode").value;
       const twist = document.getElementById("funTwist").value;
+      const limbStyleKey = document.getElementById("limbStyle")?.value || "nubs";
+      const limbStyle = getLimbStyle(limbStyleKey);
       const flavor = document.getElementById("customIdea").value.trim() || flavors[document.getElementById("ideaPreset").value] || ""; // flavor-only: never replaces subject
       const palette = palettes[document.getElementById("paletteMood").value] || { label: "Auto", colors: [] };
       const blueprintStyle = document.getElementById("blueprintStyle").value;
@@ -4321,6 +4619,7 @@ function generalLessonFallback() {
       const emo = emotions[emotion];
       const lesson = lessonSizes[level];
       const tw = twists[twist];
+      const limb = limbStyle;
       let phases = lesson[1].map(x => [...x]);
 
       if (isSpecificShapeSubject) {
@@ -4465,6 +4764,12 @@ function generalLessonFallback() {
         phases.splice(1, 0, ["Use the axis", "Balance the symbol on a clear vertical and horizontal axis before adding expression.", "Do not tilt everything off-axis too early."]);
       }
 
+      phases.splice(Math.min(4, phases.length), 0, [
+        `Limb style: ${limb.label}`,
+        `${limb.guide} Build the limbs as ${limb.phrase}.`,
+        "Do not use the old default arms/feet unless this limb style asks for them."
+      ]);
+
       const skillInfo = skillFocusData[skillFocus] || skillFocusData.shapeControl;
       phases.splice(Math.min(2, phases.length), 0, [
         `Skill focus: ${skillInfo.title}`,
@@ -4481,14 +4786,17 @@ function generalLessonFallback() {
         type,
         emotion,
         twist,
+        limbStyle: limbStyleKey,
+        limbName: limb.label,
         blueprintStyle,
         skillFocus,
         subjectName: subject[0],
         subjectBase: subject[1],
         emotionName: emo[0],
         twistName: tw[0],
+        limbName: limb.label,
         meta: `${subject[0]} · ${emo[0]} · ${lesson[0]}`,
-        goal: `Draw a ${emo[0].toLowerCase()} ${subject[0].toLowerCase()} using ${subject[1]}, ${emo[1]}, and ${emo[2]}. Add ${tw[1]}.${flavorText}${paletteText} Subject lock: stay with ${subject[0].toLowerCase()}; flavor only changes the vibe.`,
+        goal: `Draw a ${emo[0].toLowerCase()} ${subject[0].toLowerCase()} using ${subject[1]}, ${emo[1]}, and ${emo[2]}. Add ${tw[1]} and ${limb.phrase}.${flavorText}${paletteText} Subject lock: stay with ${subject[0].toLowerCase()}; flavor only changes the vibe.`,
         shapeSpell: mode === "cozyPlus" ? "Use big-medium-small: one big body, one medium detail, two tiny expression marks." : mode === "remix" ? "Change one thing only. Keep the body shape stable." : "Big shape first. Face second. Decoration last.",
         styleRecipe: palette && palette.label !== "Auto" ? `${palette.label} · ${palette.colors.length} colors` : pick(styleRecipes),
         paletteKey: document.getElementById("paletteMood").value,
@@ -4508,7 +4816,7 @@ function generalLessonFallback() {
         praise: pick(praises),
         remixOne: pick(remixIdeas),
         remixTwo: mode === "cozyPlus" ? "Make a sticker version with a thicker outline and fewer details." : "Draw the same mascot again with a different mouth, not a different body.",
-        traceNote: `<strong>Beginner use:</strong><br>Trace the big body shape first. Hide the guide when done. If the mascot still reads, the drawing worked. Emotion blueprint pass: ${emotionBlueprintBadge(emotion)}. Twist blueprint pass: ${twistBlueprintBadge(twist)}.`
+        traceNote: `<strong>Beginner use:</strong><br>Trace the big body shape first. Hide the guide when done. If the mascot still reads, the drawing worked. Emotion blueprint pass: ${emotionBlueprintBadge(emotion)}. Twist blueprint pass: ${twistBlueprintBadge(twist)}. Limb blueprint: ${limb.label}.`
       });
 
       if (openBlueprint) {

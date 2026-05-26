@@ -2841,3 +2841,9 @@
 .v48-top-clean .lesson-output h3.v48-remove-drawing-path + .path-grid {
   display: none !important;
 }
+
+
+/* V49 Limb Style category */
+.limb-style-note {
+  font-size: 0.9rem;
+}

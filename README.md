@@ -921,37 +921,24 @@ const CACHE_NAME = "mascot-spark-v44";
 ```
 
 
-## V45 Safe file separation
+## V49 Limb Style Category
 
-Changed:
+Added:
 
-- Extracted the main protected CSS from `index.html` into `styles.css`.
-- Extracted the main protected JavaScript from `index.html` into `script.js`.
-- Preserved DOM structure, IDs, classes, CSS variables, keyframes, selectors, and JavaScript names.
-- Kept generated worksheet HTML/CSS template content inside the JavaScript exactly where it belongs.
-- Updated the service worker app shell to cache `styles.css` and `script.js`.
-- Bumped the service worker cache so deployed PWAs pick up the split files.
+- New Limb style category with 40 choices.
+- Default hardcoded mascot limbs replaced by the selected limb style.
+- Main blueprint now shows the selected limb construction.
+- Trace step panels now use the selected limb style.
+- Lesson guidance now names the selected limb style and adds a limb-specific drawing note.
 
-Service worker cache:
+Preserved:
 
-```js
-const CACHE_NAME = "mascot-spark-v45";
-```
-
-
-## V46 contained tabs
-
-Changed:
-
-- Moved generated lesson output, export actions, traceable blueprint, guided practice, and mini remix lab into the **Trace Guide** tab.
-- Start, Flow, Personality, Palette, Coach, Emotion Lab, Shade Lab, Stash, and Review no longer expose the generated lesson workspace underneath them.
-- Preserved all existing IDs, classes, event handlers, buttons, SVG elements, export tools, and PWA files.
-- No feature removal.
-- No visual redesign.
-- This is a containment pass only.
+- Subject, emotion, twist, palette, shade, stash, and export systems.
+- Existing IDs and core event flow.
+- V48 top cleanup behavior.
 
 Service worker cache:
 
 ```js
-const CACHE_NAME = "mascot-spark-v46";
+const CACHE_NAME = "mascot-spark-v49";
 ```

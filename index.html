@@ -11,7 +11,7 @@
   <link rel="apple-touch-icon" href="./icon-192.png" />
   <link rel="icon" type="image/png" sizes="192x192" href="./icon-192.png" />
   <link rel="icon" type="image/png" sizes="512x512" href="./icon-512.png" />
-  <title>Mascot Spark V48 — UI Clean</title>
+  <title>Mascot Spark V49 — UI Clean</title>
   <link rel="stylesheet" href="./styles.css" />
 </head>
 
@@ -21,7 +21,7 @@
     <section class="hero">
       <div class="hero-content">
         <div>
-          <div class="badge">Stitched Halo Bloom · V48 UI clean</div>
+          <div class="badge">Stitched Halo Bloom · V49 UI clean</div>
           <h1>Mascot Spark</h1>
           <p class="subtitle">
             A cozy Procreate mascot drawing teacher with clearer draw-first guidance, expanded subject categories, duo emotions, tiny twists, specific palette profiles, blueprint variations, AI help modes, tabs, Surprise Me, and iPad-friendly layouts.
@@ -189,6 +189,11 @@
           <div class="panel">
             <label for="funTwist">Tiny twist</label>
             <select id="funTwist"></select>
+          </div>
+          <div class="panel">
+            <label for="limbStyle">Limb style</label>
+            <select id="limbStyle" onchange="newLesson()"></select>
+            <p class="small">Choose how arms/feet are built. This replaces the old default limbs.</p>
           </div>
           <div class="panel">
             <label for="ideaPreset">Optional flavor only</label>

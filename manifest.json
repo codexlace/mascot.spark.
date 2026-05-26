@@ -1,7 +1,7 @@
 {
-  "name": "Mascot Spark V46 — Contained Tabs",
+  "name": "Mascot Spark V49 — Limb Style Category",
   "short_name": "Mascot Spark",
-  "description": "Contains generated lesson, export actions, trace blueprint, and guided practice inside the Trace Guide tab to avoid one long vertical page.",
+  "description": "Adds a 40-choice limb style category and matching blueprint limb guides.",
   "start_url": "./index.html",
   "scope": "./",
   "display": "standalone",
