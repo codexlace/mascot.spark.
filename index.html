@@ -11,7 +11,7 @@
   <link rel="apple-touch-icon" href="./icon-192.png" />
   <link rel="icon" type="image/png" sizes="192x192" href="./icon-192.png" />
   <link rel="icon" type="image/png" sizes="512x512" href="./icon-512.png" />
-  <title>Mascot Spark V57 — Shade Lab Logic</title>
+  <title>Mascot Spark V59 — Shade Lab Logic</title>
   <style>
     /* =========================================================
        STITCHED HALO BLOOM — EXACT 3 MODE VARIABLES
@@ -2931,7 +2931,7 @@
 
   
 /* =========================
-   V57 Shade Lab Logic Placement
+   V59 Shade Lab Logic Placement
    Lighting logic moved out of Lesson and into Shade Lab.
    ========================= */
 
@@ -2947,6 +2947,26 @@
   color: var(--color-primary);
 }
 
+  
+/* =========================
+   V59 Universal Blueprint Modes
+   Principle-based trace guides.
+   ========================= */
+
+.universal-blueprint-note {
+  margin-top: 8px;
+}
+
+  
+/* =========================
+   V59 Drawing Path System
+   Guided steps now follow selected path.
+   ========================= */
+
+.drawing-path-note {
+  margin-top: 8px;
+}
+
   </style>
 </head>
 
@@ -2956,7 +2976,7 @@
     <section class="hero">
       <div class="hero-content">
         <div>
-          <div class="badge">Stitched Halo Bloom · V57</div>
+          <div class="badge">Stitched Halo Bloom · V59</div>
           <h1>Mascot Spark</h1>
           <p class="subtitle">
             A cozy Procreate mascot drawing teacher with clearer draw-first guidance, expanded subject categories, duo emotions, tiny twists, specific palette profiles, blueprint variations, AI help modes, tabs, Surprise Me, and iPad-friendly layouts.
@@ -3011,7 +3031,7 @@
         <button class="tab-btn" type="button" data-tab="tab-flow" onclick="showTab('tab-flow')"><span class="tab-icon">➜</span>Flow</button>
         <button class="tab-btn" type="button" data-tab="tab-character" onclick="showTab('tab-character')"><span class="tab-icon">◕</span>Personality</button>
         <button class="tab-btn" type="button" data-tab="tab-color" onclick="showTab('tab-color')"><span class="tab-icon">●</span>Palette</button>
-        <button class="tab-btn" type="button" data-tab="tab-blueprint" data-advanced-only="true" onclick="showTab('tab-blueprint')"><span class="tab-icon">⌁</span>Trace Guide</button>
+        <button class="tab-btn" type="button" data-tab="tab-blueprint" data-advanced-only="true" onclick="showTab('tab-blueprint')"><span class="tab-icon">⌁</span>Blueprint Guide</button>
         <button class="tab-btn" type="button" data-tab="tab-ai" data-advanced-only="true" onclick="showTab('tab-ai')"><span class="tab-icon">?</span>Coach</button>
         <button class="tab-btn" type="button" data-tab="tab-emotions" data-advanced-only="true" onclick="showTab('tab-emotions')"><span class="tab-icon">🎭</span>Emotion Lab</button>
         <button class="tab-btn" type="button" data-tab="tab-shade" data-advanced-only="true" onclick="showTab('tab-shade')"><span class="tab-icon">✦</span>Shade Lab</button>
@@ -3081,7 +3101,7 @@
             <p class="small">Atmosphere layer: dreamy, eerie, glittery, tender, chaotic, or cozy.</p>
           </div>
           <div class="panel">
-            <label for="backdropStyle">Backdrop Elements</label>
+            <label for="backdropStyle">Drawing Paths</label>
             <select id="backdropStyle"></select>
             <p class="small">Simple support only. Mascot stays the hero.</p>
           </div>
@@ -3206,13 +3226,15 @@
         <p class="tab-hint">Choose how the trace guide should teach the drawing structure.</p>
         <section class="controls">
           <div class="panel">
-            <label for="blueprintStyle">Traceable blueprint variation</label>
+            <label for="blueprintStyle">Universal blueprint variation</label>
             <select id="blueprintStyle"></select>
+            <p class="small universal-blueprint-note">Principle guides, not exact mascot templates.</p>
             <p class="small">Choose guide type.</p>
           </div>
           <div class="panel">
             <label for="drawOrderMode">Draw-first order</label>
             <select id="drawOrderMode"></select>
+            <p class="small drawing-path-note">Changes the guided step sequence and visual step cards.</p>
           </div>
           <div class="panel">
             <label>Best guide use</label>
@@ -3639,7 +3661,7 @@
             <label class="path-card"><input type="checkbox"> <span><strong>Save thought</strong> Write what improved.</span></label>
           </div>
 
-          <h3>Draw this first, then this</h3>
+          <h3>Drawing Path, then this</h3>
           <div id="drawFirstPanels" class="draw-first-grid"></div>
 
           <h3>Traceable step blueprints</h3>
@@ -3680,7 +3702,7 @@
 
       <aside>
         <section class="blueprint">
-          <h3>Traceable blueprint</h3>
+          <h3>Universal blueprint</h3>
           <svg id="blueprintSvg" viewBox="0 0 520 560" aria-label="Traceable mascot construction blueprint"></svg>
           <div id="traceNote" class="blue-note"></div>
           <div class="blueprint-actions">
@@ -3772,7 +3794,7 @@
     </section>
 
       <footer class="final-footer" aria-label="App version">
-      <span id="finalBuildBadge">Mascot Spark V57 · Shade Lab Lighting + Shadow Logic · Cache mascot-spark-v54</span>
+      <span id="finalBuildBadge">Mascot Spark V59 · Shade Lab Lighting + Shadow Logic · Cache mascot-spark-v54</span>
     </footer>
   </main>
   <script src="./app.js"></script>

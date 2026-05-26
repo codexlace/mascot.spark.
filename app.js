@@ -735,43 +735,224 @@ const moodDriftMap = {
       logoAxis: "Logo axis guide"
     };
 
+    const universalBlueprintOptions = {
+      facePlacement: "Universal: Face Placement",
+      silhouetteReadability: "Universal: Silhouette Readability",
+      bigMediumSmall: "Universal: Big / Medium / Small",
+      tinyLimbLogic: "Universal: Tiny Limb Logic",
+      expressionFlow: "Universal: Expression Flow",
+      stickerReadability: "Universal: Sticker Readability",
+      accessoryBalance: "Universal: Accessory Balance",
+      shapeLanguage: "Universal: Shape Language",
+      layeringDepth: "Universal: Layering Depth",
+      shadowPlacement: "Universal: Shadow Placement",
+      plushConstruction: "Universal: Plush Construction",
+      poseSimplicity: "Universal: Pose Simplicity",
+      colorBlocking: "Universal: Color Blocking",
+      backdropFraming: "Universal: Backdrop Framing",
+      mascotPolish: "Universal: Mascot Polish"
+    };
+
+    const universalBlueprintInfo = {
+      facePlacement: {
+        title: "Face Placement Blueprint",
+        lesson: "Place the face low, keep eyes spaced clearly, and keep the mouth close to the eyes.",
+        caution: "Do not let the face float too high or spread too wide."
+      },
+      silhouetteReadability: {
+        title: "Silhouette Readability Blueprint",
+        lesson: "Protect the big outer shape before adding details.",
+        caution: "Remove edge clutter that makes the mascot hard to read."
+      },
+      bigMediumSmall: {
+        title: "Big / Medium / Small Blueprint",
+        lesson: "Use one big body, one medium feature, and a few tiny accents.",
+        caution: "If everything is the same size, nothing feels intentional."
+      },
+      tinyLimbLogic: {
+        title: "Tiny Limb Logic Blueprint",
+        lesson: "Keep limbs small, simple, and secondary to the face.",
+        caution: "Mascot limbs should not become realistic anatomy."
+      },
+      expressionFlow: {
+        title: "Expression Flow Blueprint",
+        lesson: "Use eye tilt, brow angle, and mouth size to carry the emotion.",
+        caution: "Do not redraw the whole mascot when the expression only needs a small change."
+      },
+      stickerReadability: {
+        title: "Sticker Readability Blueprint",
+        lesson: "Test the design as a tiny icon with strong edges and few details.",
+        caution: "Tiny marks that vanish at icon size should be removed."
+      },
+      accessoryBalance: {
+        title: "Accessory Balance Blueprint",
+        lesson: "Place one focal accessory away from the face and preserve breathing room.",
+        caution: "Do not stack every twist in the same corner."
+      },
+      shapeLanguage: {
+        title: "Shape Language Blueprint",
+        lesson: "Use round shapes for soft/cute energy and sharper shapes only as accents.",
+        caution: "Too many points can make a cute mascot feel noisy or harsh."
+      },
+      layeringDepth: {
+        title: "Layering Depth Blueprint",
+        lesson: "Separate foreground mascot, midground accents, and background support.",
+        caution: "The backdrop must never compete with the mascot silhouette."
+      },
+      shadowPlacement: {
+        title: "Shadow Placement Blueprint",
+        lesson: "Use one core shadow, one contact shadow, and one highlight zone.",
+        caution: "Avoid muddy gray shadows and shadows across the face."
+      },
+      plushConstruction: {
+        title: "Plush Construction Blueprint",
+        lesson: "Use soft bulges, seam curves, and compression zones.",
+        caution: "Do not sharpen plush silhouettes unless the concept needs it."
+      },
+      poseSimplicity: {
+        title: "Pose Simplicity Blueprint",
+        lesson: "Use one body tilt or gesture arc to suggest the pose.",
+        caution: "Avoid complicated poses that break sticker readability."
+      },
+      colorBlocking: {
+        title: "Color Blocking Blueprint",
+        lesson: "Separate body, accent, face, shadow, and highlight clearly.",
+        caution: "Do not let colors of equal strength fight for attention."
+      },
+      backdropFraming: {
+        title: "Backdrop Framing Blueprint",
+        lesson: "Use a halo, arch, shadow, or tiny prop as quiet support.",
+        caution: "No full rooms, landscapes, or perspective scenes."
+      },
+      mascotPolish: {
+        title: "Mascot Polish Blueprint",
+        lesson: "Clean the outline, reduce clutter, and stop before over-detailing.",
+        caution: "A finished mascot is readable, not overloaded."
+      }
+    };
+
+
+
     const drawOrders = {
-      simple: ["Simple order", [
-        ["Body", "Draw the one big shape.", "Do not draw eyes yet.", "Guide / rough sketch layer"],
-        ["Guide", "Add a vertical center and low face line.", "Do not decorate the guide.", "Same sketch layer"],
-        ["Face", "Place eyes first, then mouth.", "Do not add limbs until face works.", "Face test layer"],
-        ["Limbs", "Add tiny arms or feet with simple curves.", "Do not make them large.", "Limb sketch layer"],
-        ["Polish", "Clean line, flat color, one shadow, one shine.", "Do not over-render.", "Line / color / shadow layers"]
+      shapeFirst: ["Shape-first path", [
+        ["Big silhouette", "Draw only the outer body shape.", "No face, limbs, twist, color, or shading yet.", "Rough shape layer"],
+        ["Shape check", "Zoom out and simplify the outline.", "Do not protect weak bumps.", "Same rough layer"],
+        ["Low face map", "Add a low face guide inside the body.", "Do not place the eyes too high.", "Guide layer"],
+        ["Tiny limbs", "Attach the smallest readable limbs.", "Do not make anatomy realistic.", "Limb sketch layer"],
+        ["One twist", "Add the selected twist in a safe accessory zone.", "Do not cover the expression.", "Detail layer"],
+        ["Clean finish", "Clean line, flat color, one shadow, one highlight.", "Do not over-render.", "Final layers"]
       ]],
-      extraGuided: ["Extra guided: draw this first", [
-        ["Body only", "Spend one minute on the outer silhouette.", "No face, no limbs, no twist.", "Rough shape layer"],
-        ["Best body", "Redraw the body once and pick the clearer version.", "Do not keep both versions.", "Second sketch layer"],
-        ["Face map", "Draw a low face box and place eyes inside it.", "Do not place the face high.", "Guide layer"],
-        ["Expression", "Try two mouths next to the mascot before choosing.", "Do not settle instantly.", "Face test layer"],
-        ["Attach", "Add tiny limbs and one twist after the face works.", "Do not cover the face.", "Detail layer"],
-        ["Clean", "Lower sketch opacity and redraw slowly.", "Do not trace every wobble.", "Clean line layer"]
+      faceFirstTest: ["Face-first test path", [
+        ["Mini face tests", "Draw three tiny face options beside the mascot.", "Do not draw the full body yet.", "Face test layer"],
+        ["Pick emotion", "Choose the face that reads fastest.", "Do not choose the most detailed one.", "Decision layer"],
+        ["Build body around it", "Draw the body shape supporting that face.", "Do not let the body crowd the face.", "Rough body layer"],
+        ["Add limbs", "Add limbs only after the expression works.", "Do not distract from the eyes and mouth.", "Limb layer"],
+        ["Twist last", "Place the twist as a supporting accent.", "Do not add a second focal point.", "Accessory layer"],
+        ["Final pass", "Redraw the clean mascot larger.", "Do not polish failed expression placement.", "Clean line layer"]
       ]],
-      traceThenHide: ["Trace then hide guide", [
-        ["Screenshot", "Screenshot or save the blueprint.", "Do not redraw from memory yet.", "Photo import"],
-        ["Import", "Place it in Procreate and set opacity to 20–30%.", "Do not draw on the guide layer.", "Guide layer"],
-        ["Trace body", "Trace only the outer shape first.", "Do not trace details yet.", "Sketch layer above"],
-        ["Trace face", "Add face and limbs on the sketch layer.", "Do not over-copy the guide.", "Sketch layer"],
-        ["Hide guide", "Turn off the guide and check readability.", "Do not color before checking.", "Layer visibility check"],
-        ["Finish", "Clean line, color, shadow, highlight.", "Stop after one shadow.", "Final layers"]
+      stickerPolish: ["Sticker polish path", [
+        ["Sticker boundary", "Draw a rounded sticker-safe boundary.", "Do not let details touch the edge.", "Boundary guide"],
+        ["Bold silhouette", "Make the body readable inside the boundary.", "Do not use fragile thin shapes.", "Rough layer"],
+        ["Clean face", "Use the simplest readable expression.", "Do not add tiny face clutter.", "Face layer"],
+        ["Thicken outline", "Add a clean sticker-like outer line.", "Do not outline every tiny interior detail.", "Line layer"],
+        ["Drop shadow", "Add a small sticker shadow or halo.", "Do not make a full scene.", "Shadow layer"],
+        ["Gloss or sparkle", "Add one shine, sparkle, or polish mark.", "Stop before noise.", "Highlight layer"]
       ]],
-      iconFirst: ["Icon-first order", [
-        ["Icon box", "Draw inside a small square.", "Do not use the whole canvas.", "Icon boundary layer"],
-        ["Silhouette", "Make the outside shape readable at tiny size.", "No facial details yet.", "Rough icon layer"],
-        ["Face", "Add the simplest possible face.", "Do not add tiny eyelashes or clutter.", "Face layer"],
-        ["Remove", "Delete anything that disappears when zoomed out.", "Do not protect weak details.", "Cleanup pass"],
-        ["Enlarge", "Redraw the winning tiny icon bigger.", "Do not enlarge a cluttered version.", "Final sketch layer"]
+      emotionFirst: ["Emotion-first path", [
+        ["Emotion word", "Write the emotion in one tiny note.", "Do not pick details yet.", "Planning note"],
+        ["Expression arc", "Draw eye tilt and mouth energy first.", "Do not shade yet.", "Face guide layer"],
+        ["Body attitude", "Tilt or squash the body to match the feeling.", "Do not change everything.", "Gesture layer"],
+        ["Limb reaction", "Use limbs to support the emotion subtly.", "Do not make limb acting too big.", "Limb layer"],
+        ["Twist support", "Choose twist placement that supports the feeling.", "Do not fight the emotion.", "Detail layer"],
+        ["Clean readable emotion", "Zoom out and check that the emotion still reads.", "Do not keep ambiguous marks.", "Final check"]
       ]],
-      worksheet: ["Worksheet order", [
-        ["Box 1", "Draw body only.", "No face.", "Worksheet box 1"],
-        ["Box 2", "Draw body plus face guide.", "No decoration.", "Worksheet box 2"],
-        ["Box 3", "Add eyes, mouth, limbs.", "One expression only.", "Worksheet box 3"],
-        ["Box 4", "Add one tiny twist.", "No second accessory.", "Worksheet box 4"],
-        ["Final", "Redraw the clean version larger.", "Do not skip the redraw.", "Final layer"]
+      silhouetteDrill: ["Silhouette drill path", [
+        ["Three bodies", "Draw three body silhouettes with no face.", "No details at all.", "Silhouette test layer"],
+        ["Pick clearest", "Circle the strongest silhouette.", "Do not choose the most complicated one.", "Decision layer"],
+        ["Simplify edge", "Remove or soften one confusing contour.", "Do not add new bumps.", "Cleanup layer"],
+        ["Add face", "Place a low simple face.", "Do not change the silhouette now.", "Face layer"],
+        ["Tiny accents", "Add limbs and twist as small secondary marks.", "Do not break the outer read.", "Detail layer"],
+        ["Icon test", "Zoom out until it is tiny and check the shape.", "Do not skip the tiny-size test.", "Review layer"]
+      ]],
+      tinyIconPass: ["Tiny icon pass", [
+        ["Small box", "Draw the mascot inside a tiny square.", "Do not start full-size.", "Icon box layer"],
+        ["One-shape body", "Use the simplest version of the silhouette.", "No texture or tiny props.", "Rough icon layer"],
+        ["Dot/line face", "Use minimum face marks.", "No eyelashes, wrinkles, or micro-details.", "Face layer"],
+        ["Remove clutter", "Delete details that vanish when zoomed out.", "Do not rescue tiny decorations.", "Cleanup layer"],
+        ["Scale up", "Redraw the readable icon larger.", "Do not simply transform a messy sketch.", "Final sketch"],
+        ["Polish lightly", "Use one color accent and one shadow.", "Do not over-render the icon.", "Final layers"]
+      ]],
+      accessoryLast: ["Accessory-last path", [
+        ["Body only", "Draw the mascot with no twist or accessory.", "Do not decorate early.", "Rough body layer"],
+        ["Face works first", "Place the expression and check readability.", "Do not hide expression with props.", "Face layer"],
+        ["Limb check", "Add small limbs and check balance.", "Do not make limbs compete.", "Limb layer"],
+        ["Find empty zone", "Mark the safest accessory area away from the face.", "Do not use the busiest corner.", "Accessory guide"],
+        ["Add twist", "Place one twist or a small twist set.", "Do not stack details.", "Detail layer"],
+        ["Simplify", "Remove one detail if the mascot feels crowded.", "Do not add another fix-detail.", "Final cleanup"]
+      ]],
+      shadeReady: ["Shade-ready path", [
+        ["Flat mascot", "Draw clean lines and flat color first.", "No shading yet.", "Flat color layer"],
+        ["Light arrow", "Mark the light direction lightly.", "Do not shade from two directions.", "Guide layer"],
+        ["Contact shadow", "Add a small ground/contact shadow.", "Do not darken the whole bottom.", "Multiply shadow layer"],
+        ["Core shadow", "Add one body shadow opposite the light.", "Do not cover the face.", "Clipped shadow layer"],
+        ["Highlight", "Add one highlight or rim light.", "Do not add many shine spots.", "Highlight layer"],
+        ["Material check", "Match the shadow/shine to plush, sticker, gummy, or matte feel.", "Do not mix every material.", "Review layer"]
+      ]],
+      backdropFinish: ["Backdrop finish path", [
+        ["Mascot first", "Finish the mascot before drawing backdrop elements.", "Do not start with a scene.", "Mascot layers"],
+        ["Grounding cue", "Add a soft shadow, halo, puff, or simple base.", "No perspective floor.", "Backdrop layer"],
+        ["Atmosphere marks", "Add two to four tiny mood marks.", "Do not scatter clutter everywhere.", "Atmosphere layer"],
+        ["Frame check", "Make sure the backdrop frames the mascot.", "Do not touch the face silhouette.", "Composition check"],
+        ["Lower contrast", "Keep the backdrop softer than the mascot.", "Do not use equal contrast.", "Adjustment layer"],
+        ["Icon test", "Zoom out and confirm the mascot still reads first.", "Do not keep a distracting backdrop.", "Final review"]
+      ]],
+      plushBuild: ["Plush build path", [
+        ["Stuffed form", "Draw the body as a soft stuffed shape.", "No sharp corners yet.", "Rough plush layer"],
+        ["Compression", "Add one gentle squish or seam curve.", "Do not add many seam lines.", "Plush guide layer"],
+        ["Soft face", "Place the face low with rounded expression marks.", "Do not use harsh angles.", "Face layer"],
+        ["Tiny plush limbs", "Add nubs, paws, mittens, or puffs.", "Do not make them realistic.", "Limb layer"],
+        ["Fabric shadow", "Add soft shading under bulges.", "Do not use hard metal-like shadows.", "Shadow layer"],
+        ["Cuddle polish", "Add one stitch, patch, blush, or fuzzy edge.", "Stop before texture noise.", "Texture layer"]
+      ]],
+      objectCharacter: ["Object-character path", [
+        ["Object read", "Draw the object silhouette before adding character features.", "Do not blobify the subject.", "Object rough layer"],
+        ["Key object cue", "Add one identifying object detail.", "Do not add all object details.", "Cue layer"],
+        ["Face placement", "Place the face where it does not break the object read.", "Do not cover the main cue.", "Face layer"],
+        ["Mascot limbs", "Attach small limbs that support the object shape.", "Do not turn it into human anatomy.", "Limb layer"],
+        ["Twist or label", "Add one small charm, tag, or surface mark.", "Do not over-label.", "Detail layer"],
+        ["Readable final", "Zoom out and confirm both object and mascot read.", "Do not sacrifice either one.", "Review layer"]
+      ]],
+      logoMark: ["Logo mark path", [
+        ["Strong mark", "Draw one bold centered symbol shape.", "Do not add face yet.", "Mark sketch layer"],
+        ["Symmetry/axis", "Use a simple axis or balance guide.", "Do not over-measure.", "Guide layer"],
+        ["Minimal face", "Add the smallest expression that still reads.", "No tiny decorative eyes.", "Face layer"],
+        ["Limit details", "Use one accent maximum.", "Do not make it an illustration.", "Accent layer"],
+        ["Flat color", "Use clean color blocking.", "Do not use muddy gradients.", "Color layer"],
+        ["App icon test", "Shrink it and check if it still works.", "Do not keep anything unreadable.", "Icon review"]
+      ]],
+      storybookDoodle: ["Storybook doodle path", [
+        ["Loose shape", "Draw a charming imperfect body shape.", "Do not make it too symmetrical.", "Rough sketch"],
+        ["Gentle expression", "Use a simple warm face.", "Do not over-act the emotion.", "Face layer"],
+        ["Tiny story cue", "Add one prop, twist, or backdrop mark.", "Do not build a full scene.", "Story detail layer"],
+        ["Soft line", "Clean with slightly handmade line quality.", "Do not erase all charm.", "Line layer"],
+        ["Muted color", "Use calm color blocks and one accent.", "Do not make every color loud.", "Color layer"],
+        ["Paper polish", "Add a very light texture or shadow.", "Do not make it dirty.", "Texture layer"]
+      ]],
+      chaosTame: ["Chaos-tame path", [
+        ["Wild idea list", "Choose one chaotic idea only.", "Do not use all of them.", "Planning note"],
+        ["Stable body", "Draw a very simple body to hold the chaos.", "Do not make the silhouette chaotic too.", "Body layer"],
+        ["Expressive face", "Push the expression slightly.", "Do not distort readability.", "Face layer"],
+        ["One weird twist", "Add one unusual twist as the focal point.", "No second weird focal point.", "Twist layer"],
+        ["Calm color", "Use calmer colors to control the chaos.", "Do not use every bright color.", "Color layer"],
+        ["Readability cut", "Remove one confusing detail.", "Chaos still needs editing.", "Cleanup layer"]
+      ]],
+      finalPolish: ["Final polish path", [
+        ["Readability review", "Zoom out and identify the clearest part.", "Do not polish before reviewing.", "Review layer"],
+        ["Clean outline", "Redraw the outer edge confidently.", "Do not trace every wobble.", "Line layer"],
+        ["Face clarity", "Simplify the eyes and mouth if needed.", "Do not add expression clutter.", "Face cleanup"],
+        ["Color hierarchy", "Make body, accent, shadow, and highlight distinct.", "Do not let colors fight.", "Color adjustment"],
+        ["One polish detail", "Add one shine, blush, stitch, or sparkle.", "Do not add a detail cluster.", "Polish layer"],
+        ["Stop point", "Save/export before overworking.", "Do not keep noodling.", "Final save"]
       ]]
     };
 
@@ -923,8 +1104,8 @@ const moodDriftMap = {
       populateSelect("ideaPreset", flavors, "");
       populateSelect("paletteMood", palettes, "gummyHalo");
       renderPalettePreview();
-      populateSelect("blueprintStyle", blueprintOptions, "autoSubject");
-      populateSelect("drawOrderMode", drawOrders, "simple");
+      populateSelect("blueprintStyle", universalBlueprintOptions, "facePlacement");
+      populateSelect("drawOrderMode", drawOrders, "shapeFirst");
       populateSelect("aiStyle", aiModes, "simplify");
       populateSelect("shadeStyle", shadeStyles, "softPlush");
       populateSelect("lightDirection", lightDirections, "topLeft");
@@ -1717,6 +1898,41 @@ const moodDriftMap = {
       return common[stage] + subject;
     }
 
+
+    function getUniversalBlueprintOverlay(style) {
+      const info = universalBlueprintInfo[style];
+      const label = info ? `${info.title}: ${info.lesson}` : "Universal blueprint: use this as a principle guide, not a tracing command.";
+
+      const overlays = {
+        facePlacement: '<ellipse class="guide" cx="260" cy="292" rx="112" ry="72"></ellipse><line class="guide" x1="175" y1="270" x2="345" y2="270"></line><line class="guide" x1="215" y1="248" x2="215" y2="318"></line><line class="guide" x1="305" y1="248" x2="305" y2="318"></line>',
+        silhouetteReadability: '<ellipse class="guide" cx="260" cy="270" rx="154" ry="182"></ellipse><path class="guide" d="M150 150 C115 210 116 350 168 414 M370 150 C405 210 404 350 352 414"></path>',
+        bigMediumSmall: '<circle class="guide" cx="260" cy="270" r="132"></circle><circle class="guide" cx="365" cy="185" r="42"></circle><circle class="guide" cx="395" cy="245" r="18"></circle><circle class="guide" cx="135" cy="335" r="18"></circle>',
+        tinyLimbLogic: '<circle class="guide" cx="150" cy="300" r="34"></circle><circle class="guide" cx="370" cy="300" r="34"></circle><circle class="guide" cx="215" cy="415" r="28"></circle><circle class="guide" cx="305" cy="415" r="28"></circle>',
+        expressionFlow: '<line class="guide" x1="190" y1="248" x2="245" y2="262"></line><line class="guide" x1="275" y1="262" x2="330" y2="248"></line><path class="guide" d="M220 320 Q260 345 300 320"></path>',
+        stickerReadability: '<rect class="guide" x="105" y="95" width="310" height="360" rx="82"></rect><rect class="guide" x="155" y="150" width="210" height="250" rx="60"></rect>',
+        accessoryBalance: '<rect class="guide" x="320" y="110" width="95" height="140" rx="30"></rect><rect class="guide" x="105" y="255" width="90" height="125" rx="28"></rect><ellipse class="guide" cx="260" cy="285" rx="95" ry="70"></ellipse>',
+        shapeLanguage: '<path class="guide" d="M145 285 C145 175 375 175 375 285 C375 395 145 395 145 285 Z"></path><path class="guide" d="M260 110 L322 220 L440 235 L350 318 L375 438 L260 380 L145 438 L170 318 L80 235 L198 220 Z"></path>',
+        layeringDepth: '<rect class="guide" x="72" y="82" width="376" height="394" rx="52"></rect><ellipse class="guide" cx="260" cy="300" rx="152" ry="172"></ellipse><ellipse class="guide" cx="260" cy="430" rx="120" ry="28"></ellipse>',
+        shadowPlacement: '<path class="guide" d="M165 360 C220 420 320 420 370 360"></path><ellipse class="guide" cx="276" cy="438" rx="95" ry="24"></ellipse><ellipse class="guide" cx="215" cy="190" rx="48" ry="24" transform="rotate(-24 215 190)"></ellipse>',
+        plushConstruction: '<circle class="guide" cx="200" cy="205" r="58"></circle><circle class="guide" cx="320" cy="205" r="58"></circle><ellipse class="guide" cx="260" cy="315" rx="128" ry="130"></ellipse><path class="guide" d="M170 350 C215 390 305 390 350 350"></path>',
+        poseSimplicity: '<path class="guide" d="M230 125 C280 210 300 320 278 438"></path><line class="guide" x1="190" y1="420" x2="330" y2="420"></line><path class="guide" d="M180 260 Q260 220 340 260"></path>',
+        colorBlocking: '<ellipse class="guide" cx="260" cy="270" rx="145" ry="178"></ellipse><path class="guide" d="M145 325 C205 370 315 370 375 325"></path><rect class="guide" x="185" y="235" width="150" height="100" rx="38"></rect>',
+        backdropFraming: '<ellipse class="guide" cx="260" cy="270" rx="190" ry="215"></ellipse><ellipse class="guide" cx="260" cy="435" rx="135" ry="28"></ellipse><rect class="guide" x="95" y="88" width="330" height="388" rx="90"></rect>',
+        mascotPolish: '<rect class="guide" x="115" y="105" width="290" height="350" rx="76"></rect><path class="guide" d="M150 170 C230 120 310 120 370 170"></path><path class="guide" d="M150 380 C230 430 310 430 370 380"></path>'
+      };
+
+      return {
+        overlay: (overlays[style] || "") + `<text class="label" x="35" y="535">${label}</text>`,
+        label,
+        caution: info ? info.caution : "Use the guide lightly and preserve the mascot identity."
+      };
+    }
+
+    function isUniversalBlueprintStyle(style) {
+      return !!(universalBlueprintOptions && universalBlueprintOptions[style]);
+    }
+
+
     function makeBlueprint(type, emotion, twist, style, twistSet = null) {
       const body = makeBody(type);
       const [eyes, mouth] = makeFace(emotion);
@@ -1732,7 +1948,8 @@ const moodDriftMap = {
         overlay: getTwistSetBlueprintOverlay(activeTwistSet),
         label: getTwistSetBlueprintLabel(activeTwistSet)
       };
-      let overlay = style === "autoSubject" ? `${subjectGuide.overlay}<text class="label" x="35" y="535">Auto subject guide: ${subjectGuide.note}</text>` : "";
+      const universalOverlay = isUniversalBlueprintStyle(style) ? getUniversalBlueprintOverlay(style) : null;
+      let overlay = universalOverlay ? universalOverlay.overlay : (style === "autoSubject" ? `${subjectGuide.overlay}<text class="label" x="35" y="535">Auto subject guide: ${subjectGuide.note}</text>` : "");
       if (style === "bodyFirst") overlay = '<text class="label" x="35" y="535">Body-first: trace only the outside shape before adding face.</text>';
       if (style === "faceMap") overlay = '<rect class="guide" x="185" y="235" width="150" height="105" rx="35"></rect><text class="label" x="35" y="535">Face map: keep eyes and mouth inside this soft box.</text>';
       if (style === "limbMap") overlay = '<circle class="guide" cx="145" cy="300" r="35"></circle><circle class="guide" cx="375" cy="300" r="35"></circle><circle class="guide" cx="215" cy="410" r="28"></circle><circle class="guide" cx="305" cy="410" r="28"></circle>';
@@ -2149,12 +2366,11 @@ const moodDriftMap = {
     let blueprintLabelsHidden = false;
 
     const beginnerFlowSteps = [
-      { title: "Pick", body: "Generate or choose a mascot lesson. Do not edit every option first." },
-      { title: "Blueprint", body: "Open the Trace Guide and study the largest shape before drawing." },
-      { title: "Body", body: "Draw the outside silhouette only. No face yet." },
-      { title: "Face", body: "Place the face low and keep the mouth tiny." },
-      { title: "Twist", body: "Add one tiny twist using its placement guide." },
-      { title: "Shade", body: "Use Shade Lab: one shadow, one shine, stop early." },
+      { title: "Generate", body: "Generate or choose a mascot lesson. Do not edit every option first." },
+      { title: "Path", body: "Follow the selected Drawing Path one step at a time." },
+      { title: "Blueprint", body: "Use the Universal Blueprint as a principle guide, not a tracing command." },
+      { title: "Shade", body: "Use Shade Lab only after the flat mascot reads clearly." },
+      { title: "Backdrop", body: "Add one quiet backdrop element if it helps the mascot feel placed." },
       { title: "Save", body: "Save to Stash, then redraw one focused Version 2." }
     ];
 
@@ -2167,8 +2383,10 @@ const moodDriftMap = {
 
       if (title && data) title.textContent = `${data.subjectName || "Mascot"} Flow`;
       if (goal && data) goal.textContent = data.goal || "Follow one step at a time.";
+      const activePath = getActiveDrawingPath(data);
+      const flowSteps = data ? activePath.steps.map((step, i) => ({ title: step[0], body: step[1] })) : beginnerFlowSteps;
       if (steps) {
-        steps.innerHTML = beginnerFlowSteps.map((step, i) => `
+        steps.innerHTML = flowSteps.map((step, i) => `
           <button class="flow-step ${i === beginnerFlowIndex ? "active" : ""}" onclick="setFlowStep(${i})">
             <strong>${i + 1}. ${step.title}</strong>
             <span>${step.body}</span>
@@ -2176,17 +2394,19 @@ const moodDriftMap = {
         `).join("");
       }
 
-      const active = beginnerFlowSteps[beginnerFlowIndex] || beginnerFlowSteps[0];
+      const active = flowSteps[beginnerFlowIndex] || flowSteps[0];
       if (currentTitle) currentTitle.textContent = active.title;
       if (currentBody) currentBody.textContent = active.body;
     }
 
     function setFlowStep(index) {
-      beginnerFlowIndex = Math.max(0, Math.min(beginnerFlowSteps.length - 1, index));
+      const activePath = getActiveDrawingPath(currentLessonData);
+      const flowSteps = currentLessonData ? activePath.steps.map(step => ({ title: step[0], body: step[1] })) : beginnerFlowSteps;
+      beginnerFlowIndex = Math.max(0, Math.min(flowSteps.length - 1, index));
       renderBeginnerFlow();
       if (beginnerFlowIndex === 1) showTab("tab-blueprint");
-      if (beginnerFlowIndex === 5) showTab("tab-shade");
-      status(`Flow step ${beginnerFlowIndex + 1}: ${beginnerFlowSteps[beginnerFlowIndex].title}`, "ok");
+      if (beginnerFlowIndex === Math.max(0, flowSteps.length - 2)) showTab("tab-shade");
+      status(`Flow step ${beginnerFlowIndex + 1}: ${flowSteps[beginnerFlowIndex].title}`, "ok");
     }
 
     function nextFlowStep() {
@@ -2204,25 +2424,37 @@ const moodDriftMap = {
       status("Beginner Flow started.", "ok");
     }
 
+
+    function getActiveDrawingPath(data = currentLessonData) {
+      const key = data?.drawOrderMode || document.getElementById("drawOrderMode")?.value || "shapeFirst";
+      return {
+        key,
+        label: drawOrders[key]?.[0] || drawOrders.shapeFirst[0],
+        steps: drawOrders[key]?.[1] || drawOrders.shapeFirst[1]
+      };
+    }
+
+    function pathStageForStep(index) {
+      const stages = ["body", "guide", "face", "limbs", "final", "final"];
+      return stages[Math.min(index, stages.length - 1)] || "final";
+    }
+
+
     function renderVisualStepCards(data = currentLessonData) {
       const box = document.getElementById("visualStepCards");
       if (!box || !data) return;
 
-      const stages = [
-        ["body", "Body only", "Trace the largest readable silhouette first."],
-        ["guide", "Construction guide", "Use the subject guide to understand the form."],
-        ["face", "Face placement", "Place eyes low and keep expression simple."],
-        ["limbs", "Limbs and twist", "Add tiny limbs and the twist placement guide."],
-        ["final", "Clean mascot", "Finish with one clear outline and one main detail."]
-      ];
-
-      box.innerHTML = stages.map(([stage, title, copy]) => `
-        <article class="visual-step-card">
-          ${miniBlueprintSvg(data.type, data.emotion, data.twist, stage, data.twistSet)}
-          <strong>${title}</strong>
-          <p>${copy}</p>
-        </article>
-      `).join("");
+      const path = getActiveDrawingPath(data);
+      box.innerHTML = path.steps.map((step, i) => {
+        const stage = pathStageForStep(i);
+        return `
+          <article class="visual-step-card">
+            ${miniBlueprintSvg(data.type, data.emotion, data.twist, stage, data.twistSet)}
+            <strong>${i + 1}. ${step[0]}</strong>
+            <p>${step[1]}</p>
+          </article>
+        `;
+      }).join("");
     }
 
     function getLockedIds() {
@@ -5921,6 +6153,21 @@ function generalLessonFallback() {
         "Keep the backdrop quieter than the mascot. No full scene."
       ]);
 
+      const universalBlueprint = universalBlueprintInfo[blueprintStyle];
+      if (universalBlueprint) {
+        phases.splice(Math.min(3, phases.length), 0, [
+          `Blueprint principle: ${universalBlueprint.title}`,
+          universalBlueprint.lesson,
+          universalBlueprint.caution
+        ]);
+      }
+
+      phases.splice(Math.min(2, phases.length), 0, [
+        `Drawing path: ${drawOrders[drawOrderMode]?.[0] || "Shape-first path"}`,
+        "Follow the custom draw-this-first sequence before improvising.",
+        "Do not use every path at once. One sequence is enough."
+      ]);
+
 const skillInfo = skillFocusData[skillFocus] || skillFocusData.shapeControl;
       phases.splice(Math.min(2, phases.length), 0, [
         `Skill focus: ${skillInfo.title}`,
@@ -5966,7 +6213,9 @@ const skillInfo = skillFocusData[skillFocus] || skillFocusData.shapeControl;
         paletteKey: document.getElementById("paletteMood").value,
         complexity: mode === "cozyPlus" ? 68 : mode === "remix" ? 56 : 42,
         meterText: mode === "cozyPlus" ? "Cozy+ difficulty: more design thinking, still beginner-safe." : mode === "remix" ? "Remix difficulty: playful, one change at a time." : "Cozy difficulty: easy and drawable.",
-        drawOrder: drawOrders[drawOrderMode][1],
+        drawOrderMode,
+        drawOrderName: drawOrders[drawOrderMode]?.[0] || "Shape-first path",
+        drawOrder: drawOrders[drawOrderMode]?.[1] || drawOrders.shapeFirst[1],
         phases,
         checks: [
           "The selected subject category is still recognizable.",
@@ -5983,7 +6232,7 @@ const skillInfo = skillFocusData[skillFocus] || skillFocusData.shapeControl;
         praise: pick(praises),
         remixOne: pick(remixIdeas),
         remixTwo: mode === "cozyPlus" ? "Make a sticker version with a thicker outline and fewer details." : "Draw the same mascot again with a different mouth, not a different body.",
-        traceNote: `<strong>Beginner use:</strong><br>Trace the big body shape first. Hide the guide when done. If the mascot still reads, the drawing worked. Emotion blueprint pass: ${emotionBlueprintBadge(emotion)}. Twist blueprint pass: ${getTwistSetBadge(twistSet)}. Limb blueprint: ${limb.label}.`
+        traceNote: `<strong>Beginner use:</strong><br>Trace the big body shape first. Hide the guide when done. If the mascot still reads, the drawing worked. Emotion blueprint pass: ${emotionBlueprintBadge(emotion)}. Twist blueprint pass: ${getTwistSetBadge(twistSet)}. Limb blueprint: ${limb.label}. Blueprint mode: ${universalBlueprintInfo[blueprintStyle]?.title || blueprintOptions[blueprintStyle] || "Universal guide"}.`
       });
 
       if (openBlueprint) {

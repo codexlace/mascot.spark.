@@ -1060,3 +1060,74 @@ Service worker cache:
 ```js
 const CACHE_NAME = "mascot-spark-v57";
 ```
+
+
+## V58 Universal Blueprints
+
+Revamped Traceable Blueprint Variation into principle-based Universal Blueprint modes.
+
+Added 15 universal blueprint modes:
+
+- Face Placement
+- Silhouette Readability
+- Big / Medium / Small
+- Tiny Limb Logic
+- Expression Flow
+- Sticker Readability
+- Accessory Balance
+- Shape Language
+- Layering Depth
+- Shadow Placement
+- Plush Construction
+- Pose Simplicity
+- Color Blocking
+- Backdrop Framing
+- Mascot Polish
+
+Purpose:
+
+- Blueprints now teach reusable mascot design principles.
+- They are not exact mascot templates.
+- Existing subject, emotion, twist, limb, shade, and backdrop logic remains preserved.
+
+Service worker cache:
+
+```js
+const CACHE_NAME = "mascot-spark-v58";
+```
+
+
+## V59 Drawing Paths
+
+Revamped Draw This First and Guided Step Mode.
+
+Added 15 Drawing Paths:
+
+- Shape-first path
+- Face-first test path
+- Sticker polish path
+- Emotion-first path
+- Silhouette drill path
+- Tiny icon pass
+- Accessory-last path
+- Shade-ready path
+- Backdrop finish path
+- Plush build path
+- Object-character path
+- Logo mark path
+- Storybook doodle path
+- Chaos-tame path
+- Final polish path
+
+Changed:
+
+- Guided Step Mode now follows the selected Drawing Path.
+- Visual step cards now follow the selected Drawing Path.
+- Lesson generation includes the selected Drawing Path as a practice phase.
+- Existing blueprint, shade, backdrop, subject, emotion, limb, and twist systems remain preserved.
+
+Service worker cache:
+
+```js
+const CACHE_NAME = "mascot-spark-v59";
+```
