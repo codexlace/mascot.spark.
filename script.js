@@ -477,6 +477,59 @@
       return limbStyles[key] || limbStyles.nubs;
     }
 
+
+    const twistAmounts = {
+      one: ["One twist", "Use the selected twist only."],
+      two: ["Two twists", "Use the selected twist plus one compatible accent."],
+      three: ["Three twists", "Use the selected twist plus two tiny accents."],
+      surpriseMix: ["Surprise mix", "Let the app choose one to three compatible twists."]
+    };
+
+    const extraTwists = {
+      tinyEarring: ["Tiny earring", "a tiny earring", "Hang one small ring or bead from the side.", '<circle class="feature" cx="392" cy="285" r="12"></circle><circle class="feature" cx="392" cy="285" r="5"></circle>'],
+      jellyDrip: ["Jelly drip", "a jelly drip", "Add one soft rounded drip from the bottom edge.", '<path class="feature" d="M300 390 C315 420 300 445 282 430 C270 415 284 402 300 390 Z"></path>'],
+      tinyKey: ["Tiny key", "a tiny key", "Hang a small key charm from one side.", '<circle class="feature" cx="390" cy="365" r="12"></circle><path class="feature" d="M390 377 L390 425 M390 410 L410 410 M390 425 L405 425"></path>'],
+      barcodeStripe: ["Barcode stripe", "barcode stripes", "Add a few skinny vertical stripes on one side.", '<path class="feature" d="M350 235 L350 320 M362 235 L362 305 M374 235 L374 330 M386 235 L386 300"></path>'],
+      tinyEnvelope: ["Tiny envelope", "a tiny envelope", "Add a small envelope patch.", '<rect class="feature" x="330" y="315" width="58" height="38" rx="6"></rect><path class="feature" d="M330 318 L359 344 L388 318"></path>'],
+      constellationDots: ["Constellation dots", "constellation dots", "Add three tiny connected star dots.", '<circle class="solid" cx="355" cy="180" r="5"></circle><circle class="solid" cx="385" cy="205" r="4"></circle><circle class="solid" cx="410" cy="170" r="4"></circle><path class="feature" d="M355 180 L385 205 L410 170"></path>'],
+      tinyLace: ["Tiny lace edge", "a tiny lace edge", "Add a scalloped lace strip along one edge.", '<path class="feature" d="M150 250 Q162 270 174 250 Q186 270 198 250 Q210 270 222 250"></path>'],
+      candyWrapperEnds: ["Candy wrapper ends", "candy wrapper ends", "Add small wrapper fins to the sides.", '<path class="feature" d="M140 260 L95 235 L105 285 Z M380 260 L425 235 L415 285 Z"></path>'],
+      sleepyBubble: ["Sleepy bubble", "a sleepy bubble", "Add one floating sleep bubble.", '<circle class="feature" cx="390" cy="150" r="20"></circle><circle class="feature" cx="420" cy="120" r="10"></circle>'],
+      tinyUmbrella: ["Tiny umbrella", "a tiny umbrella", "Add a little umbrella cap above one side.", '<path class="feature" d="M335 160 Q385 115 435 160 Z"></path><path class="feature" d="M385 160 L385 230 Q385 245 400 240"></path>'],
+      stitchedSmilePatch: ["Stitched smile patch", "a stitched smile patch", "Add a patch with a stitched mini smile.", '<rect class="feature" x="320" y="290" width="64" height="46" rx="14"></rect><path class="feature" d="M338 314 Q352 326 366 314"></path><path class="feature" d="M334 300 L345 308 M370 300 L359 308"></path>'],
+      tinyNameTag: ["Tiny name tag", "a tiny name tag", "Add a small rounded name tag.", '<rect class="feature" x="330" y="345" width="70" height="34" rx="12"></rect><path class="feature" d="M348 362 L382 362"></path>'],
+      littleHorns: ["Little horns", "little horns", "Add two tiny soft horns.", '<path class="feature" d="M205 155 L190 105 L235 142 Z M315 155 L330 105 L285 142 Z"></path>'],
+      floatingCrownSpark: ["Crown spark", "a crown spark", "Add one floating royal sparkle.", '<path class="feature" d="M390 125 L398 145 L420 150 L400 160 L392 182 L384 160 L362 150 L382 145 Z"></path>'],
+      tinyPocket: ["Tiny pocket", "a tiny pocket", "Add a small pocket patch.", '<path class="feature" d="M330 305 L390 305 L382 355 Q360 370 338 355 Z"></path>'],
+      pearlChain: ["Pearl chain", "a pearl chain", "Add three bead dots along a curve.", '<circle class="feature" cx="185" cy="345" r="8"></circle><circle class="feature" cx="205" cy="360" r="8"></circle><circle class="feature" cx="230" cy="368" r="8"></circle>'],
+      littleMask: ["Little mask mark", "a little mask mark", "Add a soft mask mark around the eyes.", '<path class="feature" d="M190 250 Q260 220 330 250 Q310 290 260 286 Q210 290 190 250 Z"></path>'],
+      tinyPawPrint: ["Tiny paw print", "a tiny paw print", "Add one tiny paw-print patch.", '<circle class="solid" cx="358" cy="320" r="7"></circle><circle class="solid" cx="344" cy="304" r="4"></circle><circle class="solid" cx="358" cy="298" r="4"></circle><circle class="solid" cx="372" cy="304" r="4"></circle>'],
+      cometTail: ["Comet tail", "a comet tail", "Add a small streaking comet tail.", '<path class="feature" d="M370 160 Q420 135 455 105 M372 175 Q420 168 455 150"></path><circle class="feature" cx="360" cy="170" r="14"></circle>'],
+      tinyLantern: ["Tiny lantern", "a tiny lantern", "Hang a little lantern from one side.", '<path class="feature" d="M385 320 Q410 340 405 365"></path><rect class="feature" x="382" y="365" width="44" height="54" rx="12"></rect><path class="feature" d="M392 378 L416 378 M392 405 L416 405"></path>'],
+      ribbonTag: ["Ribbon tag", "a ribbon tag", "Add a little ribbon tag at the bottom.", '<path class="feature" d="M245 395 L275 395 L275 455 L260 438 L245 455 Z"></path>'],
+      tinyBook: ["Tiny book", "a tiny book", "Add a tiny open-book charm.", '<path class="feature" d="M330 335 Q360 318 390 335 L390 385 Q360 370 330 385 Z"></path><line class="feature" x1="360" y1="325" x2="360" y2="375"></line>'],
+      softSpikes: ["Soft spikes", "soft spikes", "Add a few rounded back spikes.", '<path class="feature" d="M375 210 Q420 225 382 250 Q430 270 382 292 Q420 318 372 330"></path>'],
+      tinyMushroomCap: ["Mushroom cap", "a mushroom cap", "Add a tiny mushroom cap detail.", '<path class="feature" d="M220 145 Q260 95 300 145 Z"></path><circle class="solid" cx="245" cy="132" r="5"></circle><circle class="solid" cx="275" cy="125" r="5"></circle>'],
+      yarnBall: ["Yarn ball", "a yarn ball", "Add a little yarn ball charm.", '<circle class="feature" cx="390" cy="365" r="24"></circle><path class="feature" d="M372 360 Q390 348 408 360 M370 375 Q392 388 410 372 M390 341 Q382 365 390 389"></path>'],
+      tinyTeacup: ["Tiny teacup", "a tiny teacup", "Add a little teacup charm.", '<path class="feature" d="M340 335 L392 335 L386 380 Q366 392 346 380 Z"></path><path class="feature" d="M392 348 Q420 350 405 372"></path>'],
+      magicRune: ["Magic rune", "a magic rune", "Add one simple rune mark.", '<circle class="feature" cx="360" cy="300" r="28"></circle><path class="feature" d="M360 276 L360 324 M342 314 L378 286"></path>'],
+      cloudTuft: ["Cloud tuft", "a cloud tuft", "Add a small puff cluster on top.", '<circle class="feature" cx="235" cy="135" r="18"></circle><circle class="feature" cx="260" cy="122" r="24"></circle><circle class="feature" cx="290" cy="138" r="18"></circle>'],
+      tinyFlag: ["Tiny flag", "a tiny flag", "Add a tiny flag on a short pole.", '<line class="feature" x1="355" y1="125" x2="355" y2="210"></line><path class="feature" d="M355 130 L420 145 L355 165 Z"></path>'],
+      pinwheel: ["Pinwheel", "a pinwheel", "Add a tiny pinwheel charm.", '<circle class="solid" cx="385" cy="205" r="5"></circle><path class="feature" d="M385 205 L360 180 L385 185 L410 180 L390 205 L410 230 L385 225 L360 230 Z"></path>'],
+      tinyBandana: ["Tiny bandana", "a tiny bandana", "Add a small bandana triangle.", '<path class="feature" d="M195 340 L325 340 L260 405 Z"></path><path class="feature" d="M230 340 L220 370 M290 340 L300 370"></path>'],
+      stickerGloss: ["Sticker gloss", "a sticker gloss", "Add a glossy sticker corner highlight.", '<path class="feature" d="M330 150 Q385 150 395 205 Q360 175 330 150 Z"></path>'],
+      tinyCompass: ["Tiny compass", "a tiny compass", "Add a small compass charm.", '<circle class="feature" cx="365" cy="325" r="28"></circle><path class="feature" d="M365 300 L375 325 L365 350 L355 325 Z"></path>'],
+      littleBowBack: ["Back bow", "a back bow", "Add a bow peeking behind the body.", '<path class="feature" d="M145 275 L95 245 L105 310 Z M145 275 L95 310 L105 245 Z"></path><circle class="feature" cx="145" cy="275" r="9"></circle>'],
+      tinyPatchSet: ["Patch set", "two tiny patches", "Add two small mismatched patches.", '<rect class="feature" x="330" y="285" width="38" height="30" rx="8"></rect><circle class="feature" cx="200" cy="350" r="18"></circle>'],
+      sparkleTrail: ["Sparkle trail", "a sparkle trail", "Add three little sparkles in a gentle curve.", '<path class="feature" d="M370 145 L375 158 L388 163 L375 168 L370 181 L365 168 L352 163 L365 158 Z M405 198 L410 210 L422 215 L410 220 L405 232 L400 220 L388 215 L400 210 Z M345 222 L350 232 L360 236 L350 240 L345 250 L340 240 L330 236 L340 232 Z"></path>'],
+      tinyCandle: ["Tiny candle", "a tiny candle", "Add one tiny candle detail.", '<rect class="feature" x="350" y="305" width="26" height="62" rx="8"></rect><path class="feature" d="M363 295 C350 280 366 265 368 248 C388 272 382 292 363 295 Z"></path>'],
+      tinyRibbonPiercing: ["Ribbon piercing", "a ribbon piercing", "Add a little ribbon loop through one side.", '<circle class="feature" cx="385" cy="270" r="16"></circle><path class="feature" d="M385 286 L365 326 L385 314 L405 326 Z"></path>'],
+      paintSplatter: ["Tiny paint splatter", "tiny paint splatter", "Add a few tiny paint drops.", '<circle class="solid" cx="360" cy="210" r="7"></circle><circle class="solid" cx="385" cy="225" r="4"></circle><circle class="solid" cx="345" cy="235" r="4"></circle><circle class="solid" cx="372" cy="245" r="3"></circle>'],
+      littlePlanetRing: ["Planet ring", "a little planet ring", "Add a small orbit ring around one side mark.", '<circle class="feature" cx="365" cy="285" r="22"></circle><ellipse class="feature" cx="365" cy="285" rx="42" ry="13" transform="rotate(-20 365 285)"></ellipse>']
+    };
+
+    Object.assign(twists, extraTwists);
+
     const palettes = {
       auto: { label: "Auto", colors: [] },
       gummyHalo: { label: "Gummy Halo Morning", colors: ["#F27BA6", "#FFB7D0", "#FFF7FB", "#8EDAF7", "#D7C4F4"] },
@@ -733,6 +786,7 @@
       populateSelect("emotion", emotions, "happy");
       populateSelect("level", lessonSizes, "normal");
       populateSelect("funTwist", twists, "sparkle");
+      populateSelect("twistAmount", twistAmounts, "one");
       populateSelect("limbStyle", limbStyles, "nubs");
       populateSelect("ideaPreset", flavors, "");
       populateSelect("paletteMood", palettes, "gummyHalo");
@@ -747,6 +801,72 @@
     }
 
     function pick(arr) { return arr[Math.floor(Math.random() * arr.length)]; }
+
+
+    function getSelectedTwistAmount() {
+      return document.getElementById("twistAmount")?.value || "one";
+    }
+
+    function getAllDrawableTwistKeys() {
+      return Object.keys(twists).filter(key => key !== "none" && twists[key] && twists[key][3]);
+    }
+
+    function getTwistCountForAmount(amount) {
+      if (amount === "two") return 2;
+      if (amount === "three") return 3;
+      if (amount === "surpriseMix") return 1 + Math.floor(Math.random() * 3);
+      return 1;
+    }
+
+    function uniqueTwistKeys(primary, count) {
+      if (!primary || primary === "none") return [];
+      const available = getAllDrawableTwistKeys().filter(key => key !== primary);
+      const result = [primary];
+
+      while (result.length < count && available.length) {
+        const index = Math.floor(Math.random() * available.length);
+        result.push(available.splice(index, 1)[0]);
+      }
+
+      if (!result.length && primary === "none") return [];
+      return result.slice(0, count);
+    }
+
+    function resolveTwistSet(primary, amount) {
+      const requested = getTwistCountForAmount(amount);
+      return uniqueTwistKeys(primary, requested);
+    }
+
+    function getTwistSetName(keys) {
+      if (!keys || !keys.length) return "No extra twist";
+      return keys.map(key => twists[key]?.[0] || key).join(" + ");
+    }
+
+    function getTwistSetPhrase(keys) {
+      if (!keys || !keys.length) return "no extra decoration";
+      return keys.map(key => twists[key]?.[1] || key).join(", ");
+    }
+
+    function getTwistSetSvg(keys) {
+      return (keys || []).map(key => twists[key]?.[3] || "").join("");
+    }
+
+    function getTwistSetBlueprintOverlay(keys) {
+      return (keys || []).map(key => getTwistBlueprintGuide(key).overlay || "").join("");
+    }
+
+    function getTwistSetBlueprintLabel(keys) {
+      if (!keys || !keys.length) return "Twist guide: none selected.";
+      if (keys.length === 1) return getTwistBlueprintGuide(keys[0]).label;
+      return `Twist set guide: place ${keys.length} small accents in separate zones; do not stack them over the face.`;
+    }
+
+    function getTwistSetBadge(keys) {
+      if (!keys || !keys.length) return "Twist blueprint: none selected";
+      const supported = keys.every(key => twistBlueprintBadge(key).includes("supported") || TWIST_BLUEPRINT_PASS_1.includes(key));
+      return supported ? "Twist blueprint: full current set supported" : "Twist blueprint: mixed/fallback guide";
+    }
+
 
     function status(msg, kind = "") {
       const box = document.getElementById("status");
@@ -1454,17 +1574,21 @@
       return common[stage] + subject;
     }
 
-    function makeBlueprint(type, emotion, twist, style) {
+    function makeBlueprint(type, emotion, twist, style, twistSet = null) {
       const body = makeBody(type);
       const [eyes, mouth] = makeFace(emotion);
-      const twistSvg = twists[twist] ? twists[twist][3] : "";
+      const activeTwistSet = twistSet || [twist].filter(Boolean);
+      const twistSvg = getTwistSetSvg(activeTwistSet);
       const limb = getLimbStyle();
       const limbSvg = limb.svg || "";
       const limbGuide = limb.overlay || "";
       const variant = getBlueprintVariant();
       const subjectGuide = getSubjectGuide(type);
       const emotionGuide = getEmotionBlueprintGuide(emotion);
-      const twistGuide = getTwistBlueprintGuide(twist);
+      const twistGuide = {
+        overlay: getTwistSetBlueprintOverlay(activeTwistSet),
+        label: getTwistSetBlueprintLabel(activeTwistSet)
+      };
       let overlay = style === "autoSubject" ? `${subjectGuide.overlay}<text class="label" x="35" y="535">Auto subject guide: ${subjectGuide.note}</text>` : "";
       if (style === "bodyFirst") overlay = '<text class="label" x="35" y="535">Body-first: trace only the outside shape before adding face.</text>';
       if (style === "faceMap") overlay = '<rect class="guide" x="185" y="235" width="150" height="105" rx="35"></rect><text class="label" x="35" y="535">Face map: keep eyes and mouth inside this soft box.</text>';
@@ -1523,17 +1647,21 @@
     }
 
 
-    function miniBlueprintSvg(type, emotion, twist, stage) {
+    function miniBlueprintSvg(type, emotion, twist, stage, twistSet = null) {
       const body = makeBody(type);
       const face = makeFace(emotion);
       const eyes = face[0];
       const mouth = face[1];
-      const twistSvg = twists[twist] ? twists[twist][3] : "";
+      const activeTwistSet = twistSet || [twist].filter(Boolean);
+      const twistSvg = getTwistSetSvg(activeTwistSet);
       const limb = getLimbStyle();
       const limbSvg = limb.svg || "";
       const limbGuide = limb.overlay || "";
       const emotionGuide = getEmotionBlueprintGuide(emotion);
-      const twistGuide = getTwistBlueprintGuide(twist);
+      const twistGuide = {
+        overlay: getTwistSetBlueprintOverlay(activeTwistSet),
+        label: getTwistSetBlueprintLabel(activeTwistSet)
+      };
 
       const guides = getStageGuides(type, stage);
 
@@ -1561,7 +1689,7 @@
       document.getElementById("traceStepPanels").innerHTML = steps.map(([label, stage]) => `
         <div class="trace-panel">
           <strong>${label}</strong>
-          ${miniBlueprintSvg(data.type, data.emotion, data.twist, stage)}
+          ${miniBlueprintSvg(data.type, data.emotion, data.twist, stage, data.twistSet)}
         </div>
       `).join("");
     }
@@ -1947,7 +2075,7 @@
 
       box.innerHTML = stages.map(([stage, title, copy]) => `
         <article class="visual-step-card">
-          ${miniBlueprintSvg(data.type, data.emotion, data.twist, stage)}
+          ${miniBlueprintSvg(data.type, data.emotion, data.twist, stage, data.twistSet)}
           <strong>${title}</strong>
           <p>${copy}</p>
         </article>
@@ -1982,6 +2110,7 @@
       randomizeIfUnlocked("lessonType", locked.subject);
       randomizeIfUnlocked("emotion", locked.emotion);
       randomizeIfUnlocked("funTwist", locked.twist);
+      if (!locked.twist) randomFromOptions("twistAmount");
       randomFromOptions("limbStyle");
       randomizeIfUnlocked("paletteMood", locked.palette);
       randomizeIfUnlocked("blueprintStyle", locked.blueprint);
@@ -2102,7 +2231,7 @@
       const prompt = [
         `A beginner-friendly mascot character concept of a ${data.subjectName || ctx.subject?.[0] || "cute mascot"}.`,
         `Emotion: ${data.emotionName || ctx.emotion?.[0] || "cute expressive"}.`,
-        `Tiny twist/accessory: ${data.twistName || ctx.twist?.[0] || "one small charming detail"}.`,
+        `Tiny twist/accessory: ${data.twistName || ctx.twistSetName || ctx.twist?.[0] || "one small charming detail"}.`,
         `Shape language: ${data.subjectBase || "simple rounded body"}, low face placement, readable silhouette, cute icon-friendly proportions.`,
         `Palette: ${paletteText}.`,
         `Shading: ${shade.shadeStyle || "soft plush shading"}, light from ${shade.lightDirection || "top left"}, simple shadow and one clean highlight.`,
@@ -2414,6 +2543,7 @@
 
       randomizeIfUnlocked("emotion", locked.emotion);
       randomizeIfUnlocked("funTwist", locked.twist);
+      if (!locked.twist) randomFromOptions("twistAmount");
       randomFromOptions("limbStyle");
       randomizeIfUnlocked("paletteMood", locked.palette);
       randomizeIfUnlocked("blueprintStyle", locked.blueprint);
@@ -2473,6 +2603,7 @@
       // Final freshening, still respecting locks.
       randomizeIfUnlocked("emotion", locked.emotion);
       randomizeIfUnlocked("funTwist", locked.twist);
+      if (!locked.twist) randomFromOptions("twistAmount");
       randomFromOptions("limbStyle");
 
       document.getElementById("customIdea").value = "";
@@ -3244,6 +3375,8 @@ ${currentBlueprint ? `<section><h2>Blueprint</h2>${currentBlueprint}</section>` 
       const paletteKey = document.getElementById("paletteMood")?.value || "auto";
       const blueprintKey = document.getElementById("blueprintStyle")?.value || "classic";
       const twistKey = document.getElementById("funTwist")?.value || "none";
+      const twistAmountKey = document.getElementById("twistAmount")?.value || "one";
+      const twistSet = resolveTwistSet(twistKey, twistAmountKey);
       const lessonKey = document.getElementById("level")?.value || "normal";
 
       return {
@@ -3252,12 +3385,15 @@ ${currentBlueprint ? `<section><h2>Blueprint</h2>${currentBlueprint}</section>` 
         paletteKey,
         blueprintKey,
         twistKey,
+        twistAmountKey,
+        twistSet,
         lessonKey,
         subject: subjectData[subjectKey] || subjectData.blob,
         emotion: emotions[emotionKey] || emotions.happy,
         palette: palettes[paletteKey] || palettes.auto,
         blueprint: blueprintOptions[blueprintKey] || blueprintOptions.classic,
         twist: twists[twistKey] || twists.none,
+        twistSetName: getTwistSetName(twistSet),
         lesson: lessonSizes[lessonKey] || lessonSizes.normal,
         flavor: document.getElementById("customIdea")?.value.trim() || flavors[document.getElementById("ideaPreset")?.value] || "none"
       };
@@ -3270,7 +3406,7 @@ ${currentBlueprint ? `<section><h2>Blueprint</h2>${currentBlueprint}</section>` 
       box.innerHTML = `
         <span>Subject: ${c.subject[0]}</span>
         <span>Emotion: ${c.emotion[0]}</span>
-        <span>Twist: ${c.twist[0]}</span>
+        <span>Twist: ${c.twistSetName || c.twist[0]}</span>
         <span>Palette: ${c.palette.label || "Auto"}</span>
         <span>Blueprint: ${c.blueprint}</span>
         <span>Lesson: ${c.lesson[0]}</span>
@@ -4109,6 +4245,46 @@ ${currentBlueprint ? `<section><h2>Blueprint</h2>${currentBlueprint}</section>` 
       "floatingStar",
       "blushStripe",
       "tinySatchel",
+      "tinyEarring",
+      "jellyDrip",
+      "tinyKey",
+      "barcodeStripe",
+      "tinyEnvelope",
+      "constellationDots",
+      "tinyLace",
+      "candyWrapperEnds",
+      "sleepyBubble",
+      "tinyUmbrella",
+      "stitchedSmilePatch",
+      "tinyNameTag",
+      "littleHorns",
+      "floatingCrownSpark",
+      "tinyPocket",
+      "pearlChain",
+      "littleMask",
+      "tinyPawPrint",
+      "cometTail",
+      "tinyLantern",
+      "ribbonTag",
+      "tinyBook",
+      "softSpikes",
+      "tinyMushroomCap",
+      "yarnBall",
+      "tinyTeacup",
+      "magicRune",
+      "cloudTuft",
+      "tinyFlag",
+      "pinwheel",
+      "tinyBandana",
+      "stickerGloss",
+      "tinyCompass",
+      "littleBowBack",
+      "tinyPatchSet",
+      "sparkleTrail",
+      "tinyCandle",
+      "tinyRibbonPiercing",
+      "paintSplatter",
+      "littlePlanetRing",
     ];
 
     function getTwistBlueprintGuide(twist) {
@@ -4336,7 +4512,7 @@ function generalLessonFallback() {
       const c = getCurrentCoachContext();
       return {
         title: "General Lesson Help",
-        summary: `Work from big to small: first the ${c.subject[0].toLowerCase()} shape, then the ${c.emotion[0].toLowerCase()} expression, then the twist, then color. The app already has a guided step mode, so let the steps carry you instead of trying to solve everything at once.`,
+        summary: `Work from big to small: first the ${c.subject[0].toLowerCase()} shape, then the ${c.emotion[0].toLowerCase()} expression, then the twist set, then color. The app already has a guided step mode, so let the steps carry you instead of trying to solve everything at once.`,
         sections: [
           {
             heading: "What to focus on first",
@@ -4585,7 +4761,7 @@ function generalLessonFallback() {
       document.getElementById("remixTwo").textContent = data.remixTwo;
       document.getElementById("traceNote").innerHTML = data.traceNote;
       renderPalettePreview();
-      document.getElementById("blueprintSvg").innerHTML = makeBlueprint(data.type, data.emotion, data.twist, data.blueprintStyle);
+      document.getElementById("blueprintSvg").innerHTML = makeBlueprint(data.type, data.emotion, data.twist, data.blueprintStyle, data.twistSet);
       applyBlueprintLayerClasses();
       if (document.getElementById("shadeStyle") && !document.getElementById("shadeStyle").dataset.touched) {
         document.getElementById("shadeStyle").value = defaultShadeStyleForCurrentLesson();
@@ -4605,6 +4781,8 @@ function generalLessonFallback() {
       const level = document.getElementById("level").value;
       const mode = document.getElementById("creativeMode").value;
       const twist = document.getElementById("funTwist").value;
+      const twistAmount = getSelectedTwistAmount();
+      const twistSet = resolveTwistSet(twist, twistAmount);
       const limbStyleKey = document.getElementById("limbStyle")?.value || "nubs";
       const limbStyle = getLimbStyle(limbStyleKey);
       const flavor = document.getElementById("customIdea").value.trim() || flavors[document.getElementById("ideaPreset").value] || ""; // flavor-only: never replaces subject
@@ -4618,7 +4796,9 @@ function generalLessonFallback() {
       const isSpecificShapeSubject = specificShapeTypes.includes(type);
       const emo = emotions[emotion];
       const lesson = lessonSizes[level];
-      const tw = twists[twist];
+      const tw = twists[twist] || twists.none;
+      const twistSetName = getTwistSetName(twistSet);
+      const twistSetPhrase = getTwistSetPhrase(twistSet);
       const limb = limbStyle;
       let phases = lesson[1].map(x => [...x]);
 
@@ -4770,6 +4950,14 @@ function generalLessonFallback() {
         "Do not use the old default arms/feet unless this limb style asks for them."
       ]);
 
+      phases.splice(Math.min(5, phases.length), 0, [
+        `Twist set: ${twistSetName}`,
+        twistSet.length > 1
+          ? `Add these small accents in separate areas: ${twistSetPhrase}. Keep the face readable first.`
+          : `Add ${twistSetPhrase}. Keep it small and away from the main expression.`,
+        "Do not stack every accessory in the same corner. Tiny details need breathing room."
+      ]);
+
       const skillInfo = skillFocusData[skillFocus] || skillFocusData.shapeControl;
       phases.splice(Math.min(2, phases.length), 0, [
         `Skill focus: ${skillInfo.title}`,
@@ -4786,6 +4974,10 @@ function generalLessonFallback() {
         type,
         emotion,
         twist,
+        twistAmount,
+        twistSet,
+        twistSetName,
+        twistSetPhrase,
         limbStyle: limbStyleKey,
         limbName: limb.label,
         blueprintStyle,
@@ -4793,10 +4985,10 @@ function generalLessonFallback() {
         subjectName: subject[0],
         subjectBase: subject[1],
         emotionName: emo[0],
-        twistName: tw[0],
+        twistName: twistSetName,
         limbName: limb.label,
         meta: `${subject[0]} · ${emo[0]} · ${lesson[0]}`,
-        goal: `Draw a ${emo[0].toLowerCase()} ${subject[0].toLowerCase()} using ${subject[1]}, ${emo[1]}, and ${emo[2]}. Add ${tw[1]} and ${limb.phrase}.${flavorText}${paletteText} Subject lock: stay with ${subject[0].toLowerCase()}; flavor only changes the vibe.`,
+        goal: `Draw a ${emo[0].toLowerCase()} ${subject[0].toLowerCase()} using ${subject[1]}, ${emo[1]}, and ${emo[2]}. Add ${twistSetPhrase} and ${limb.phrase}.${flavorText}${paletteText} Subject lock: stay with ${subject[0].toLowerCase()}; flavor only changes the vibe.`,
         shapeSpell: mode === "cozyPlus" ? "Use big-medium-small: one big body, one medium detail, two tiny expression marks." : mode === "remix" ? "Change one thing only. Keep the body shape stable." : "Big shape first. Face second. Decoration last.",
         styleRecipe: palette && palette.label !== "Auto" ? `${palette.label} · ${palette.colors.length} colors` : pick(styleRecipes),
         paletteKey: document.getElementById("paletteMood").value,
@@ -4807,7 +4999,7 @@ function generalLessonFallback() {
         checks: [
           "The selected subject category is still recognizable.",
           "The face is slightly below center.",
-          "The mascot uses one main tiny twist only.",
+          twistSet.length > 1 ? "The mascot uses multiple small twists without crowding the face." : "The mascot uses one main tiny twist only.",
           "The silhouette reads when zoomed out.",
           "The optional flavor changed mood/style only; the selected subject stayed recognizable."
         ],
@@ -4816,7 +5008,7 @@ function generalLessonFallback() {
         praise: pick(praises),
         remixOne: pick(remixIdeas),
         remixTwo: mode === "cozyPlus" ? "Make a sticker version with a thicker outline and fewer details." : "Draw the same mascot again with a different mouth, not a different body.",
-        traceNote: `<strong>Beginner use:</strong><br>Trace the big body shape first. Hide the guide when done. If the mascot still reads, the drawing worked. Emotion blueprint pass: ${emotionBlueprintBadge(emotion)}. Twist blueprint pass: ${twistBlueprintBadge(twist)}. Limb blueprint: ${limb.label}.`
+        traceNote: `<strong>Beginner use:</strong><br>Trace the big body shape first. Hide the guide when done. If the mascot still reads, the drawing worked. Emotion blueprint pass: ${emotionBlueprintBadge(emotion)}. Twist blueprint pass: ${getTwistSetBadge(twistSet)}. Limb blueprint: ${limb.label}.`
       });
 
       if (openBlueprint) {

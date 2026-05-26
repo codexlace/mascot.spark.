@@ -11,7 +11,7 @@
   <link rel="apple-touch-icon" href="./icon-192.png" />
   <link rel="icon" type="image/png" sizes="192x192" href="./icon-192.png" />
   <link rel="icon" type="image/png" sizes="512x512" href="./icon-512.png" />
-  <title>Mascot Spark V49 — UI Clean</title>
+  <title>Mascot Spark V50 — UI Clean</title>
   <link rel="stylesheet" href="./styles.css" />
 </head>
 
@@ -101,6 +101,14 @@
             <select id="emotion"></select>
           </div>
           <div class="panel">
+            <label for="funTwist">Tiny twist</label>
+            <select id="funTwist"></select>
+          </div>
+          <div class="panel">
+            <label for="twistAmount">Twist amount</label>
+            <select id="twistAmount"></select>
+          </div>
+          <div class="panel">
             <label for="level">Lesson size</label>
             <select id="level"></select>
           </div>
@@ -186,10 +194,6 @@
       <div id="tab-character" class="tab-panel">
         <p class="tab-hint">Choose one personality direction and one small twist. Do not overdecorate.</p>
         <section class="controls">
-          <div class="panel">
-            <label for="funTwist">Tiny twist</label>
-            <select id="funTwist"></select>
-          </div>
           <div class="panel">
             <label for="limbStyle">Limb style</label>
             <select id="limbStyle" onchange="newLesson()"></select>

@@ -2847,3 +2847,21 @@
 .limb-style-note {
   font-size: 0.9rem;
 }
+
+
+/* =========================
+   V50 Twist Sets
+   Keeps Start compact while exposing twist choice.
+   ========================= */
+
+#tab-lesson .panel:has(#funTwist),
+#tab-lesson .panel:has(#twistAmount) {
+  border-color: color-mix(in srgb, var(--color-primary) 48%, var(--color-border));
+}
+
+#tab-lesson .panel:has(#twistAmount) label::after {
+  content: " 1–3";
+  color: var(--color-muted);
+  font-size: 12px;
+  font-weight: 800;
+}

@@ -942,3 +942,27 @@ Service worker cache:
 ```js
 const CACHE_NAME = "mascot-spark-v49";
 ```
+
+
+## V50 Twist Sets
+
+Added:
+
+- Tiny Twist moved into the Start tab.
+- Added Twist Amount:
+  - One twist
+  - Two twists
+  - Three twists
+  - Surprise mix
+- Added 40 additional unique twist/accessory options.
+- Existing single-twist behavior remains compatible.
+- Multi-twist lessons now include twist-set guidance.
+- Main blueprint and trace panels now render multiple twist guides.
+- Coach context now names the resolved twist set.
+- Cache updated.
+
+Service worker cache:
+
+```js
+const CACHE_NAME = "mascot-spark-v50";
+```
