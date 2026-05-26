@@ -1209,3 +1209,22 @@ Service worker cache:
 ```js
 const CACHE_NAME = "mascot-spark-v62";
 ```
+
+## V64 Celestial Atmosphere Skin
+
+Visual-only surface pass.
+
+Added:
+
+- Fading-to-black noise blended background
+- Soft celestial halo atmosphere
+- Glow-rimmed modules
+- Inset soft-glass buttons
+- Subtle interactive parallax
+- Reduced-motion fallback
+
+Service worker cache:
+
+```js
+const CACHE_NAME = "mascot-spark-v64";
+```

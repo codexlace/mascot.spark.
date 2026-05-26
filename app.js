@@ -6394,6 +6394,7 @@ const skillInfo = skillFocusData[skillFocus] || skillFocusData.shapeControl;
     document.addEventListener("DOMContentLoaded", () => {
       loadMotionStyle();
       bootSelects();
+      initCelestialParallax();
       document.getElementById("paletteMood").addEventListener("change", () => { renderPalettePreview(); renderCoachContext(); renderShadeContext(); renderShadeMap(); renderShadeOutput(shadingLabFallback()); });
       ["shadeStyle","lightDirection","shadeIntensity","shadeOutputType"].forEach(id => {
         document.getElementById(id)?.addEventListener("change", () => {
@@ -6419,3 +6420,40 @@ const skillInfo = skillFocusData[skillFocus] || skillFocusData.shapeControl;
       newLesson();
     });
   
+
+
+    function initCelestialParallax() {
+      const body = document.body;
+      if (!body || !body.classList.contains("v64-celestial-skin")) return;
+      if (window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+
+      let targetX = 0;
+      let targetY = 0;
+      let currentX = 0;
+      let currentY = 0;
+      let rafId = null;
+
+      function tick() {
+        currentX += (targetX - currentX) * 0.08;
+        currentY += (targetY - currentY) * 0.08;
+        body.style.setProperty("--v64-parallax-x", `${currentX.toFixed(2)}px`);
+        body.style.setProperty("--v64-parallax-y", `${currentY.toFixed(2)}px`);
+        rafId = requestAnimationFrame(tick);
+      }
+
+      function updateFromPoint(x, y) {
+        const nx = (x / Math.max(1, window.innerWidth)) - 0.5;
+        const ny = (y / Math.max(1, window.innerHeight)) - 0.5;
+        targetX = nx * 10;
+        targetY = ny * 10;
+        if (!rafId) tick();
+      }
+
+      window.addEventListener("pointermove", event => updateFromPoint(event.clientX, event.clientY), { passive: true });
+      window.addEventListener("deviceorientation", event => {
+        if (typeof event.gamma !== "number" || typeof event.beta !== "number") return;
+        targetX = Math.max(-6, Math.min(6, event.gamma * 0.25));
+        targetY = Math.max(-6, Math.min(6, event.beta * 0.12));
+        if (!rafId) tick();
+      }, { passive: true });
+    }
