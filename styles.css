@@ -2747,3 +2747,97 @@
 .v47-ui-trim .section {
     margin-bottom: 14px !important;
 }
+
+
+/* =========================
+   V48 Top Clean + Session Removal
+   Coding-only UI surgery:
+   - keeps title and version badge
+   - hides app description/theme names/mode labels
+   - keeps one compact UI control in the top-right
+   - removes visible session timer surfaces in both locations
+   - removes redraw/practice-memory/drawing-path surfaces
+   ========================= */
+
+.v48-top-clean .hero {
+  padding: 18px 18px 20px !important;
+}
+
+.v48-top-clean .hero-content {
+  grid-template-columns: 1fr auto !important;
+  align-items: start !important;
+}
+
+.v48-top-clean .hero .subtitle,
+.v48-top-clean .hero .theme-notes {
+  display: none !important;
+}
+
+.v48-top-clean h1 {
+  font-size: clamp(48px, 9vw, 92px) !important;
+  line-height: .88 !important;
+  letter-spacing: -0.055em !important;
+  margin-top: 12px !important;
+}
+
+.v48-top-clean .hero-tools {
+  display: flex !important;
+  align-items: flex-start !important;
+  justify-content: flex-end !important;
+  gap: 0 !important;
+  min-width: auto !important;
+}
+
+/* Preserve the existing theme button and click handler, but visually turn it into a compact UI toggle. */
+.v48-top-clean #themeBtn {
+  min-width: 0 !important;
+  width: auto !important;
+  min-height: 42px !important;
+  padding: 10px 16px !important;
+  font-size: 0 !important;
+  line-height: 1 !important;
+}
+
+.v48-top-clean #themeBtn::after {
+  content: "UI";
+  font-size: 15px !important;
+  font-weight: 900 !important;
+  letter-spacing: .04em !important;
+}
+
+/* Hide top mode/motion controls without deleting the underlying systems. */
+.v48-top-clean #viewModeBtn,
+.v48-top-clean #focusModeBtn,
+.v48-top-clean .tab-motion-control {
+  display: none !important;
+}
+
+/* Remove both visible session timer surfaces. */
+.v48-top-clean .v48-remove-session-select,
+.v48-top-clean .v48-remove-session-block,
+.v48-top-clean h3.v48-remove-session-block,
+.v48-top-clean .timer-card.v48-remove-session-block {
+  display: none !important;
+}
+
+/* Remove requested lower tracking/memory/path surfaces. */
+.v48-top-clean .v48-remove-redraw-block,
+.v48-top-clean .v48-remove-practice-memory,
+.v48-top-clean .v48-remove-drawing-path {
+  display: none !important;
+}
+
+/* Backup selectors in case generated content keeps older classes. */
+.v48-top-clean .redraw-tracker,
+.v48-top-clean #practiceMemoryCard,
+.v48-top-clean .path-grid {
+  display: none !important;
+}
+
+/* Tighten gaps left by hidden systems. */
+.v48-top-clean .lesson-output h3.v48-remove-session-block + .timer-card,
+.v48-top-clean .lesson-output h3.v48-remove-redraw-block + .redraw-tracker,
+.v48-top-clean .lesson-output h3.v48-remove-practice-memory + #practiceMemoryCard,
+.v48-top-clean .lesson-output h3.v48-remove-drawing-path + .path-grid {
+  display: none !important;
+}

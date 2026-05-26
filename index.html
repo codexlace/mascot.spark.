@@ -11,17 +11,17 @@
   <link rel="apple-touch-icon" href="./icon-192.png" />
   <link rel="icon" type="image/png" sizes="192x192" href="./icon-192.png" />
   <link rel="icon" type="image/png" sizes="512x512" href="./icon-512.png" />
-  <title>Mascot Spark V44 — Tabular Motion</title>
+  <title>Mascot Spark V48 — UI Clean</title>
   <link rel="stylesheet" href="./styles.css" />
 </head>
 
-<body class="v47-ui-trim">
+<body class="v47-ui-trim v48-top-clean">
   <a class="skip-link" href="#lessonOutput">Skip to lesson</a>
   <main class="app">
     <section class="hero">
       <div class="hero-content">
         <div>
-          <div class="badge">Stitched Halo Bloom · V44 tabular motion</div>
+          <div class="badge">Stitched Halo Bloom · V48 UI clean</div>
           <h1>Mascot Spark</h1>
           <p class="subtitle">
             A cozy Procreate mascot drawing teacher with clearer draw-first guidance, expanded subject categories, duo emotions, tiny twists, specific palette profiles, blueprint variations, AI help modes, tabs, Surprise Me, and iPad-friendly layouts.
@@ -122,7 +122,7 @@
             <select id="surpriseType"></select>
             <p class="small">Controls what the Surprise Me button favors.</p>
           </div>
-          <div class="panel">
+          <div class="panel v48-remove-session-select">
             <label for="sessionTimer">Session timer</label>
             <select id="sessionTimer"></select>
             <p class="small">Optional drawing-session pacing.</p>
@@ -629,8 +629,8 @@
             <button onclick="makeItMore('chaos')">Make it chaotic-cute</button>
           </div>
 
-          <h3>Session timer</h3>
-          <div class="timer-card">
+          <h3 class="v48-remove-session-block">Session timer</h3>
+          <div class="timer-card v48-remove-session-block">
             <div>
               <strong id="timerLabel">No timer selected</strong>
               <p id="timerPlan" class="small">Choose a timer to get a session pacing plan.</p>
@@ -643,19 +643,19 @@
             <div class="timer-display" id="timerDisplay">--:--</div>
           </div>
 
-          <h3>Before / after redraw tracker</h3>
-          <div class="redraw-tracker">
+          <h3 class="v48-remove-redraw-block">Before / after redraw tracker</h3>
+          <div class="redraw-tracker v48-remove-redraw-block">
             <button onclick="markRedrawStage('v1')">I drew Version 1</button>
             <button onclick="markRedrawStage('v2')">I drew Version 2</button>
             <textarea id="redrawReflection" placeholder="What improved? What still feels off?"></textarea>
             <button class="primary" onclick="saveRedrawReflection()">Save redraw note</button>
           </div>
 
-          <h3>Practice memory</h3>
-          <div id="practiceMemoryCard" class="compact-help">Practice suggestions will appear here after you generate lessons.</div>
+          <h3 class="v48-remove-practice-memory">Practice memory</h3>
+          <div id="practiceMemoryCard" class="compact-help v48-remove-practice-memory">Practice suggestions will appear here after you generate lessons.</div>
 
-          <h3>Today's drawing path</h3>
-          <div class="path-grid">
+          <h3 class="v48-remove-drawing-path">Today's drawing path</h3>
+          <div class="path-grid v48-remove-drawing-path">
             <label class="path-card"><input type="checkbox"> <span><strong>Warm-up</strong> Draw 3 base shapes.</span></label>
             <label class="path-card"><input type="checkbox"> <span><strong>Main mascot</strong> Follow the lesson phases.</span></label>
             <label class="path-card"><input type="checkbox"> <span><strong>Tiny remix</strong> Change one feature only.</span></label>
