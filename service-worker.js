@@ -1,10 +1,9 @@
-const CACHE_NAME = "mascot-spark-v50";
+const CACHE_NAME = "mascot-spark-v53";
 
 const APP_SHELL = [
   "./",
   "./index.html",
-  "./script.js",
-  "./styles.css",
+  "./app.js",
   "./manifest.json",
   "./icon-192.png",
   "./icon-512.png",

@@ -966,3 +966,44 @@ Service worker cache:
 ```js
 const CACHE_NAME = "mascot-spark-v50";
 ```
+
+
+## V53 Lighting + Shadow Logic Studio
+
+Added:
+
+- Lighting Type control
+- Material Feel control
+- Shadow Strength control
+- Shading Goal control
+- 12 lighting entries
+- 16 shape shadow entries
+- 15 material recipes plus Auto
+- 5 shadow strength entries
+- 25+ limb shadow rules
+- 6 Procreate layer stack plans
+- Beginner-friendly lighting/shadow output cards:
+  - Lighting Plan
+  - Shadow Map
+  - Material Recipe
+  - Procreate Layer Stack
+  - Small Icon Warning
+
+Preserved:
+
+- Existing lesson generation
+- Existing twist sets
+- Existing limb styles
+- Existing blueprint and export systems
+- No image generation added
+
+Packaging note:
+
+- CSS is embedded in `index.html`.
+- JavaScript is external as `app.js`.
+
+Service worker cache:
+
+```js
+const CACHE_NAME = "mascot-spark-v53";
+```
