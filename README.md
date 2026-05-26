@@ -1007,3 +1007,56 @@ Service worker cache:
 ```js
 const CACHE_NAME = "mascot-spark-v53";
 ```
+
+
+## V54 Shade Lab Logic Placement
+
+Corrected the V53 lighting/shadow system placement.
+
+Changed:
+
+- Moved Lighting Type, Material Feel, Shadow Strength, and Shading Goal out of Create/Lesson.
+- Placed the controls inside Shade Lab.
+- Moved Lighting Plan, Shadow Map, Material Recipe, Procreate Layer Stack, and Small Icon Warning cards into Shade Lab.
+- Kept the advanced local logic maps and generator functions in `app.js`.
+- Kept CSS embedded in `index.html`.
+- Kept JavaScript external as `app.js`.
+- Preserved the existing Shade Lab SVG shading map and exports.
+- No image generation added.
+- No existing features removed.
+
+Service worker cache:
+
+```js
+const CACHE_NAME = "mascot-spark-v54";
+```
+
+
+## V57 Backdrop Elements
+
+Added:
+
+- Backdrop Elements control.
+- Backdrop Density control.
+- Simple mascot-supporting backdrop logic.
+- Backdrop suggestions stay intentionally minimal:
+  - soft shadow
+  - glow halo
+  - sticker burst
+  - cloud puff
+  - floating stars
+  - tiny props
+  - moon glow
+  - candy confetti
+  - storybook arch
+  - paint blob
+  - polaroid frame
+- Mood Drift and subject can auto-pick a backdrop.
+- Lesson phases now include simple backdrop guidance.
+- Backdrop warnings protect icon readability and prevent full scene clutter.
+
+Service worker cache:
+
+```js
+const CACHE_NAME = "mascot-spark-v57";
+```

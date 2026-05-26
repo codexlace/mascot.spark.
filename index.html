@@ -11,7 +11,7 @@
   <link rel="apple-touch-icon" href="./icon-192.png" />
   <link rel="icon" type="image/png" sizes="192x192" href="./icon-192.png" />
   <link rel="icon" type="image/png" sizes="512x512" href="./icon-512.png" />
-  <title>Mascot Spark V53 — Lighting + Shadow Logic Studio</title>
+  <title>Mascot Spark V57 — Shade Lab Logic</title>
   <style>
     /* =========================================================
        STITCHED HALO BLOOM — EXACT 3 MODE VARIABLES
@@ -2929,6 +2929,24 @@
   border-color: color-mix(in srgb, var(--color-danger-accent) 58%, var(--color-border));
 }
 
+  
+/* =========================
+   V57 Shade Lab Logic Placement
+   Lighting logic moved out of Lesson and into Shade Lab.
+   ========================= */
+
+.shade-lab-logic-studio {
+  margin-top: 16px;
+}
+
+.shade-logic-control {
+  border-color: color-mix(in srgb, var(--color-accent) 42%, var(--color-border));
+}
+
+.shade-lab .lighting-card h3 {
+  color: var(--color-primary);
+}
+
   </style>
 </head>
 
@@ -2938,7 +2956,7 @@
     <section class="hero">
       <div class="hero-content">
         <div>
-          <div class="badge">Stitched Halo Bloom · V53</div>
+          <div class="badge">Stitched Halo Bloom · V57</div>
           <h1>Mascot Spark</h1>
           <p class="subtitle">
             A cozy Procreate mascot drawing teacher with clearer draw-first guidance, expanded subject categories, duo emotions, tiny twists, specific palette profiles, blueprint variations, AI help modes, tabs, Surprise Me, and iPad-friendly layouts.
@@ -3014,6 +3032,16 @@
             <select id="lessonType"></select>
           </div>
           <div class="panel">
+            <label for="shapeBase">Shape Base</label>
+            <select id="shapeBase"></select>
+            <p class="small">Silhouette only. Keeps subjects from feeling boxed into one shape.</p>
+          </div>
+          <div class="panel">
+            <label for="bodyBuild">Body Build</label>
+            <select id="bodyBuild"></select>
+            <p class="small">Construction logic for the body before details.</p>
+          </div>
+          <div class="panel">
             <label for="emotion">Duo emotion</label>
             <select id="emotion"></select>
           </div>
@@ -3026,27 +3054,11 @@
             <select id="twistAmount"></select>
           </div>
           <div class="panel">
-            <label for="lightingType">Lighting Type</label>
-            <select id="lightingType"></select>
-          </div>
-          <div class="panel">
-            <label for="materialFeel">Material Feel</label>
-            <select id="materialFeel"></select>
-          </div>
-          <div class="panel">
-            <label for="shadowStrength">Shadow Strength</label>
-            <select id="shadowStrength"></select>
-          </div>
-          <div class="panel">
-            <label for="shadingGoal">Shading Goal</label>
-            <select id="shadingGoal"></select>
-          </div>
-          <div class="panel">
             <label for="level">Lesson size</label>
             <select id="level"></select>
           </div>
           <div class="panel">
-            <label for="creativeMode">Creative mode</label>
+            <label for="creativeMode">Drawing Style</label>
             <select id="creativeMode">
               <option value="cozy">Cozy: easy</option>
               <option value="cozyPlus">Cozy+: a bit more advanced</option>
@@ -3054,14 +3066,29 @@
             </select>
           </div>
           <div class="panel">
-            <label for="skillFocus">Skill focus</label>
+            <label for="skillFocus">Practice Focus</label>
             <select id="skillFocus"></select>
             <p class="small">This turns each lesson into targeted practice, not just a prompt.</p>
           </div>
           <div class="panel">
-            <label for="surpriseType">Surprise type</label>
+            <label for="surpriseType">Mascot Energy</label>
             <select id="surpriseType"></select>
             <p class="small">Controls what the Surprise Me button favors.</p>
+          </div>
+          <div class="panel">
+            <label for="moodDrift">Mood Drift</label>
+            <select id="moodDrift"></select>
+            <p class="small">Atmosphere layer: dreamy, eerie, glittery, tender, chaotic, or cozy.</p>
+          </div>
+          <div class="panel">
+            <label for="backdropStyle">Backdrop Elements</label>
+            <select id="backdropStyle"></select>
+            <p class="small">Simple support only. Mascot stays the hero.</p>
+          </div>
+          <div class="panel">
+            <label for="backdropDensity">Backdrop Density</label>
+            <select id="backdropDensity"></select>
+            <p class="small">Controls how much atmosphere appears around the mascot.</p>
           </div>
           <div class="panel v48-remove-session-select">
             <label for="sessionTimer">Session timer</label>
@@ -3416,6 +3443,14 @@
                 <svg id="shadeMapSvg" viewBox="0 0 520 560" role="img" aria-label="Shading map preview"></svg>
               </div>
 
+              <section class="lighting-shadow-studio shade-lab-logic-studio" aria-label="Shade Lab lighting and shadow logic">
+                <div id="lightingPlanCard" class="lighting-card"></div>
+                <div id="shadowMapCard" class="lighting-card"></div>
+                <div id="materialRecipeCard" class="lighting-card"></div>
+                <div id="layerStackCard" class="lighting-card"></div>
+                <div id="smallIconWarningCard" class="lighting-card warning-card"></div>
+              </section>
+
               <div id="shadeOutputBody" class="coach-output-body">
                 <p class="small">Generate a shading plan to see the beginner-safe map.</p>
               </div>
@@ -3522,14 +3557,6 @@
           <div id="goal" class="goal"></div>
           <div id="emotionLessonHint" class="emotion-lesson-hint"></div>
 
-          <section class="lighting-shadow-studio" aria-label="Lighting and shadow logic studio">
-            <div id="lightingPlanCard" class="lighting-card"></div>
-            <div id="shadowMapCard" class="lighting-card"></div>
-            <div id="materialRecipeCard" class="lighting-card"></div>
-            <div id="layerStackCard" class="lighting-card"></div>
-            <div id="smallIconWarningCard" class="lighting-card warning-card"></div>
-          </section>
-
           <div class="info-grid">
             <div class="mini-card">
               <strong>Shape spell</strong>
@@ -3552,7 +3579,7 @@
           <h3>Practice intelligence</h3>
           <div class="practice-intel-grid">
             <div class="intel-card">
-              <strong>Skill focus</strong>
+              <strong>Practice Focus</strong>
               <div id="skillFocusCard"></div>
             </div>
             <div class="intel-card">
@@ -3745,7 +3772,7 @@
     </section>
 
       <footer class="final-footer" aria-label="App version">
-      <span id="finalBuildBadge">Mascot Spark V53 · Lighting + Shadow Logic Studio · Cache mascot-spark-v53</span>
+      <span id="finalBuildBadge">Mascot Spark V57 · Shade Lab Lighting + Shadow Logic · Cache mascot-spark-v54</span>
     </footer>
   </main>
   <script src="./app.js"></script>
