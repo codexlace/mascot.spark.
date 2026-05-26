@@ -1,0 +1,25 @@
+{
+  "name": "Mascot Spark V44 \u2014 Tabular Motion",
+  "short_name": "Mascot Spark",
+  "description": "Adds segmented pill tab navigation, active sliding indicator, tab transitions, staggered cards, and motion-style controls.",
+  "start_url": "./index.html",
+  "scope": "./",
+  "display": "standalone",
+  "orientation": "any",
+  "background_color": "#FFF7FB",
+  "theme_color": "#F27BA6",
+  "icons": [
+    {
+      "src": "./icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "./icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ]
+}
