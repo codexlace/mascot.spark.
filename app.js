@@ -5948,6 +5948,183 @@ function generalLessonFallback() {
       renderPaletteRoleGuide(currentKey);
     }
 
+
+    function textFromMap(map, key, fallback = "Auto") {
+      const item = map && map[key];
+      if (!item) return fallback;
+      if (Array.isArray(item)) return item[0] || fallback;
+      return item.label || item.title || fallback;
+    }
+
+    function descFromMap(map, key, fallback = "") {
+      const item = map && map[key];
+      if (!item) return fallback;
+      if (Array.isArray(item)) return item[1] || fallback;
+      return item.phrase || item.guide || item.lesson || item.identityRule || item.beginnerTip || fallback;
+    }
+
+    function getRecipeSeed(data = currentLessonData) {
+      return String([
+        data?.type,
+        data?.emotion,
+        data?.twist,
+        data?.drawOrderMode,
+        shapeBase,
+        bodyBuild,
+        moodDrift,
+        mascotEnergy,
+        backdropStyle,
+        backdropDensity,
+        data?.blueprintStyle,
+        data?.paletteKey,
+        data?.backdropName
+      ].join("|")).split("").reduce((sum, char) => sum + char.charCodeAt(0), 0);
+    }
+
+    function buildMascotRecipeCards(data = currentLessonData) {
+      if (!data) return [];
+
+      const subjectName = data.subjectName || textFromMap(subjectData, data.type, "Mascot");
+      const shapeName = textFromMap(shapeBaseMap, data.shapeBase, "soft shape");
+      const shapeDesc = descFromMap(shapeBaseMap, data.shapeBase, "soft readable silhouette");
+      const bodyName = textFromMap(bodyBuildMap, data.bodyBuild, "simple body build");
+      const bodyDesc = descFromMap(bodyBuildMap, data.bodyBuild, "one clear construction method");
+      const limb = getLimbStyle(data.limbStyle || "nubs");
+      const emotion = emotions[data.emotion] || emotions.happy;
+      const mood = moodDriftMap[data.moodDrift] || moodDriftMap.dreamy;
+      const twistLabel = data.twistSetName || textFromMap(twists, data.twist, "tiny twist");
+      const backdropLabel = data.backdropName || textFromMap(backdropStyleMap, data.backdropStyle, "quiet backdrop");
+      const palette = palettes[data.paletteKey] || palettes.auto || { label: "Auto palette", colors: [] };
+      const materialKey = document.getElementById("materialFeel")?.value || "auto";
+      const lightingKey = document.getElementById("lightingType")?.value || "auto";
+      const shadowKey = document.getElementById("shadowStrength")?.value || "soft";
+      const material = materialRecipeMap[materialKey] || materialRecipeMap.auto;
+      const lighting = lightingTypeMap[lightingKey] || lightingTypeMap.auto;
+      const shadow = shadowStrengthMap[shadowKey] || shadowStrengthMap.soft;
+      const drawingStyle = document.getElementById("creativeMode")?.selectedOptions?.[0]?.textContent || data.mode || "Drawing style";
+      const path = getActiveDrawingPath(data);
+      const cards = [
+        {
+          key: "shapeChemistry",
+          title: "Shape Chemistry",
+          body: `${shapeName} plus ${bodyName} gives the ${subjectName.toLowerCase()} a clear base before details. ${shapeDesc}; ${bodyDesc}.`,
+          note: "Big shape first."
+        },
+        {
+          key: "subjectAnchor",
+          title: "Subject Anchor",
+          body: `${subjectName} stays the anchor. Mood, glow, twist, and flavor should decorate the subject, not replace it.`,
+          note: "Protect the identity."
+        },
+        {
+          key: "moodDrift",
+          title: "Mood Drift",
+          body: `${mood[0]} should change atmosphere: ${mood[1]}. Use it through pose softness, glow, color, and pacing.`,
+          note: "Mood is seasoning."
+        },
+        {
+          key: "tinyTwist",
+          title: "Tiny Twist Logic",
+          body: `${twistLabel} works best as a focal detail. Keep it close enough to feel intentional, but not on top of the face.`,
+          note: "One cute spark, not confetti soup."
+        },
+        {
+          key: "limbLogic",
+          title: "Limb Logic",
+          body: `${limb.label} means ${limb.phrase || "simple mascot appendages"}. Limbs should support the expression, not become the main event.`,
+          note: "Tiny limbs, big feeling."
+        },
+        {
+          key: "facePriority",
+          title: "Face Priority",
+          body: `${emotion[0]} uses ${emotion[1]}. Keep this the clearest detail so the mascot reads emotionally at sticker size.`,
+          note: "The face is royalty."
+        },
+        {
+          key: "backdropBalance",
+          title: "Backdrop Balance",
+          body: `${backdropLabel} should frame the mascot quietly. It can make the drawing feel finished without turning into a full scene.`,
+          note: "Backdrop whispers."
+        },
+        {
+          key: "paletteHarmony",
+          title: "Palette Harmony",
+          body: `${palette.label || "Auto palette"} gives the mascot color mood. Use body, accent, face, shadow, and highlight roles instead of using every color equally.`,
+          note: "Color has jobs."
+        },
+        {
+          key: "materialFeel",
+          title: "Material Feel",
+          body: `${material.label || "Material"} suggests ${material.shadowStyle || "simple shadows"} and ${material.highlightStyle || "simple highlights"}. Match texture to the mascot scale.`,
+          note: "Texture stays small."
+        },
+        {
+          key: "lightingLogic",
+          title: "Lighting Logic",
+          body: `${lighting.label || "Lighting"}: ${lighting.highlightZone || "place one highlight"} Shadow intensity is ${shadow.label || "soft"}, so ${shadow.instruction || "use one gentle shadow and stop"}.`,
+          note: "Light has one boss."
+        },
+        {
+          key: "simplificationWarning",
+          title: "Simplification Warning",
+          body: `If the mascot feels busy, remove one tiny detail before adding anything new. Cute design usually gets stronger when it gets simpler.`,
+          note: "Subtract to sparkle."
+        },
+        {
+          key: "stickerTest",
+          title: "Sticker Test",
+          body: `Shrink the canvas view. If the silhouette, face, and subject still read, the recipe is working.`,
+          note: "Thumbnail truth."
+        },
+        {
+          key: "personalityGlue",
+          title: "Personality Glue",
+          body: `${emotion[0]} plus ${mood[0]} creates the emotional flavor. Let the energy affect expression and pose, not the subject identity.`,
+          note: "Feeling connects the parts."
+        },
+        {
+          key: "constructionReminder",
+          title: "Construction Reminder",
+          body: `${path.label} is the build order. Follow it before polish so the drawing does not become a pile of cute parts.`,
+          note: "Order saves chaos."
+        },
+        {
+          key: "teacherNote",
+          title: "Art Teacher Note",
+          body: `This mascot gets cute from clarity: one readable body, one readable face, one intentional twist, and one quiet finish.`,
+          note: "Glitter pen approves."
+        }
+      ];
+
+      const seed = getRecipeSeed(data);
+      const required = ["shapeChemistry", "subjectAnchor", "facePriority"];
+      const relevant = cards.filter(card => required.includes(card.key));
+      const pool = cards.filter(card => !required.includes(card.key));
+      while (relevant.length < 6 && pool.length) {
+        const index = (seed + relevant.length * 7) % pool.length;
+        relevant.push(pool.splice(index, 1)[0]);
+      }
+      return relevant;
+    }
+
+    function renderMascotRecipeCards(data = currentLessonData) {
+      const box = document.getElementById("mascotRecipeCards");
+      if (!box) return;
+      const cards = buildMascotRecipeCards(data);
+      if (!cards.length) {
+        box.innerHTML = '<div class="recipe-card"><strong>Recipe cards</strong><span>Generate a mascot lesson to see how the ingredients connect.</span></div>';
+        return;
+      }
+      box.innerHTML = cards.map(card => `
+        <article class="recipe-card" data-recipe-card="${card.key}">
+          <strong>${card.title}</strong>
+          <span>${card.body}</span>
+          <small>${card.note}</small>
+        </article>
+      `).join("");
+    }
+
+
     function renderLesson(data) {
       currentLessonData = data;
       guidedStepIndex = 0;
@@ -5959,6 +6136,7 @@ function generalLessonFallback() {
       document.getElementById("shapeSpell").textContent = data.shapeSpell;
       document.getElementById("styleRecipe").textContent = data.styleRecipe;
       renderLessonPalette(data.paletteKey || "auto");
+      renderMascotRecipeCards(data);
       document.getElementById("meterFill").style.width = data.complexity + "%";
       document.getElementById("meterText").textContent = data.meterText;
       const activePath = getActiveDrawingPath(data);

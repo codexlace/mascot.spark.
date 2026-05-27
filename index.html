@@ -11,14 +11,14 @@
   <link rel="apple-touch-icon" href="./icon-192.png" />
   <link rel="icon" type="image/png" sizes="192x192" href="./icon-192.png" />
   <link rel="icon" type="image/png" sizes="512x512" href="./icon-512.png" />
-  <title>Mascot Spark V67 — Practice Variety Restoration</title>
+  <title>Mascot Spark V68 — Mascot Recipe Cards</title>
   <style>
     /* =========================================================
        STITCHED HALO BLOOM — EXACT 3 MODE VARIABLES
     ========================================================= */
 
     /* =========================================================
-       V67 COLOR + GLASS HARMONY
+       V68 COLOR + GLASS HARMONY
        Exact Light / Random Pastel / Dark colors mapped into
        the existing glass, glow, and celestial atmosphere skin.
     ========================================================= */
@@ -3081,7 +3081,7 @@
 
   
 /* =========================
-   V64 Practice Variety Restoration Placement
+   V64 Mascot Recipe Cards Placement
    Lighting logic moved out of Lesson and into Shade Lab.
    ========================= */
 
@@ -3119,7 +3119,7 @@
 
   
 /* =========================
-   V64 Practice Variety Restoration
+   V64 Mascot Recipe Cards
    Visual-only surface pass. No layout/logic rewrite.
    ========================= */
 
@@ -3294,7 +3294,7 @@
 
   
 /* =========================
-   V67 Component Color Harmony
+   V68 Component Color Harmony
    Keeps glass/glow texture while applying exact theme color roles.
    ========================= */
 
@@ -3419,7 +3419,7 @@
 
   
 /* =========================
-   V67 Practice Variety Restoration
+   V68 Mascot Recipe Cards
    Draw-first cards and guided mode now use selected Drawing Paths.
    ========================= */
 
@@ -3434,6 +3434,66 @@
 
 .guided-card #guidedDraw::first-letter {
   font-weight: 900;
+}
+
+  
+/* =========================
+   V68 Mascot Recipe Chemistry Cards
+   Additive lesson layer. No existing systems removed.
+   ========================= */
+
+.recipe-chemistry-wrap {
+  margin: 16px 0;
+  padding: 14px;
+  border-radius: 24px;
+  border: 1px solid color-mix(in srgb, var(--color-accent) 34%, var(--color-border));
+  background:
+    radial-gradient(circle at 12% 0%, color-mix(in srgb, var(--color-primary) 12%, transparent), transparent 16rem),
+    linear-gradient(180deg, color-mix(in srgb, var(--color-surface) 82%, transparent), color-mix(in srgb, var(--color-surface-2) 90%, transparent));
+  box-shadow:
+    inset 0 1px 0 rgba(255,255,255,.12),
+    0 18px 44px var(--shadow-base, rgba(0,0,0,.12)),
+    0 0 32px color-mix(in srgb, var(--color-accent) 14%, transparent);
+}
+
+.recipe-chemistry-head h3 {
+  margin: 0;
+}
+
+.recipe-chemistry-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
+  gap: 10px;
+  margin-top: 12px;
+}
+
+.recipe-card {
+  border: 1px solid color-mix(in srgb, var(--color-border) 72%, var(--color-accent) 18%);
+  border-radius: 18px;
+  padding: 12px;
+  background: color-mix(in srgb, var(--color-surface-2) 80%, transparent);
+  box-shadow:
+    inset 0 1px 0 rgba(255,255,255,.12),
+    0 10px 24px color-mix(in srgb, #000 8%, transparent);
+}
+
+.recipe-card strong {
+  display: block;
+  margin-bottom: 6px;
+  color: var(--color-text);
+}
+
+.recipe-card span {
+  display: block;
+  color: var(--color-muted);
+  line-height: 1.35;
+}
+
+.recipe-card small {
+  display: block;
+  margin-top: 8px;
+  color: color-mix(in srgb, var(--color-primary) 72%, var(--color-muted));
+  font-weight: 800;
 }
 
   </style>
@@ -4059,6 +4119,13 @@
         <div class="lesson-body">
           <div id="goal" class="goal"></div>
           <div id="emotionLessonHint" class="emotion-lesson-hint"></div>
+          <section class="recipe-chemistry-wrap" aria-label="Mascot recipe chemistry">
+            <div class="recipe-chemistry-head">
+              <h3>Mascot Recipe Chemistry</h3>
+              <p class="small">How the selected ingredients work together. Tiny art teacher, glitter pen included.</p>
+            </div>
+            <div id="mascotRecipeCards" class="recipe-chemistry-grid"></div>
+          </section>
 
           <div class="info-grid">
             <div class="mini-card">
@@ -4275,7 +4342,7 @@
     </section>
 
       <footer class="final-footer" aria-label="App version">
-      <span id="finalBuildBadge">Mascot Spark V67 · Shade Lab Lighting + Shadow Logic · Cache mascot-spark-v54</span>
+      <span id="finalBuildBadge">Mascot Spark V68 · Shade Lab Lighting + Shadow Logic · Cache mascot-spark-v54</span>
     </footer>
   </main>
   <script src="./app.js"></script>

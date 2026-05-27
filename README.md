@@ -1304,3 +1304,41 @@ Service worker cache:
 ```js
 const CACHE_NAME = "mascot-spark-v67";
 ```
+
+
+## V68 Mascot Recipe Chemistry Cards
+
+Added a connected recipe layer that explains how selected ingredients work together.
+
+Added 15 possible chemistry card types:
+
+- Shape Chemistry
+- Subject Anchor
+- Mood Drift
+- Tiny Twist Logic
+- Limb Logic
+- Face Priority
+- Backdrop Balance
+- Palette Harmony
+- Material Feel
+- Lighting Logic
+- Simplification Warning
+- Sticker Test
+- Personality Glue
+- Construction Reminder
+- Art Teacher Note
+
+Each generated lesson shows a relevant subset of cards so the output feels connected without becoming a giant report.
+
+Preserved:
+
+- V66 glass/color theme
+- V67 drawing path variety
+- Guided Step Mode
+- all existing controls and feature systems
+
+Service worker cache:
+
+```js
+const CACHE_NAME = "mascot-spark-v68";
+```
