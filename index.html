@@ -11,49 +11,199 @@
   <link rel="apple-touch-icon" href="./icon-192.png" />
   <link rel="icon" type="image/png" sizes="192x192" href="./icon-192.png" />
   <link rel="icon" type="image/png" sizes="512x512" href="./icon-512.png" />
-  <title>Mascot Spark V62 — Shade Lab Logic</title>
+  <title>Mascot Spark V72 — Guided Studio Redesign</title>
   <style>
     /* =========================================================
        STITCHED HALO BLOOM — EXACT 3 MODE VARIABLES
     ========================================================= */
 
-    :root[data-theme="light"] {
-      --color-primary: #F27BA6;
-      --color-secondary: #9DC8B2;
-      --color-accent: #8EDAF7;
-      --color-background: #FFF7FB;
-      --color-surface: #FDEEF5;
-      --color-surface-2: #F7F6FB;
-      --color-text: #352733;
-      --color-muted: #7D6D79;
-      --color-border: #D7C4F4;
-      --color-danger-accent: #D95A72;
+    /* =========================================================
+       V72 COLOR + GLASS HARMONY
+       Exact Light / Random Pastel / Dark colors mapped into
+       the existing glass, glow, and celestial atmosphere skin.
+    ========================================================= */
+
+    :root {
+      /* Base Tokens */
+      --bg-base: #F5F4F2;
+      --bg-alt: #FFFFFF;
+      --text-base: #2A2A2A;
+      --text-muted: #6A6A6A;
+      --border-base: #DADADA;
+      --shadow-base: rgba(0,0,0,0.08);
+
+      /* Accent Tokens */
+      --accent-pink: #FF6CBB;
+      --accent-sapphire: #2A4CFF;
+      --accent-red: #C45A5A;
+      --accent-navy: #0F1A3A;
+      --accent-purple: #A78BFF;
+
+      /* Support Tokens */
+      --support-gold: #E8D7A8;
+      --support-teal: #4FFFE0;
+      --support-mint: #CFE8E2;
+      --support-lavender: #D9D4E8;
+
+      /* Semantic Tokens */
+      --primary-base: var(--accent-sapphire);
+      --primary-hover: #3A5CFF;
+      --primary-active: var(--accent-navy);
+
+      --secondary-base: var(--accent-pink);
+      --secondary-hover: #FF7CCC;
+      --secondary-active: var(--accent-red);
+
+      --info-base: var(--accent-purple);
+      --warning-base: var(--support-gold);
+      --danger-base: var(--accent-red);
+      --success-base: var(--support-mint);
+
+      /* Component Tokens */
+      --surface-glass: color-mix(in srgb, var(--bg-alt) 72%, var(--support-lavender) 14%);
+      --surface-glass-strong: color-mix(in srgb, var(--bg-alt) 84%, var(--support-lavender) 10%);
+      --button-glass: color-mix(in srgb, var(--bg-alt) 74%, var(--support-lavender) 18%);
+      --halo-pink: color-mix(in srgb, var(--accent-pink) 28%, transparent);
+      --halo-blue: color-mix(in srgb, var(--accent-sapphire) 22%, transparent);
+      --halo-teal: color-mix(in srgb, var(--support-teal) 20%, transparent);
+      --rim-glow: color-mix(in srgb, var(--accent-purple) 24%, transparent);
+
+      /* Existing app compatibility tokens */
+      --color-primary: var(--secondary-base);
+      --color-secondary: var(--support-mint);
+      --color-accent: var(--support-teal);
+      --color-background: var(--bg-base);
+      --color-surface: var(--surface-glass);
+      --color-surface-2: var(--surface-glass-strong);
+      --color-text: var(--text-base);
+      --color-muted: var(--text-muted);
+      --color-border: var(--border-base);
+      --color-danger-accent: var(--danger-base);
     }
 
-    :root[data-theme="neutral"] {
-      --color-primary: #B97195;
-      --color-secondary: #8FA79D;
-      --color-accent: #8EBFD2;
-      --color-background: #F3F0F2;
-      --color-surface: #E7E1E5;
-      --color-surface-2: #DDDDE2;
-      --color-text: #2F2A30;
-      --color-muted: #6F6870;
-      --color-border: #BFAFD0;
-      --color-danger-accent: #A55C6E;
+    :root[data-theme="light"],
+    .theme-light {
+      --bg-base: #F5F4F2;
+      --bg-alt: #FFFFFF;
+      --text-base: #2A2A2A;
+      --text-muted: #6A6A6A;
+      --border-base: #DADADA;
+      --shadow-base: rgba(0,0,0,0.08);
+
+      --accent-pink: #FF6CBB;
+      --accent-sapphire: #2A4CFF;
+      --accent-red: #C45A5A;
+      --accent-navy: #0F1A3A;
+      --accent-purple: #A78BFF;
+
+      --support-gold: #E8D7A8;
+      --support-teal: #4FFFE0;
+      --support-mint: #CFE8E2;
+      --support-lavender: #D9D4E8;
+
+      --primary-hover: #3A5CFF;
+      --secondary-hover: #FF7CCC;
+
+      --surface-glass: color-mix(in srgb, #FFFFFF 78%, #D9D4E8 16%);
+      --surface-glass-strong: color-mix(in srgb, #FFFFFF 90%, #D9D4E8 8%);
+      --button-glass: color-mix(in srgb, #FFFFFF 78%, #D9D4E8 18%);
+      --halo-pink: color-mix(in srgb, #FF6CBB 20%, transparent);
+      --halo-blue: color-mix(in srgb, #2A4CFF 12%, transparent);
+      --halo-teal: color-mix(in srgb, #4FFFE0 12%, transparent);
+      --rim-glow: color-mix(in srgb, #A78BFF 18%, transparent);
     }
 
-    :root[data-theme="dark"] {
-      --color-primary: #E785B3;
-      --color-secondary: #7FB2A3;
-      --color-accent: #74D6F7;
-      --color-background: #140F18;
-      --color-surface: #221928;
-      --color-surface-2: #2D2333;
-      --color-text: #F8F2F8;
-      --color-muted: #B8A9B8;
-      --color-border: #7D62A8;
-      --color-danger-accent: #C9526E;
+    :root[data-theme="random"],
+    :root[data-theme="neutral"],
+    .theme-random {
+      --bg-base: #EDEBF0;
+      --bg-alt: #FFFFFF;
+      --text-base: #1F1F1F;
+      --text-muted: #5A5A5A;
+      --border-base: #D5D2DD;
+      --shadow-base: rgba(0,0,0,0.06);
+
+      --cosmic-pink: #EFAAC4;
+      --cosmic-periwinkle: #C8B8FF;
+      --cosmic-opal-teal: #A8E8E0;
+      --cosmic-powder-blue: #BFD9FF;
+      --cosmic-butter-peach: #FBE3B0;
+      --cosmic-dusty-sage: #C8D8C0;
+
+      --accent-pink: var(--cosmic-pink);
+      --accent-sapphire: var(--cosmic-powder-blue);
+      --accent-red: #C47A7A;
+      --accent-navy: #2C3A4A;
+      --accent-purple: #C8B8FF;
+
+      --support-gold: #FBE3B0;
+      --support-teal: #A8E8E0;
+      --support-mint: #A8E8E0;
+      --support-lavender: #C8B8FF;
+
+      --primary-hover: #D7CCFF;
+      --secondary-hover: #F6B8D0;
+
+      --surface-glass: linear-gradient(135deg,
+        color-mix(in srgb, #FFFFFF 62%, #C8B8FF 22%),
+        color-mix(in srgb, #FBE3B0 34%, #FFFFFF 54%),
+        color-mix(in srgb, #A8E8E0 22%, #FFFFFF 60%)
+      );
+      --surface-glass-strong: linear-gradient(135deg,
+        color-mix(in srgb, #FFFFFF 74%, #EFAAC4 14%),
+        color-mix(in srgb, #FFFFFF 72%, #BFD9FF 16%)
+      );
+      --button-glass: linear-gradient(135deg,
+        color-mix(in srgb, #FFFFFF 68%, #C8B8FF 22%),
+        color-mix(in srgb, #FFFFFF 70%, #FBE3B0 18%)
+      );
+      --halo-pink: color-mix(in srgb, #EFAAC4 34%, transparent);
+      --halo-blue: color-mix(in srgb, #BFD9FF 34%, transparent);
+      --halo-teal: color-mix(in srgb, #A8E8E0 28%, transparent);
+      --rim-glow: color-mix(in srgb, #C8B8FF 34%, transparent);
+
+      --color-primary: #EFAAC4;
+      --color-secondary: #A8E8E0;
+      --color-accent: #C8B8FF;
+      --color-background: #EDEBF0;
+      --color-surface: color-mix(in srgb, #FFFFFF 72%, #FBE3B0 12%);
+      --color-surface-2: color-mix(in srgb, #FFFFFF 72%, #C8B8FF 12%);
+      --color-text: #1F1F1F;
+      --color-muted: #5A5A5A;
+      --color-border: #D5D2DD;
+      --color-danger-accent: #C47A7A;
+    }
+
+    :root[data-theme="dark"],
+    .theme-dark {
+      --bg-base: #130E2E;
+      --bg-alt: #1C163F;
+      --text-base: #EDEDED;
+      --text-muted: #A8A8A8;
+      --border-base: #2E2A4A;
+      --shadow-base: rgba(0,0,0,0.4);
+
+      --accent-pink: #FF4FAE;
+      --accent-sapphire: #3A5BFF;
+      --accent-red: #A33F4F;
+      --accent-navy: #0A1128;
+      --accent-purple: #8C5CFF;
+
+      --support-gold: #D8C27A;
+      --support-teal: #4FFFE0;
+      --support-mint: #CFE8E2;
+      --support-lavender: #B9A8E8;
+
+      --primary-hover: #4A6AFF;
+      --secondary-hover: #FF6BC0;
+
+      --surface-glass: color-mix(in srgb, #1C163F 82%, #8C5CFF 10%);
+      --surface-glass-strong: color-mix(in srgb, #1C163F 88%, #3A5BFF 10%);
+      --button-glass: color-mix(in srgb, #1C163F 78%, #3A5BFF 12%);
+      --halo-pink: color-mix(in srgb, #FF4FAE 32%, transparent);
+      --halo-blue: color-mix(in srgb, #3A5BFF 36%, transparent);
+      --halo-teal: color-mix(in srgb, #4FFFE0 24%, transparent);
+      --rim-glow: color-mix(in srgb, #8C5CFF 36%, transparent);
     }
 
     :root {
@@ -2931,7 +3081,7 @@
 
   
 /* =========================
-   V62 Shade Lab Logic Placement
+   V64 Guided Studio Redesign Placement
    Lighting logic moved out of Lesson and into Shade Lab.
    ========================= */
 
@@ -2949,7 +3099,7 @@
 
   
 /* =========================
-   V62 Universal Blueprint Modes
+   V64 Universal Blueprint Modes
    Principle-based trace guides.
    ========================= */
 
@@ -2959,7 +3109,7 @@
 
   
 /* =========================
-   V62 Drawing Path System
+   V64 Drawing Path System
    Guided steps now follow selected path.
    ========================= */
 
@@ -2967,16 +3117,692 @@
   margin-top: 8px;
 }
 
+  
+/* =========================
+   V64 Guided Studio Redesign
+   Visual-only surface pass. No layout/logic rewrite.
+   ========================= */
+
+.v64-celestial-skin {
+  --v64-parallax-x: 0px;
+  --v64-parallax-y: 0px;
+  --v64-glass-edge: color-mix(in srgb, var(--color-accent) 32%, var(--color-border));
+  background:
+    radial-gradient(circle at calc(18% + var(--v64-parallax-x)) calc(8% + var(--v64-parallax-y)), color-mix(in srgb, var(--color-primary) 38%, transparent), transparent 28rem),
+    radial-gradient(circle at calc(88% - var(--v64-parallax-x)) calc(18% - var(--v64-parallax-y)), color-mix(in srgb, var(--color-accent) 34%, transparent), transparent 30rem),
+    radial-gradient(circle at calc(50% + var(--v64-parallax-x)) calc(108% - var(--v64-parallax-y)), color-mix(in srgb, var(--color-border) 36%, transparent), transparent 34rem),
+    radial-gradient(circle at center, color-mix(in srgb, var(--color-background) 74%, #05040a 26%), #05040a 118%);
+  position: relative;
+  overflow-x: hidden;
+}
+
+.v64-celestial-skin::before,
+.v64-celestial-skin::after {
+  content: "";
+  position: fixed;
+  inset: -12%;
+  z-index: -2;
+  pointer-events: none;
+}
+
+.v64-celestial-skin::before {
+  background:
+    radial-gradient(circle at calc(28% + var(--v64-parallax-x)) calc(24% + var(--v64-parallax-y)), rgba(255,255,255,.16) 0 1px, transparent 2px),
+    radial-gradient(circle at calc(72% - var(--v64-parallax-x)) calc(34% - var(--v64-parallax-y)), rgba(255,255,255,.12) 0 1px, transparent 2px),
+    repeating-radial-gradient(circle at 30% 20%, rgba(255,255,255,.055) 0 1px, transparent 1px 5px);
+  background-size: 260px 260px, 320px 320px, 9px 9px;
+  opacity: .38;
+  mix-blend-mode: screen;
+  transform: translate(calc(var(--v64-parallax-x) * .55), calc(var(--v64-parallax-y) * .55));
+}
+
+.v64-celestial-skin::after {
+  background:
+    radial-gradient(ellipse at calc(20% + var(--v64-parallax-x)) calc(22% + var(--v64-parallax-y)), transparent 0 14rem, rgba(255,255,255,.045) 14.2rem 14.45rem, transparent 14.7rem),
+    radial-gradient(ellipse at calc(82% - var(--v64-parallax-x)) calc(24% - var(--v64-parallax-y)), transparent 0 10rem, rgba(142,218,247,.065) 10.1rem 10.38rem, transparent 10.7rem),
+    radial-gradient(ellipse at calc(58% + var(--v64-parallax-x)) calc(78% - var(--v64-parallax-y)), transparent 0 13rem, rgba(242,123,166,.052) 13.1rem 13.45rem, transparent 13.8rem),
+    linear-gradient(180deg, transparent 0%, rgba(0,0,0,.38) 82%, rgba(0,0,0,.62) 100%);
+  opacity: .86;
+  transform: translate(calc(var(--v64-parallax-x) * .35), calc(var(--v64-parallax-y) * .35));
+}
+
+.v64-celestial-skin .app::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+  background:
+    linear-gradient(115deg, transparent 0 32%, rgba(255,255,255,.028) 32.2% 32.45%, transparent 32.7%),
+    linear-gradient(35deg, transparent 0 58%, rgba(142,218,247,.035) 58.15% 58.35%, transparent 58.55%),
+    radial-gradient(circle at 62% 12%, rgba(255,255,255,.08), transparent 5rem);
+  opacity: .42;
+}
+
+.v64-celestial-skin .hero,
+.v64-celestial-skin .shell,
+.v64-celestial-skin .card,
+.v64-celestial-skin .blueprint,
+.v64-celestial-skin .coach,
+.v64-celestial-skin .panel,
+.v64-celestial-skin .mini-card,
+.v64-celestial-skin .path-card,
+.v64-celestial-skin .draw-card,
+.v64-celestial-skin .phase,
+.v64-celestial-skin .check,
+.v64-celestial-skin .coach-card,
+.v64-celestial-skin .intel-card,
+.v64-celestial-skin .coach-context-card,
+.v64-celestial-skin .ai-output-card,
+.v64-celestial-skin .shade-output,
+.v64-celestial-skin .palette-card,
+.v64-celestial-skin .trace-panel,
+.v64-celestial-skin .guided-card {
+  border-color: color-mix(in srgb, var(--v64-glass-edge) 70%, rgba(255,255,255,.16));
+  box-shadow:
+    inset 0 1px 0 rgba(255,255,255,.10),
+    inset 0 -1px 0 rgba(0,0,0,.08),
+    0 18px 50px rgba(0,0,0,.16),
+    0 0 0 1px color-mix(in srgb, var(--color-accent) 13%, transparent),
+    0 0 32px color-mix(in srgb, var(--color-primary) 10%, transparent);
+  backdrop-filter: blur(18px) saturate(1.12);
+}
+
+.v64-celestial-skin .hero,
+.v64-celestial-skin .shell,
+.v64-celestial-skin .card,
+.v64-celestial-skin .coach,
+.v64-celestial-skin .shade-output,
+.v64-celestial-skin .ai-output-card {
+  background:
+    radial-gradient(circle at 14% 0%, color-mix(in srgb, var(--color-primary) 12%, transparent), transparent 18rem),
+    radial-gradient(circle at 100% 8%, color-mix(in srgb, var(--color-accent) 10%, transparent), transparent 16rem),
+    linear-gradient(180deg, color-mix(in srgb, var(--color-surface) 76%, transparent), color-mix(in srgb, var(--color-surface-2) 84%, transparent));
+}
+
+.v64-celestial-skin button {
+  background:
+    radial-gradient(circle at 28% 12%, rgba(255,255,255,.28), transparent 1.7rem),
+    linear-gradient(180deg, color-mix(in srgb, var(--color-surface-2) 78%, white 8%), color-mix(in srgb, var(--color-surface) 76%, #000 2%));
+  box-shadow:
+    inset 0 1px 1px rgba(255,255,255,.28),
+    inset 0 -4px 10px rgba(0,0,0,.10),
+    0 8px 22px rgba(0,0,0,.12),
+    0 0 0 1px color-mix(in srgb, var(--color-accent) 10%, transparent);
+}
+
+.v64-celestial-skin button:hover {
+  box-shadow:
+    inset 0 1px 1px rgba(255,255,255,.32),
+    inset 0 -4px 10px rgba(0,0,0,.12),
+    0 12px 28px rgba(0,0,0,.16),
+    0 0 28px color-mix(in srgb, var(--color-accent) 25%, transparent);
+}
+
+.v64-celestial-skin button:active {
+  box-shadow:
+    inset 0 4px 12px rgba(0,0,0,.18),
+    inset 0 1px 1px rgba(255,255,255,.14),
+    0 4px 12px rgba(0,0,0,.10);
+}
+
+.v64-celestial-skin .primary,
+.v64-celestial-skin .surprise,
+.v64-celestial-skin .coach-action,
+.v64-celestial-skin .ai-btn {
+  box-shadow:
+    inset 0 1px 1px rgba(255,255,255,.30),
+    inset 0 -5px 12px rgba(0,0,0,.18),
+    0 0 0 1px color-mix(in srgb, var(--color-primary) 28%, transparent),
+    0 0 34px color-mix(in srgb, var(--color-primary) 26%, transparent);
+}
+
+.v64-celestial-skin .lesson-head,
+.v64-celestial-skin .ai-output-head,
+.v64-celestial-skin .coach-output-head {
+  position: relative;
+  overflow: hidden;
+}
+
+.v64-celestial-skin .lesson-head::after,
+.v64-celestial-skin .ai-output-head::after,
+.v64-celestial-skin .coach-output-head::after {
+  content: "";
+  position: absolute;
+  width: 220px;
+  height: 220px;
+  right: -90px;
+  top: -135px;
+  border-radius: 50%;
+  border: 1px solid color-mix(in srgb, var(--color-accent) 24%, transparent);
+  box-shadow:
+    0 0 24px color-mix(in srgb, var(--color-accent) 12%, transparent),
+    inset 0 0 24px color-mix(in srgb, var(--color-primary) 8%, transparent);
+  opacity: .72;
+  pointer-events: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .v64-celestial-skin,
+  .v64-celestial-skin::before,
+  .v64-celestial-skin::after {
+    --v64-parallax-x: 0px !important;
+    --v64-parallax-y: 0px !important;
+    transform: none !important;
+  }
+}
+
+  
+/* =========================
+   V72 Component Color Harmony
+   Keeps glass/glow texture while applying exact theme color roles.
+   ========================= */
+
+.v64-celestial-skin {
+  background:
+    radial-gradient(circle at calc(18% + var(--v64-parallax-x)) calc(8% + var(--v64-parallax-y)), var(--halo-pink), transparent 28rem),
+    radial-gradient(circle at calc(88% - var(--v64-parallax-x)) calc(18% - var(--v64-parallax-y)), var(--halo-blue), transparent 30rem),
+    radial-gradient(circle at calc(50% + var(--v64-parallax-x)) calc(108% - var(--v64-parallax-y)), var(--halo-teal), transparent 34rem),
+    radial-gradient(circle at center, color-mix(in srgb, var(--bg-base) 76%, #05040a 24%), #05040a 118%);
+}
+
+:root[data-theme="light"] .v64-celestial-skin,
+:root[data-theme="random"] .v64-celestial-skin,
+:root[data-theme="neutral"] .v64-celestial-skin {
+  background:
+    radial-gradient(circle at calc(18% + var(--v64-parallax-x)) calc(8% + var(--v64-parallax-y)), var(--halo-pink), transparent 28rem),
+    radial-gradient(circle at calc(88% - var(--v64-parallax-x)) calc(18% - var(--v64-parallax-y)), var(--halo-blue), transparent 30rem),
+    radial-gradient(circle at calc(50% + var(--v64-parallax-x)) calc(108% - var(--v64-parallax-y)), var(--halo-teal), transparent 34rem),
+    linear-gradient(180deg, var(--bg-base), color-mix(in srgb, var(--bg-base) 80%, var(--accent-purple) 8%));
+}
+
+.v64-celestial-skin .hero,
+.v64-celestial-skin .shell,
+.v64-celestial-skin .card,
+.v64-celestial-skin .coach,
+.v64-celestial-skin .shade-output,
+.v64-celestial-skin .ai-output-card,
+.v64-celestial-skin .panel,
+.v64-celestial-skin .mini-card,
+.v64-celestial-skin .draw-card,
+.v64-celestial-skin .phase,
+.v64-celestial-skin .intel-card {
+  background: var(--surface-glass);
+  border-color: color-mix(in srgb, var(--border-base) 70%, var(--accent-purple) 18%);
+  box-shadow:
+    inset 0 1px 0 rgba(255,255,255,.18),
+    inset 0 -1px 0 rgba(0,0,0,.08),
+    0 18px 50px var(--shadow-base),
+    0 0 0 1px color-mix(in srgb, var(--accent-purple) 16%, transparent),
+    0 0 34px var(--rim-glow);
+}
+
+.v64-celestial-skin button,
+.v64-celestial-skin .tab-btn {
+  background: var(--button-glass);
+  color: var(--text-base);
+  border-color: color-mix(in srgb, var(--border-base) 58%, var(--accent-purple) 22%);
+}
+
+.v64-celestial-skin .primary,
+.v64-celestial-skin button.primary,
+.v64-celestial-skin .tab-btn.active {
+  background:
+    radial-gradient(circle at 24% 10%, rgba(255,255,255,.34), transparent 1.6rem),
+    linear-gradient(135deg, var(--primary-base), var(--primary-hover));
+  color: #fff;
+}
+
+.v64-celestial-skin .surprise,
+.v64-celestial-skin .secondary,
+.v64-celestial-skin button.secondary {
+  background:
+    radial-gradient(circle at 24% 10%, rgba(255,255,255,.28), transparent 1.6rem),
+    linear-gradient(135deg, var(--secondary-base), var(--secondary-hover));
+  color: #fff;
+}
+
+.v64-celestial-skin .status.ok,
+.v64-celestial-skin .success,
+.v64-celestial-skin .badge.success {
+  background: color-mix(in srgb, var(--success-base) 74%, var(--bg-alt) 18%);
+  color: color-mix(in srgb, var(--text-base) 82%, var(--accent-navy) 18%);
+}
+
+.v64-celestial-skin .status.bad,
+.v64-celestial-skin .danger,
+.v64-celestial-skin .badge.danger {
+  background: color-mix(in srgb, var(--danger-base) 82%, var(--bg-alt) 10%);
+  color: #fff;
+}
+
+.v64-celestial-skin .warning,
+.v64-celestial-skin .badge.warning {
+  background: color-mix(in srgb, var(--warning-base) 82%, var(--bg-alt) 10%);
+  color: color-mix(in srgb, var(--text-base) 86%, var(--accent-navy) 14%);
+}
+
+.v64-celestial-skin input,
+.v64-celestial-skin select,
+.v64-celestial-skin textarea {
+  background: color-mix(in srgb, var(--bg-alt) 72%, var(--support-lavender) 12%);
+  color: var(--text-base);
+  border-color: color-mix(in srgb, var(--border-base) 66%, var(--accent-purple) 20%);
+  box-shadow:
+    inset 0 2px 8px rgba(0,0,0,.08),
+    inset 0 1px 0 rgba(255,255,255,.12);
+}
+
+:root[data-theme="random"] .v64-celestial-skin .hero,
+:root[data-theme="neutral"] .v64-celestial-skin .hero {
+  background:
+    radial-gradient(circle at 10% 0%, color-mix(in srgb, #EFAAC4 22%, transparent), transparent 16rem),
+    radial-gradient(circle at 100% 12%, color-mix(in srgb, #BFD9FF 26%, transparent), transparent 18rem),
+    linear-gradient(135deg, color-mix(in srgb, #FFFFFF 62%, #C8B8FF 18%), color-mix(in srgb, #FBE3B0 34%, #FFFFFF 54%));
+}
+
+:root[data-theme="random"] .v64-celestial-skin .primary,
+:root[data-theme="neutral"] .v64-celestial-skin .primary,
+:root[data-theme="random"] .v64-celestial-skin button.primary,
+:root[data-theme="neutral"] .v64-celestial-skin button.primary {
+  background: linear-gradient(135deg, #BFD9FF, #C8B8FF);
+  color: #1F1F1F;
+}
+
+:root[data-theme="random"] .v64-celestial-skin .surprise,
+:root[data-theme="neutral"] .v64-celestial-skin .surprise,
+:root[data-theme="random"] .v64-celestial-skin .secondary,
+:root[data-theme="neutral"] .v64-celestial-skin .secondary {
+  background: linear-gradient(135deg, #EFAAC4, #FBE3B0);
+  color: #1F1F1F;
+}
+
+  
+/* =========================
+   V72 Guided Studio Redesign
+   Draw-first cards and guided mode now use selected Drawing Paths.
+   ========================= */
+
+.coach-spark {
+  display: block;
+  margin-top: 8px;
+  color: var(--color-muted);
+  font-size: 13px;
+  line-height: 1.3;
+  opacity: .92;
+}
+
+.guided-card #guidedDraw::first-letter {
+  font-weight: 900;
+}
+
+  
+/* =========================
+   V72 Mascot Recipe Cards
+   Additive lesson layer. No existing systems removed.
+   ========================= */
+
+.recipe-chemistry-wrap {
+  margin: 16px 0;
+  padding: 14px;
+  border-radius: 24px;
+  border: 1px solid color-mix(in srgb, var(--color-accent) 34%, var(--color-border));
+  background:
+    radial-gradient(circle at 12% 0%, color-mix(in srgb, var(--color-primary) 12%, transparent), transparent 16rem),
+    linear-gradient(180deg, color-mix(in srgb, var(--color-surface) 82%, transparent), color-mix(in srgb, var(--color-surface-2) 90%, transparent));
+  box-shadow:
+    inset 0 1px 0 rgba(255,255,255,.12),
+    0 18px 44px var(--shadow-base, rgba(0,0,0,.12)),
+    0 0 32px color-mix(in srgb, var(--color-accent) 14%, transparent);
+}
+
+.recipe-chemistry-head h3 {
+  margin: 0;
+}
+
+.recipe-chemistry-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
+  gap: 10px;
+  margin-top: 12px;
+}
+
+.recipe-card {
+  border: 1px solid color-mix(in srgb, var(--color-border) 72%, var(--color-accent) 18%);
+  border-radius: 18px;
+  padding: 12px;
+  background: color-mix(in srgb, var(--color-surface-2) 80%, transparent);
+  box-shadow:
+    inset 0 1px 0 rgba(255,255,255,.12),
+    0 10px 24px color-mix(in srgb, #000 8%, transparent);
+}
+
+.recipe-card strong {
+  display: block;
+  margin-bottom: 6px;
+  color: var(--color-text);
+}
+
+.recipe-card span {
+  display: block;
+  color: var(--color-muted);
+  line-height: 1.35;
+}
+
+.recipe-card small {
+  display: block;
+  margin-top: 8px;
+  color: color-mix(in srgb, var(--color-primary) 72%, var(--color-muted));
+  font-weight: 800;
+}
+
+  
+/* =========================
+   V72 Guided Studio Redesign
+   Adds directional shading pushes without image generation.
+   ========================= */
+
+.shade-amplifier-panel {
+  margin-top: 14px;
+  padding: 14px;
+  border-radius: 22px;
+  border: 1px solid color-mix(in srgb, var(--color-accent) 34%, var(--color-border));
+  background: color-mix(in srgb, var(--color-surface-2) 78%, transparent);
+  box-shadow:
+    inset 0 1px 0 rgba(255,255,255,.12),
+    0 14px 34px var(--shadow-base, rgba(0,0,0,.12));
+}
+
+.shade-amplifier-panel h3 {
+  margin: 0 0 4px;
+}
+
+.shade-amplifier-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(135px, 1fr));
+  gap: 8px;
+  margin-top: 10px;
+}
+
+.shade-amplifier-grid button {
+  min-height: 42px;
+  padding: 9px 10px;
+  font-size: 13px;
+}
+
+.shade-amplifier-status {
+  margin-top: 10px;
+  color: var(--color-muted);
+}
+
+.shade-amplifier-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  margin: 0 6px 6px 0;
+  padding: 6px 9px;
+  border-radius: 999px;
+  background: color-mix(in srgb, var(--color-accent) 16%, var(--color-surface-2));
+  border: 1px solid color-mix(in srgb, var(--color-accent) 32%, var(--color-border));
+  color: var(--color-text);
+  font-size: 12px;
+  font-weight: 800;
+}
+
+  
+/* =========================
+   V72 Guided Studio Redesign
+   Interactive seen markers and apply buttons.
+   ========================= */
+
+.section-title-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  margin-top: 18px;
+}
+
+.section-title-row h3 {
+  margin: 0;
+}
+
+.compact-reset-btn {
+  min-height: 34px;
+  padding: 7px 10px;
+  font-size: 12px;
+}
+
+.practice-tool-card {
+  display: grid;
+  gap: 8px;
+}
+
+.practice-tool-head {
+  display: flex;
+  align-items: start;
+  justify-content: space-between;
+  gap: 10px;
+}
+
+.practice-tool-head button,
+.recipe-card [data-recipe-seen] {
+  min-height: 30px;
+  padding: 6px 9px;
+  border-radius: 999px;
+  font-size: 12px;
+}
+
+.practice-tool-row {
+  color: var(--color-muted);
+  line-height: 1.35;
+}
+
+.practice-tool-row b {
+  color: var(--color-text);
+}
+
+.practice-apply-btn {
+  width: 100%;
+  margin-top: 4px;
+}
+
+.practice-seen {
+  opacity: .55;
+  filter: saturate(.8);
+}
+
+.practice-seen::after {
+  content: "Seen";
+  display: inline-flex;
+  width: fit-content;
+  margin-top: 6px;
+  padding: 4px 8px;
+  border-radius: 999px;
+  background: color-mix(in srgb, var(--success-base, var(--color-accent)) 25%, transparent);
+  color: var(--color-muted);
+  font-size: 11px;
+  font-weight: 900;
+}
+
+  
+/* =========================
+   V72 Guided Studio Redesign
+   UX reset: fewer shouting tools, clearer drawing flow.
+   ========================= */
+
+.v72-guided-studio {
+  --v72-focus-ring: color-mix(in srgb, var(--color-accent) 52%, transparent);
+}
+
+.v72-studio-overview {
+  display: grid;
+  grid-template-columns: minmax(0, 1.3fr) minmax(260px, .7fr);
+  gap: 14px;
+  align-items: center;
+  margin: 14px 0 16px;
+  padding: 18px;
+  border: 1px solid color-mix(in srgb, var(--color-accent) 34%, var(--color-border));
+  border-radius: 28px;
+  background:
+    radial-gradient(circle at 10% 0%, color-mix(in srgb, var(--color-primary) 16%, transparent), transparent 16rem),
+    radial-gradient(circle at 100% 10%, color-mix(in srgb, var(--color-accent) 15%, transparent), transparent 18rem),
+    color-mix(in srgb, var(--color-surface-2) 86%, transparent);
+  box-shadow:
+    inset 0 1px 0 rgba(255,255,255,.14),
+    0 18px 48px var(--shadow-base, rgba(0,0,0,.12));
+}
+
+.v72-studio-overview h2 {
+  margin: 2px 0 6px;
+  line-height: 1.05;
+  letter-spacing: -.04em;
+}
+
+.v72-kicker {
+  margin: 0;
+  color: var(--color-muted);
+  text-transform: uppercase;
+  letter-spacing: .12em;
+  font-size: 12px;
+  font-weight: 900;
+}
+
+.v72-flow-actions {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 8px;
+}
+
+.v72-guided-studio .tabs {
+  gap: 7px;
+  padding: 7px;
+  border-radius: 24px;
+  background: color-mix(in srgb, var(--color-surface) 72%, transparent);
+}
+
+.v72-guided-studio .tab-btn {
+  min-height: 42px;
+  border-radius: 18px;
+  white-space: nowrap;
+}
+
+.v72-guided-studio .tab-btn[data-tab="tab-ai"],
+.v72-guided-studio .tab-btn[data-tab="tab-emotions"],
+.v72-guided-studio .tab-btn[data-tab="tab-review"] {
+  display: none;
+}
+
+.v72-guided-studio.v72-show-extra-labs .tab-btn[data-tab="tab-ai"],
+.v72-guided-studio.v72-show-extra-labs .tab-btn[data-tab="tab-emotions"],
+.v72-guided-studio.v72-show-extra-labs .tab-btn[data-tab="tab-review"] {
+  display: inline-flex;
+}
+
+.v72-guided-studio .tab-panel.active {
+  animation: v72PanelIn .18s ease-out;
+}
+
+@keyframes v72PanelIn {
+  from { opacity: .45; transform: translateY(4px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.v72-guided-studio .tab-hint {
+  max-width: 820px;
+  font-size: 15px;
+  line-height: 1.45;
+  padding: 10px 12px;
+  border-left: 3px solid color-mix(in srgb, var(--color-accent) 60%, var(--color-border));
+  background: color-mix(in srgb, var(--color-surface-2) 65%, transparent);
+  border-radius: 0 16px 16px 0;
+}
+
+.v72-guided-studio .controls {
+  grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
+}
+
+.v72-guided-studio .panel label {
+  font-size: 12px;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+  color: var(--color-muted);
+}
+
+.v72-guided-studio .practice-intel-grid,
+.v72-guided-studio .recipe-chemistry-grid {
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+}
+
+.v72-guided-studio .recipe-chemistry-wrap,
+.v72-guided-studio .practice-intel-grid,
+.v72-guided-studio .info-grid {
+  margin-top: 12px;
+}
+
+.v72-guided-studio .section-title-row {
+  padding-top: 4px;
+}
+
+.v72-guided-studio h3 {
+  letter-spacing: -.02em;
+}
+
+.v72-guided-studio .coach-card,
+.v72-guided-studio .mini-card,
+.v72-guided-studio .intel-card,
+.v72-guided-studio .recipe-card,
+.v72-guided-studio .draw-card,
+.v72-guided-studio .phase {
+  position: relative;
+  overflow: hidden;
+}
+
+.v72-guided-studio .coach-card::before,
+.v72-guided-studio .mini-card::before,
+.v72-guided-studio .intel-card::before,
+.v72-guided-studio .recipe-card::before,
+.v72-guided-studio .draw-card::before,
+.v72-guided-studio .phase::before {
+  content: "";
+  position: absolute;
+  inset: 0 0 auto;
+  height: 2px;
+  background: linear-gradient(90deg, var(--color-primary), var(--color-accent), transparent);
+  opacity: .45;
+}
+
+.v72-guided-studio .recipe-chemistry-head p::after {
+  content: " Seen buttons let you quiet cards you already understand.";
+}
+
+.v72-guided-studio .shade-amplifier-panel {
+  order: 2;
+}
+
+@media (max-width: 720px) {
+  .v72-studio-overview {
+    grid-template-columns: 1fr;
+  }
+  .v72-flow-actions {
+    grid-template-columns: 1fr;
+  }
+  .v72-guided-studio .tabs {
+    overflow-x: auto;
+    justify-content: start;
+  }
+}
+
   </style>
 </head>
 
-<body class="v47-ui-trim v48-top-clean">
+<body class="v47-ui-trim v48-top-clean v64-celestial-skin v72-guided-studio">
   <a class="skip-link" href="#lessonOutput">Skip to lesson</a>
   <main class="app">
     <section class="hero">
       <div class="hero-content">
         <div>
-          <div class="badge">Stitched Halo Bloom · V62</div>
+          <div class="badge">Stitched Halo Bloom · V64</div>
           <h1>Mascot Spark</h1>
           <p class="subtitle">
             A cozy Procreate mascot drawing teacher with clearer draw-first guidance, expanded subject categories, duo emotions, tiny twists, specific palette profiles, blueprint variations, AI help modes, tabs, Surprise Me, and iPad-friendly layouts.
@@ -3028,19 +3854,33 @@
     <section class="shell">
       <div class="tab-buttons" role="tablist" aria-label="Mascot Spark controls">
         <button class="tab-btn active" type="button" data-tab="tab-lesson" onclick="showTab('tab-lesson')"><span class="tab-icon">✦</span>Start</button>
-        <button class="tab-btn" type="button" data-tab="tab-flow" onclick="showTab('tab-flow')"><span class="tab-icon">➜</span>Flow</button>
+        <button class="tab-btn" type="button" data-tab="tab-flow" onclick="showTab('tab-flow')"><span class="tab-icon">➜</span>Draw</button>
         <button class="tab-btn" type="button" data-tab="tab-character" onclick="showTab('tab-character')"><span class="tab-icon">◕</span>Personality</button>
-        <button class="tab-btn" type="button" data-tab="tab-color" onclick="showTab('tab-color')"><span class="tab-icon">●</span>Palette</button>
-        <button class="tab-btn" type="button" data-tab="tab-blueprint" data-advanced-only="true" onclick="showTab('tab-blueprint')"><span class="tab-icon">⌁</span>Blueprint Guide</button>
-        <button class="tab-btn" type="button" data-tab="tab-ai" data-advanced-only="true" onclick="showTab('tab-ai')"><span class="tab-icon">?</span>Coach</button>
+        <button class="tab-btn" type="button" data-tab="tab-color" onclick="showTab('tab-color')"><span class="tab-icon">●</span>Color</button>
+        <button class="tab-btn" type="button" data-tab="tab-blueprint" data-advanced-only="true" onclick="showTab('tab-blueprint')"><span class="tab-icon">⌁</span>Blueprint</button>
+        <button class="tab-btn" type="button" data-tab="tab-ai" data-advanced-only="true" onclick="showTab('tab-ai')"><span class="tab-icon">?</span>AI Coach</button>
         <button class="tab-btn" type="button" data-tab="tab-emotions" data-advanced-only="true" onclick="showTab('tab-emotions')"><span class="tab-icon">🎭</span>Emotion Lab</button>
         <button class="tab-btn" type="button" data-tab="tab-shade" data-advanced-only="true" onclick="showTab('tab-shade')"><span class="tab-icon">✦</span>Shade Lab</button>
-        <button class="tab-btn" type="button" data-tab="tab-stash" onclick="showTab('tab-stash')"><span class="tab-icon">▣</span>Stash</button>
-        <button class="tab-btn" type="button" data-tab="tab-review" onclick="showTab('tab-review')"><span class="tab-icon">✓</span>Review</button>
+        <button class="tab-btn" type="button" data-tab="tab-stash" onclick="showTab('tab-stash')"><span class="tab-icon">▣</span>Library</button>
+        <button class="tab-btn" type="button" data-tab="tab-review" onclick="showTab('tab-review')"><span class="tab-icon">✓</span>Export</button>
       </div>
 
+      <section id="v72StudioOverview" class="v72-studio-overview" aria-label="MascotSpark guided studio">
+        <div>
+          <p class="v72-kicker">Guided Mascot Studio</p>
+          <h2>Pick a mascot, draw it step by step, then polish only what helps.</h2>
+          <p class="small">MascotSpark now works like a tiny drawing coach: Start → Personality → Draw → Blueprint → Shade → Save.</p>
+        </div>
+        <div class="v72-flow-actions">
+          <button type="button" class="primary" onclick="showTab('tab-lesson')">1. Start</button>
+          <button type="button" onclick="showTab('tab-flow')">2. Draw</button>
+          <button type="button" onclick="showTab('tab-shade')">3. Polish</button>
+          <button type="button" class="utility-action" onclick="toggleExtraLabs()">Extra labs</button>
+        </div>
+      </section>
+
       <div id="tab-lesson" class="tab-panel active">
-        <p class="tab-hint">Pick what you want to draw and how long you want to practice.</p>
+        <p class="tab-hint">Start with structure only: subject, shape, limbs, lesson size, and style. Personality and polish come after.</p>
         <section class="controls">
           <div class="panel">
             <label for="subjectPack">Subject pack</label>
@@ -3165,7 +4005,7 @@
       </div>
 
       <div id="tab-character" class="tab-panel">
-        <p class="tab-hint">Shape the mascot’s expression, twist, energy, and atmosphere. Keep the Start tab focused on structure.</p>
+        <p class="tab-hint">Add feeling here: emotion, tiny twist, mascot energy, and mood. These modify the mascot — they do not replace the subject.</p>
         <section class="controls">
           <div class="panel">
             <label for="emotion">Duo emotion</label>
@@ -3192,7 +4032,7 @@
 
 
           <div class="panel">
-            <label for="ideaPreset">Optional flavor only</label>
+            <label for="ideaPreset">Optional flavor</label>
             <select id="ideaPreset"></select>
             <p class="small">This modifies the mood/style only. It does not change your subject category.</p>
           </div>
@@ -3238,15 +4078,15 @@
         <p class="tab-hint">Choose how the trace guide should teach the drawing structure.</p>
         <section class="controls">
           <div class="panel">
-            <label for="blueprintStyle">Universal blueprint variation</label>
-            <select id="blueprintStyle"></select>
+            <label for="blueprintStyle">Blueprint Guide</label>
+            <select id="blueprintStyle" onchange="newLesson()"></select>
             <p class="small universal-blueprint-note">Principle guides, not exact mascot templates.</p>
             <p class="small">Choose guide type.</p>
           </div>
           <div class="panel">
-            <label for="drawOrderMode">Draw-first order</label>
+            <label for="drawOrderMode">Drawing Path</label>
             <select id="drawOrderMode"></select>
-            <p class="small drawing-path-note">Changes the guided step sequence and visual step cards.</p>
+            <p class="small drawing-path-note">Changes Draw This First, Guided Step Mode, and visual step cards.</p>
           </div>
           <div class="panel">
             <label>Best guide use</label>
@@ -3447,6 +4287,26 @@
               </button>
             </div>
 
+
+            <section class="shade-amplifier-panel" aria-label="Shade Lab amplifiers">
+              <h3>Guided Studio Redesign</h3>
+              <p class="small">Push the shading advice in one direction without changing the mascot.</p>
+              <div class="shade-amplifier-grid">
+                <button type="button" onclick="applyShadeAmplifier('softerShadow')">Softer shadow</button>
+                <button type="button" onclick="applyShadeAmplifier('stickerPolish')">Sticker polish</button>
+                <button type="button" onclick="applyShadeAmplifier('plushVolume')">Plush volume</button>
+                <button type="button" onclick="applyShadeAmplifier('glossyShine')">Glossy shine</button>
+                <button type="button" onclick="applyShadeAmplifier('spookyGlow')">Spooky glow</button>
+                <button type="button" onclick="applyShadeAmplifier('dreamyAtmosphere')">Dreamy atmosphere</button>
+                <button type="button" onclick="applyShadeAmplifier('iconRead')">Cleaner icon read</button>
+                <button type="button" onclick="applyShadeAmplifier('reduceMuddy')">Reduce muddy shading</button>
+                <button type="button" onclick="applyShadeAmplifier('faceSafe')">Face-safe lighting</button>
+                <button type="button" onclick="applyShadeAmplifier('rimGlow')">More rim glow</button>
+              </div>
+              <p id="shadeAmplifierStatus" class="small shade-amplifier-status">No amplifier selected.</p>
+            </section>
+
+
             <div class="coach-context-card">
               <strong>Current shade context</strong>
               <div id="shadeContext" class="coach-context-list"></div>
@@ -3590,6 +4450,13 @@
         <div class="lesson-body">
           <div id="goal" class="goal"></div>
           <div id="emotionLessonHint" class="emotion-lesson-hint"></div>
+          <section class="recipe-chemistry-wrap" aria-label="Mascot recipe chemistry">
+            <div class="recipe-chemistry-head">
+              <h3>Mascot Recipe</h3>
+              <p class="small">How the selected ingredients work together. Tiny art teacher, glitter pen included.</p>
+            </div>
+            <div id="mascotRecipeCards" class="recipe-chemistry-grid"></div>
+          </section>
 
           <div class="info-grid">
             <div class="mini-card">
@@ -3610,7 +4477,10 @@
             </div>
           </div>
 
-          <h3>Practice intelligence</h3>
+          <div class="section-title-row">
+            <h3>Drawing Coach</h3>
+            <button type="button" class="utility-action compact-reset-btn" onclick="resetSeenPracticeItems()">Reset seen</button>
+          </div>
           <div class="practice-intel-grid">
             <div class="intel-card">
               <strong>Practice Focus</strong>
@@ -3673,13 +4543,13 @@
             <label class="path-card"><input type="checkbox"> <span><strong>Save thought</strong> Write what improved.</span></label>
           </div>
 
-          <h3>Drawing Path, then this</h3>
+          <h3 data-v67-drawing-path-heading>Draw This First</h3>
           <div id="drawFirstPanels" class="draw-first-grid"></div>
 
-          <h3>Traceable step blueprints</h3>
+          <h3>Step Blueprints</h3>
           <div id="traceStepPanels" class="trace-panel-grid"></div>
 
-          <h3>Guided step mode</h3>
+          <h3>Guided Drawing Mode</h3>
           <section class="guided-card" id="guidedCard">
             <div class="guided-topline">
               <span id="guidedProgress">Step 1 of 1</span>
@@ -3696,13 +4566,13 @@
             </div>
           </section>
 
-          <h3>All phases</h3>
+          <h3>Full Lesson Steps</h3>
           <div id="phases" class="phases-collapsed"></div>
 
-          <h3>Check before moving on</h3>
+          <h3>Before You Continue</h3>
           <div id="checks" class="check-grid"></div>
 
-          <h3>What to avoid</h3>
+          <h3>Don’t Do This</h3>
           <div id="avoid" class="coach-card"></div>
 
           <div class="fun-grid">
@@ -3806,7 +4676,7 @@
     </section>
 
       <footer class="final-footer" aria-label="App version">
-      <span id="finalBuildBadge">Mascot Spark V62 · Shade Lab Lighting + Shadow Logic · Cache mascot-spark-v54</span>
+      <span id="finalBuildBadge">Mascot Spark V72 · Shade Lab Lighting + Shadow Logic · Cache mascot-spark-v54</span>
     </footer>
   </main>
   <script src="./app.js"></script>
