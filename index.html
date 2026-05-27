@@ -11,15 +11,16 @@
   <link rel="apple-touch-icon" href="./icon-192.png" />
   <link rel="icon" type="image/png" sizes="192x192" href="./icon-192.png" />
   <link rel="icon" type="image/png" sizes="512x512" href="./icon-512.png" />
-  <title>Mascot Spark V65 — Theme Token Refresh</title>
+  <title>Mascot Spark V66 — Color Glass Harmony</title>
   <style>
     /* =========================================================
        STITCHED HALO BLOOM — EXACT 3 MODE VARIABLES
     ========================================================= */
 
     /* =========================================================
-       V65 THEME TOKEN REFRESH
-       New global tokens mapped into existing Mascot Spark vars.
+       V66 COLOR + GLASS HARMONY
+       Exact Light / Random Pastel / Dark colors mapped into
+       the existing glass, glow, and celestial atmosphere skin.
     ========================================================= */
 
     :root {
@@ -58,13 +59,22 @@
       --danger-base: var(--accent-red);
       --success-base: var(--support-mint);
 
+      /* Component Tokens */
+      --surface-glass: color-mix(in srgb, var(--bg-alt) 72%, var(--support-lavender) 14%);
+      --surface-glass-strong: color-mix(in srgb, var(--bg-alt) 84%, var(--support-lavender) 10%);
+      --button-glass: color-mix(in srgb, var(--bg-alt) 74%, var(--support-lavender) 18%);
+      --halo-pink: color-mix(in srgb, var(--accent-pink) 28%, transparent);
+      --halo-blue: color-mix(in srgb, var(--accent-sapphire) 22%, transparent);
+      --halo-teal: color-mix(in srgb, var(--support-teal) 20%, transparent);
+      --rim-glow: color-mix(in srgb, var(--accent-purple) 24%, transparent);
+
       /* Existing app compatibility tokens */
       --color-primary: var(--secondary-base);
       --color-secondary: var(--support-mint);
       --color-accent: var(--support-teal);
       --color-background: var(--bg-base);
-      --color-surface: color-mix(in srgb, var(--bg-alt) 86%, var(--support-lavender) 14%);
-      --color-surface-2: var(--bg-alt);
+      --color-surface: var(--surface-glass);
+      --color-surface-2: var(--surface-glass-strong);
       --color-text: var(--text-base);
       --color-muted: var(--text-muted);
       --color-border: var(--border-base);
@@ -93,6 +103,75 @@
 
       --primary-hover: #3A5CFF;
       --secondary-hover: #FF7CCC;
+
+      --surface-glass: color-mix(in srgb, #FFFFFF 78%, #D9D4E8 16%);
+      --surface-glass-strong: color-mix(in srgb, #FFFFFF 90%, #D9D4E8 8%);
+      --button-glass: color-mix(in srgb, #FFFFFF 78%, #D9D4E8 18%);
+      --halo-pink: color-mix(in srgb, #FF6CBB 20%, transparent);
+      --halo-blue: color-mix(in srgb, #2A4CFF 12%, transparent);
+      --halo-teal: color-mix(in srgb, #4FFFE0 12%, transparent);
+      --rim-glow: color-mix(in srgb, #A78BFF 18%, transparent);
+    }
+
+    :root[data-theme="random"],
+    :root[data-theme="neutral"],
+    .theme-random {
+      --bg-base: #EDEBF0;
+      --bg-alt: #FFFFFF;
+      --text-base: #1F1F1F;
+      --text-muted: #5A5A5A;
+      --border-base: #D5D2DD;
+      --shadow-base: rgba(0,0,0,0.06);
+
+      --cosmic-pink: #EFAAC4;
+      --cosmic-periwinkle: #C8B8FF;
+      --cosmic-opal-teal: #A8E8E0;
+      --cosmic-powder-blue: #BFD9FF;
+      --cosmic-butter-peach: #FBE3B0;
+      --cosmic-dusty-sage: #C8D8C0;
+
+      --accent-pink: var(--cosmic-pink);
+      --accent-sapphire: var(--cosmic-powder-blue);
+      --accent-red: #C47A7A;
+      --accent-navy: #2C3A4A;
+      --accent-purple: #C8B8FF;
+
+      --support-gold: #FBE3B0;
+      --support-teal: #A8E8E0;
+      --support-mint: #A8E8E0;
+      --support-lavender: #C8B8FF;
+
+      --primary-hover: #D7CCFF;
+      --secondary-hover: #F6B8D0;
+
+      --surface-glass: linear-gradient(135deg,
+        color-mix(in srgb, #FFFFFF 62%, #C8B8FF 22%),
+        color-mix(in srgb, #FBE3B0 34%, #FFFFFF 54%),
+        color-mix(in srgb, #A8E8E0 22%, #FFFFFF 60%)
+      );
+      --surface-glass-strong: linear-gradient(135deg,
+        color-mix(in srgb, #FFFFFF 74%, #EFAAC4 14%),
+        color-mix(in srgb, #FFFFFF 72%, #BFD9FF 16%)
+      );
+      --button-glass: linear-gradient(135deg,
+        color-mix(in srgb, #FFFFFF 68%, #C8B8FF 22%),
+        color-mix(in srgb, #FFFFFF 70%, #FBE3B0 18%)
+      );
+      --halo-pink: color-mix(in srgb, #EFAAC4 34%, transparent);
+      --halo-blue: color-mix(in srgb, #BFD9FF 34%, transparent);
+      --halo-teal: color-mix(in srgb, #A8E8E0 28%, transparent);
+      --rim-glow: color-mix(in srgb, #C8B8FF 34%, transparent);
+
+      --color-primary: #EFAAC4;
+      --color-secondary: #A8E8E0;
+      --color-accent: #C8B8FF;
+      --color-background: #EDEBF0;
+      --color-surface: color-mix(in srgb, #FFFFFF 72%, #FBE3B0 12%);
+      --color-surface-2: color-mix(in srgb, #FFFFFF 72%, #C8B8FF 12%);
+      --color-text: #1F1F1F;
+      --color-muted: #5A5A5A;
+      --color-border: #D5D2DD;
+      --color-danger-accent: #C47A7A;
     }
 
     :root[data-theme="dark"],
@@ -117,31 +196,14 @@
 
       --primary-hover: #4A6AFF;
       --secondary-hover: #FF6BC0;
-    }
 
-    :root[data-theme="random"],
-    :root[data-theme="neutral"],
-    .theme-random {
-      --bg-base: #EDEBF0;
-      --bg-alt: #FFFFFF;
-      --text-base: #1F1F1F;
-      --text-muted: #5A5A5A;
-      --border-base: #D5D2DD;
-      --shadow-base: rgba(0,0,0,0.06);
-
-      --accent-pink: #FF7CCF;
-      --accent-sapphire: #4A7CFF;
-      --accent-red: #B45A4A;
-      --accent-navy: #1A2F4F;
-      --accent-purple: #C3A0FF;
-
-      --support-gold: #F5E38A;
-      --support-teal: #4FFFE0;
-      --support-mint: #CFE8E2;
-      --support-lavender: #E3D8FF;
-
-      --primary-hover: #5A8CFF;
-      --secondary-hover: #FF96DA;
+      --surface-glass: color-mix(in srgb, #1C163F 82%, #8C5CFF 10%);
+      --surface-glass-strong: color-mix(in srgb, #1C163F 88%, #3A5BFF 10%);
+      --button-glass: color-mix(in srgb, #1C163F 78%, #3A5BFF 12%);
+      --halo-pink: color-mix(in srgb, #FF4FAE 32%, transparent);
+      --halo-blue: color-mix(in srgb, #3A5BFF 36%, transparent);
+      --halo-teal: color-mix(in srgb, #4FFFE0 24%, transparent);
+      --rim-glow: color-mix(in srgb, #8C5CFF 36%, transparent);
     }
 
     :root {
@@ -3019,7 +3081,7 @@
 
   
 /* =========================
-   V64 Theme Token Refresh Placement
+   V64 Color Glass Harmony Placement
    Lighting logic moved out of Lesson and into Shade Lab.
    ========================= */
 
@@ -3057,7 +3119,7 @@
 
   
 /* =========================
-   V64 Theme Token Refresh
+   V64 Color Glass Harmony
    Visual-only surface pass. No layout/logic rewrite.
    ========================= */
 
@@ -3228,6 +3290,131 @@
     --v64-parallax-y: 0px !important;
     transform: none !important;
   }
+}
+
+  
+/* =========================
+   V66 Component Color Harmony
+   Keeps glass/glow texture while applying exact theme color roles.
+   ========================= */
+
+.v64-celestial-skin {
+  background:
+    radial-gradient(circle at calc(18% + var(--v64-parallax-x)) calc(8% + var(--v64-parallax-y)), var(--halo-pink), transparent 28rem),
+    radial-gradient(circle at calc(88% - var(--v64-parallax-x)) calc(18% - var(--v64-parallax-y)), var(--halo-blue), transparent 30rem),
+    radial-gradient(circle at calc(50% + var(--v64-parallax-x)) calc(108% - var(--v64-parallax-y)), var(--halo-teal), transparent 34rem),
+    radial-gradient(circle at center, color-mix(in srgb, var(--bg-base) 76%, #05040a 24%), #05040a 118%);
+}
+
+:root[data-theme="light"] .v64-celestial-skin,
+:root[data-theme="random"] .v64-celestial-skin,
+:root[data-theme="neutral"] .v64-celestial-skin {
+  background:
+    radial-gradient(circle at calc(18% + var(--v64-parallax-x)) calc(8% + var(--v64-parallax-y)), var(--halo-pink), transparent 28rem),
+    radial-gradient(circle at calc(88% - var(--v64-parallax-x)) calc(18% - var(--v64-parallax-y)), var(--halo-blue), transparent 30rem),
+    radial-gradient(circle at calc(50% + var(--v64-parallax-x)) calc(108% - var(--v64-parallax-y)), var(--halo-teal), transparent 34rem),
+    linear-gradient(180deg, var(--bg-base), color-mix(in srgb, var(--bg-base) 80%, var(--accent-purple) 8%));
+}
+
+.v64-celestial-skin .hero,
+.v64-celestial-skin .shell,
+.v64-celestial-skin .card,
+.v64-celestial-skin .coach,
+.v64-celestial-skin .shade-output,
+.v64-celestial-skin .ai-output-card,
+.v64-celestial-skin .panel,
+.v64-celestial-skin .mini-card,
+.v64-celestial-skin .draw-card,
+.v64-celestial-skin .phase,
+.v64-celestial-skin .intel-card {
+  background: var(--surface-glass);
+  border-color: color-mix(in srgb, var(--border-base) 70%, var(--accent-purple) 18%);
+  box-shadow:
+    inset 0 1px 0 rgba(255,255,255,.18),
+    inset 0 -1px 0 rgba(0,0,0,.08),
+    0 18px 50px var(--shadow-base),
+    0 0 0 1px color-mix(in srgb, var(--accent-purple) 16%, transparent),
+    0 0 34px var(--rim-glow);
+}
+
+.v64-celestial-skin button,
+.v64-celestial-skin .tab-btn {
+  background: var(--button-glass);
+  color: var(--text-base);
+  border-color: color-mix(in srgb, var(--border-base) 58%, var(--accent-purple) 22%);
+}
+
+.v64-celestial-skin .primary,
+.v64-celestial-skin button.primary,
+.v64-celestial-skin .tab-btn.active {
+  background:
+    radial-gradient(circle at 24% 10%, rgba(255,255,255,.34), transparent 1.6rem),
+    linear-gradient(135deg, var(--primary-base), var(--primary-hover));
+  color: #fff;
+}
+
+.v64-celestial-skin .surprise,
+.v64-celestial-skin .secondary,
+.v64-celestial-skin button.secondary {
+  background:
+    radial-gradient(circle at 24% 10%, rgba(255,255,255,.28), transparent 1.6rem),
+    linear-gradient(135deg, var(--secondary-base), var(--secondary-hover));
+  color: #fff;
+}
+
+.v64-celestial-skin .status.ok,
+.v64-celestial-skin .success,
+.v64-celestial-skin .badge.success {
+  background: color-mix(in srgb, var(--success-base) 74%, var(--bg-alt) 18%);
+  color: color-mix(in srgb, var(--text-base) 82%, var(--accent-navy) 18%);
+}
+
+.v64-celestial-skin .status.bad,
+.v64-celestial-skin .danger,
+.v64-celestial-skin .badge.danger {
+  background: color-mix(in srgb, var(--danger-base) 82%, var(--bg-alt) 10%);
+  color: #fff;
+}
+
+.v64-celestial-skin .warning,
+.v64-celestial-skin .badge.warning {
+  background: color-mix(in srgb, var(--warning-base) 82%, var(--bg-alt) 10%);
+  color: color-mix(in srgb, var(--text-base) 86%, var(--accent-navy) 14%);
+}
+
+.v64-celestial-skin input,
+.v64-celestial-skin select,
+.v64-celestial-skin textarea {
+  background: color-mix(in srgb, var(--bg-alt) 72%, var(--support-lavender) 12%);
+  color: var(--text-base);
+  border-color: color-mix(in srgb, var(--border-base) 66%, var(--accent-purple) 20%);
+  box-shadow:
+    inset 0 2px 8px rgba(0,0,0,.08),
+    inset 0 1px 0 rgba(255,255,255,.12);
+}
+
+:root[data-theme="random"] .v64-celestial-skin .hero,
+:root[data-theme="neutral"] .v64-celestial-skin .hero {
+  background:
+    radial-gradient(circle at 10% 0%, color-mix(in srgb, #EFAAC4 22%, transparent), transparent 16rem),
+    radial-gradient(circle at 100% 12%, color-mix(in srgb, #BFD9FF 26%, transparent), transparent 18rem),
+    linear-gradient(135deg, color-mix(in srgb, #FFFFFF 62%, #C8B8FF 18%), color-mix(in srgb, #FBE3B0 34%, #FFFFFF 54%));
+}
+
+:root[data-theme="random"] .v64-celestial-skin .primary,
+:root[data-theme="neutral"] .v64-celestial-skin .primary,
+:root[data-theme="random"] .v64-celestial-skin button.primary,
+:root[data-theme="neutral"] .v64-celestial-skin button.primary {
+  background: linear-gradient(135deg, #BFD9FF, #C8B8FF);
+  color: #1F1F1F;
+}
+
+:root[data-theme="random"] .v64-celestial-skin .surprise,
+:root[data-theme="neutral"] .v64-celestial-skin .surprise,
+:root[data-theme="random"] .v64-celestial-skin .secondary,
+:root[data-theme="neutral"] .v64-celestial-skin .secondary {
+  background: linear-gradient(135deg, #EFAAC4, #FBE3B0);
+  color: #1F1F1F;
 }
 
   </style>
@@ -4069,7 +4256,7 @@
     </section>
 
       <footer class="final-footer" aria-label="App version">
-      <span id="finalBuildBadge">Mascot Spark V65 · Shade Lab Lighting + Shadow Logic · Cache mascot-spark-v54</span>
+      <span id="finalBuildBadge">Mascot Spark V66 · Shade Lab Lighting + Shadow Logic · Cache mascot-spark-v54</span>
     </footer>
   </main>
   <script src="./app.js"></script>

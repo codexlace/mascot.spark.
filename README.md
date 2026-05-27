@@ -1258,3 +1258,29 @@ Service worker cache:
 ```js
 const CACHE_NAME = "mascot-spark-v65";
 ```
+
+
+## V66 Color Glass Harmony
+
+Corrected the theme colors while preserving the glass/glow/celestial skin.
+
+Themes:
+
+- Light Theme
+- Random Pastel Cosmic Theme
+- Dark Theme
+
+Preserved:
+
+- Fading-to-black / pastel atmospheric backgrounds
+- Celestial halo accents
+- Glow-rimmed modules
+- Inset soft-glass buttons
+- Subtle parallax
+- Existing app structure and IDs
+
+Service worker cache:
+
+```js
+const CACHE_NAME = "mascot-spark-v66";
+```
