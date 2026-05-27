@@ -1284,3 +1284,23 @@ Service worker cache:
 ```js
 const CACHE_NAME = "mascot-spark-v66";
 ```
+
+
+## V67 Practice Variety Restoration
+
+Restored the 15 Drawing Path practice variations into the active lesson experience.
+
+Changed:
+
+- Guided Step Mode now follows the selected Drawing Path.
+- Draw-first cards now show selected path sequencing.
+- Draw-first cards include small coach nudges for variety.
+- Canvas checks now rotate by subject/emotion context.
+- The Drawing Path control label is clearer.
+- Existing V66 glass/color theme is preserved.
+
+Service worker cache:
+
+```js
+const CACHE_NAME = "mascot-spark-v67";
+```

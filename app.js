@@ -5828,24 +5828,85 @@ function generalLessonFallback() {
     let guidedStepIndex = 0;
     let showAllPhases = false;
 
+
+    const practiceNudgePool = [
+      "Tiny art goblin says: big shape first, glitter later.",
+      "Checkpoint: if it reads while squinting, the mascot is alive.",
+      "Keep it cute. Do not teach the spleen calligraphy.",
+      "One good wobble is charm. Twelve wobbles is paperwork.",
+      "Mascot law: the face gets protected like royal treasure.",
+      "Zoom out before you add more. The canvas has opinions.",
+      "If the detail needs a microscope, it is not invited.",
+      "One sparkle is magic. Forty sparkles is weather.",
+      "The blob is the boss. Details are interns.",
+      "Soft corners first. Drama can wait in the hallway.",
+      "If it feels crowded, remove the loudest tiny thing.",
+      "The mascot should survive sticker size.",
+      "Big, simple, readable. Then cute. Then done.",
+      "Your future self will thank you for separate layers.",
+      "Stop one detail before chaos becomes soup."
+    ];
+
+    const canvasCheckPool = [
+      "The current step should read from arm’s length.",
+      "The face area should still feel clear and protected.",
+      "The silhouette should be understandable before polish.",
+      "Nothing important should be trapped on the edge.",
+      "The mascot should still feel like the chosen subject.",
+      "The detail should support the mascot, not hijack it.",
+      "The drawing should look simpler, not busier.",
+      "The next layer should have a clear job.",
+      "The body should still be the largest readable shape.",
+      "The cute part should be visible when zoomed out."
+    ];
+
+    function stablePickFromPool(pool, seed = 0) {
+      if (!pool || !pool.length) return "";
+      return pool[Math.abs(seed) % pool.length];
+    }
+
+    function getGuidedPracticeSteps(data = currentLessonData) {
+      if (!data) return [];
+      if (Array.isArray(data.drawOrder) && data.drawOrder.length) return data.drawOrder;
+      if (Array.isArray(data.phases) && data.phases.length) {
+        return data.phases.map((p, i) => [p[0], p[1], p[2], phaseLayerName(i)]);
+      }
+      return [];
+    }
+
+    function getPracticeNudge(index, data = currentLessonData) {
+      const keySeed = String(data?.drawOrderMode || data?.title || "mascot")
+        .split("")
+        .reduce((sum, char) => sum + char.charCodeAt(0), 0);
+      return stablePickFromPool(practiceNudgePool, keySeed + index * 3);
+    }
+
+    function getPracticeCanvasCheck(index, data = currentLessonData) {
+      const keySeed = String(data?.type || data?.emotion || "check")
+        .split("")
+        .reduce((sum, char) => sum + char.charCodeAt(0), 0);
+      return stablePickFromPool(canvasCheckPool, keySeed + index * 5);
+    }
+
+
     function updateGuidedStep() {
-      if (!currentLessonData || !currentLessonData.phases || currentLessonData.phases.length === 0) return;
+      const steps = getGuidedPracticeSteps(currentLessonData);
+      if (!steps.length) return;
 
-      const phases = currentLessonData.phases;
-      guidedStepIndex = Math.max(0, Math.min(guidedStepIndex, phases.length - 1));
-      const step = phases[guidedStepIndex];
+      guidedStepIndex = Math.max(0, Math.min(guidedStepIndex, steps.length - 1));
+      const step = steps[guidedStepIndex];
 
-      document.getElementById("guidedProgress").textContent = `Step ${guidedStepIndex + 1} of ${phases.length}`;
-      document.getElementById("guidedLayer").textContent = `Layer: ${phaseLayerName(guidedStepIndex)}`;
+      document.getElementById("guidedProgress").textContent = `Step ${guidedStepIndex + 1} of ${steps.length}`;
+      document.getElementById("guidedLayer").textContent = `Layer: ${step[3] || phaseLayerName(guidedStepIndex)}`;
       document.getElementById("guidedTitle").textContent = step[0];
-      document.getElementById("guidedDraw").textContent = step[1];
-      document.getElementById("guidedAvoid").textContent = step[2];
-      document.getElementById("guidedCheck").textContent = phaseCanvasLook(guidedStepIndex);
+      document.getElementById("guidedDraw").textContent = `${step[1]} ${getPracticeNudge(guidedStepIndex)}`;
+      document.getElementById("guidedAvoid").textContent = step[2] || "adding too much too soon.";
+      document.getElementById("guidedCheck").textContent = getPracticeCanvasCheck(guidedStepIndex);
     }
 
     function nextGuidedStep() {
       if (!currentLessonData) return;
-      if (guidedStepIndex < currentLessonData.phases.length - 1) {
+      if (guidedStepIndex < getGuidedPracticeSteps(currentLessonData).length - 1) {
         guidedStepIndex += 1;
         updateGuidedStep();
       } else {
@@ -5900,14 +5961,18 @@ function generalLessonFallback() {
       renderLessonPalette(data.paletteKey || "auto");
       document.getElementById("meterFill").style.width = data.complexity + "%";
       document.getElementById("meterText").textContent = data.meterText;
+      const activePath = getActiveDrawingPath(data);
       document.getElementById("drawFirstPanels").innerHTML = data.drawOrder.map((item, i) => `
         <div class="draw-card" data-step="${i + 1}">
-          <strong>${item[0]}</strong>
+          <strong>${i + 1}. ${item[0]}</strong>
           <span class="do-line">${item[1]}</span>
           <span class="dont-line">Avoid: ${item[2] || "adding too much too soon."}</span>
           <span class="layer-line">Procreate: ${item[3] || "new sketch layer"}</span>
+          <span class="coach-spark">✦ ${getPracticeNudge(i, data)}</span>
         </div>
       `).join("");
+      const drawHeading = document.querySelector('[data-v67-drawing-path-heading]');
+      if (drawHeading) drawHeading.textContent = `${activePath.label}: draw this first, then this`;
 
       renderTraceStepPanels(data);
       document.getElementById("phases").innerHTML = data.phases.map((p, i) => `

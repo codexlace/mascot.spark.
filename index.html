@@ -11,14 +11,14 @@
   <link rel="apple-touch-icon" href="./icon-192.png" />
   <link rel="icon" type="image/png" sizes="192x192" href="./icon-192.png" />
   <link rel="icon" type="image/png" sizes="512x512" href="./icon-512.png" />
-  <title>Mascot Spark V66 — Color Glass Harmony</title>
+  <title>Mascot Spark V67 — Practice Variety Restoration</title>
   <style>
     /* =========================================================
        STITCHED HALO BLOOM — EXACT 3 MODE VARIABLES
     ========================================================= */
 
     /* =========================================================
-       V66 COLOR + GLASS HARMONY
+       V67 COLOR + GLASS HARMONY
        Exact Light / Random Pastel / Dark colors mapped into
        the existing glass, glow, and celestial atmosphere skin.
     ========================================================= */
@@ -3081,7 +3081,7 @@
 
   
 /* =========================
-   V64 Color Glass Harmony Placement
+   V64 Practice Variety Restoration Placement
    Lighting logic moved out of Lesson and into Shade Lab.
    ========================= */
 
@@ -3119,7 +3119,7 @@
 
   
 /* =========================
-   V64 Color Glass Harmony
+   V64 Practice Variety Restoration
    Visual-only surface pass. No layout/logic rewrite.
    ========================= */
 
@@ -3294,7 +3294,7 @@
 
   
 /* =========================
-   V66 Component Color Harmony
+   V67 Component Color Harmony
    Keeps glass/glow texture while applying exact theme color roles.
    ========================= */
 
@@ -3415,6 +3415,25 @@
 :root[data-theme="neutral"] .v64-celestial-skin .secondary {
   background: linear-gradient(135deg, #EFAAC4, #FBE3B0);
   color: #1F1F1F;
+}
+
+  
+/* =========================
+   V67 Practice Variety Restoration
+   Draw-first cards and guided mode now use selected Drawing Paths.
+   ========================= */
+
+.coach-spark {
+  display: block;
+  margin-top: 8px;
+  color: var(--color-muted);
+  font-size: 13px;
+  line-height: 1.3;
+  opacity: .92;
+}
+
+.guided-card #guidedDraw::first-letter {
+  font-weight: 900;
 }
 
   </style>
@@ -3694,9 +3713,9 @@
             <p class="small">Choose guide type.</p>
           </div>
           <div class="panel">
-            <label for="drawOrderMode">Draw-first order</label>
+            <label for="drawOrderMode">Drawing Path</label>
             <select id="drawOrderMode"></select>
-            <p class="small drawing-path-note">Changes the guided step sequence and visual step cards.</p>
+            <p class="small drawing-path-note">Changes Draw This First, Guided Step Mode, and visual step cards.</p>
           </div>
           <div class="panel">
             <label>Best guide use</label>
@@ -4123,7 +4142,7 @@
             <label class="path-card"><input type="checkbox"> <span><strong>Save thought</strong> Write what improved.</span></label>
           </div>
 
-          <h3>Drawing Path, then this</h3>
+          <h3 data-v67-drawing-path-heading>Drawing Path: draw this first, then this</h3>
           <div id="drawFirstPanels" class="draw-first-grid"></div>
 
           <h3>Traceable step blueprints</h3>
@@ -4256,7 +4275,7 @@
     </section>
 
       <footer class="final-footer" aria-label="App version">
-      <span id="finalBuildBadge">Mascot Spark V66 · Shade Lab Lighting + Shadow Logic · Cache mascot-spark-v54</span>
+      <span id="finalBuildBadge">Mascot Spark V67 · Shade Lab Lighting + Shadow Logic · Cache mascot-spark-v54</span>
     </footer>
   </main>
   <script src="./app.js"></script>
