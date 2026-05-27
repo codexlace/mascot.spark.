@@ -1342,3 +1342,82 @@ Service worker cache:
 ```js
 const CACHE_NAME = "mascot-spark-v68";
 ```
+
+
+## V69 Shade Lab Amplifiers
+
+Added additive Shade Lab amplifier controls.
+
+Amplifiers:
+
+- Softer shadow
+- Sticker polish
+- Plush volume
+- Glossy shine
+- Spooky glow
+- Dreamy atmosphere
+- Cleaner icon read
+- Reduce muddy shading
+- Face-safe lighting
+- More rim glow
+
+Preserved:
+
+- V66 glass/color theme
+- V67 drawing path variety
+- V68 recipe chemistry cards
+- Existing Shade Lab controls
+- Existing local shading maps
+- Existing optional AI flow
+
+Service worker cache:
+
+```js
+const CACHE_NAME = "mascot-spark-v69";
+```
+
+
+## V70 Universal Blueprint Restore
+
+Patch build.
+
+Fixed:
+
+- Generate Mascot now resolves the selected Universal Blueprint before rendering.
+- Surprise Me now preserves/restores Universal Blueprint values instead of falling back to removed legacy blueprint names.
+- Old legacy blueprint names are safely mapped to the new 15 universal modes.
+- Manual Universal Blueprint changes refresh the lesson/blueprint.
+- Existing V69 Shade Lab Amplifiers and prior systems are preserved.
+
+Service worker cache:
+
+```js
+const CACHE_NAME = "mascot-spark-v70";
+```
+
+
+## V71 Practice Intelligence Tools
+
+Upgraded Practice Intelligence from static text into actionable cards.
+
+Added:
+
+- Practice Focus tool card
+- Mascot Anatomy tool card
+- Subject Mini-Rules tool card
+- Version 2 Challenge tool card
+- Mini exercise text
+- Why-it-matters guidance
+- Mistake-to-avoid guidance
+- Apply buttons for safe path/blueprint changes
+- Seen buttons for practice cards
+- Seen buttons for Mascot Recipe Chemistry cards
+- Reset seen button for Practice Intelligence
+
+Preserved all prior systems, including V70 Universal Blueprint restore and V69 Shade Lab Amplifiers.
+
+Service worker cache:
+
+```js
+const CACHE_NAME = "mascot-spark-v71";
+```

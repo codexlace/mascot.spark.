@@ -1925,6 +1925,61 @@ const moodDriftMap = {
     }
 
 
+
+    function resolveUniversalBlueprintStyle(style) {
+      const fallbackMap = {
+        autoSubject: "silhouetteReadability",
+        classic: "silhouetteReadability",
+        bodyFirst: "silhouetteReadability",
+        faceMap: "facePlacement",
+        limbMap: "tinyLimbLogic",
+        stickerSafe: "stickerReadability",
+        symmetry: "poseSimplicity",
+        iconGrid: "stickerReadability",
+        expressionZones: "expressionFlow",
+        accessoryZone: "accessoryBalance",
+        shadowMap: "shadowPlacement",
+        fourPanel: "poseSimplicity",
+        worksheet: "poseSimplicity",
+        plushBody: "plushConstruction",
+        fruitSlice: "shapeLanguage",
+        potionBottle: "shapeLanguage",
+        cloudPuff: "shapeLanguage",
+        robotGrid: "shapeLanguage",
+        ghostDrape: "shapeLanguage",
+        gemFacet: "shapeLanguage",
+        letterBuild: "silhouetteReadability",
+        numberBuild: "silhouetteReadability",
+        badgeEmblem: "stickerReadability",
+        weatherSymbol: "shapeLanguage",
+        shellSpiral: "shapeLanguage",
+        aquaticFin: "shapeLanguage",
+        deviceScreen: "stickerReadability",
+        clothingFold: "shapeLanguage",
+        musicStem: "shapeLanguage",
+        wandArc: "shapeLanguage",
+        orbitRing: "backdropFraming",
+        packageFold: "shapeLanguage",
+        furnitureBuild: "shapeLanguage",
+        gardenPot: "shapeLanguage",
+        creatureHorn: "shapeLanguage",
+        logoAxis: "stickerReadability"
+      };
+      if (universalBlueprintOptions && universalBlueprintOptions[style]) return style;
+      return fallbackMap[style] || "facePlacement";
+    }
+
+    function syncBlueprintSelectToUniversal() {
+      const el = document.getElementById("blueprintStyle");
+      if (!el) return "facePlacement";
+      const safe = resolveUniversalBlueprintStyle(el.value);
+      if (el.value !== safe && Array.from(el.options).some(option => option.value === safe)) {
+        el.value = safe;
+      }
+      return safe;
+    }
+
+
     function getUniversalBlueprintOverlay(style) {
       const info = universalBlueprintInfo[style];
       const label = info ? `${info.title}: ${info.lesson}` : "Universal blueprint: use this as a principle guide, not a tracing command.";
@@ -1960,6 +2015,7 @@ const moodDriftMap = {
 
 
     function makeBlueprint(type, emotion, twist, style, twistSet = null) {
+      style = resolveUniversalBlueprintStyle(style);
       const body = makeBody(type);
       const [eyes, mouth] = makeFace(emotion);
       const activeTwistSet = twistSet || [twist].filter(Boolean);
@@ -2515,6 +2571,7 @@ const moodDriftMap = {
       randomFromOptions("limbStyle");
       randomizeIfUnlocked("paletteMood", locked.palette);
       randomizeIfUnlocked("blueprintStyle", locked.blueprint);
+      syncBlueprintSelectToUniversal();
       randomizeIfUnlocked("skillFocus", locked.skill);
 
       // Keep general learning shape stable.
@@ -2948,6 +3005,7 @@ const moodDriftMap = {
       randomFromOptions("limbStyle");
       randomizeIfUnlocked("paletteMood", locked.palette);
       randomizeIfUnlocked("blueprintStyle", locked.blueprint);
+      syncBlueprintSelectToUniversal();
       randomizeIfUnlocked("skillFocus", locked.skill);
 
       [
@@ -2965,19 +3023,19 @@ const moodDriftMap = {
       if (surpriseType === "softBeginner") {
         setSelect("creativeMode", "cozy");
         setSelect("level", "tiny");
-        if (!locked.blueprint) setSelect("blueprintStyle", "autoSubject");
+        if (!locked.blueprint) setSelect("blueprintStyle", "silhouetteReadability");
       }
 
       if (surpriseType === "spookySweet") {
         if (!locked.subject) chooseSubjectFromPack("softMonster");
-        if (!locked.blueprint) setSelect("blueprintStyle", "autoSubject");
+        if (!locked.blueprint) setSelect("blueprintStyle", "silhouetteReadability");
         setSelect("shadeStyle", "spookyGlow");
       }
 
       if (surpriseType === "iconReady") {
         if (!locked.subject) chooseSubjectFromPack("logo");
         if (!locked.skill) setSelect("skillFocus", "iconReadability");
-        if (!locked.blueprint) setSelect("blueprintStyle", "iconGrid");
+        if (!locked.blueprint) setSelect("blueprintStyle", "stickerReadability");
         setSelect("shadeStyle", "flatIcon");
       }
 
@@ -3024,27 +3082,27 @@ const moodDriftMap = {
       if (mode === "cuter") {
         setSelect("emotion", "delightedShy");
         setSelect("funTwist", "blushStripe");
-        setSelect("blueprintStyle", "faceMap");
+        setSelect("blueprintStyle", "facePlacement");
       }
       if (mode === "spookier") {
         setSelect("emotion", "spooky");
         setSelect("funTwist", "ghostWisp");
-        setSelect("blueprintStyle", "ghostDrape");
+        setSelect("blueprintStyle", "shapeLanguage");
       }
       if (mode === "simpler") {
         setSelect("level", "micro");
         setSelect("creativeMode", "cozy");
         setSelect("skillFocus", "shapeControl");
-        setSelect("blueprintStyle", "bodyFirst");
+        setSelect("blueprintStyle", "silhouetteReadability");
         setSelect("funTwist", "none");
       }
       if (mode === "icon") {
         setSelect("skillFocus", "iconReadability");
-        setSelect("blueprintStyle", "iconGrid");
+        setSelect("blueprintStyle", "stickerReadability");
         setSelect("level", "iconSheet");
       }
       if (mode === "plush") {
-        setSelect("blueprintStyle", "plushBody");
+        setSelect("blueprintStyle", "plushConstruction");
         setSelect("funTwist", "button");
         setSelect("skillFocus", "shapeControl");
       }
@@ -3384,7 +3442,7 @@ ${currentBlueprint ? `<section><h2>Blueprint</h2>${currentBlueprint}</section>` 
       const emotion = document.getElementById("emotion")?.value || "happy";
       const twist = document.getElementById("funTwist")?.value || "none";
       if (stage === "final") {
-        svg.innerHTML = makeBlueprint(type, emotion, twist, document.getElementById("blueprintStyle")?.value || "autoSubject");
+        svg.innerHTML = makeBlueprint(type, emotion, twist, document.getElementById("blueprintStyle")?.value || "facePlacement");
       } else if (stage === "shade") {
         renderShadeMap();
         svg.innerHTML = document.getElementById("shadeMapSvg")?.innerHTML || "";
@@ -3719,30 +3777,164 @@ ${currentBlueprint ? `<section><h2>Blueprint</h2>${currentBlueprint}</section>` 
       return map[type] || ["Start with the biggest readable silhouette.", "Keep one clear subject cue.", "Avoid adding details before the subject reads."];
     }
 
+    function getSeenPracticeItems() {
+      try {
+        return JSON.parse(localStorage.getItem("mascotSparkSeenPracticeItems") || "{}");
+      } catch {
+        return {};
+      }
+    }
+
+    function setSeenPracticeItems(items) {
+      localStorage.setItem("mascotSparkSeenPracticeItems", JSON.stringify(items || {}));
+    }
+
+    function markPracticeSeen(id) {
+      const seen = getSeenPracticeItems();
+      seen[id] = true;
+      setSeenPracticeItems(seen);
+      const card = document.querySelector(`[data-practice-id="${id}"]`);
+      if (card) {
+        card.classList.add("practice-seen");
+        const btn = card.querySelector("[data-seen-button]");
+        if (btn) btn.textContent = "Seen";
+      }
+      status("Marked practice item as seen.", "ok");
+    }
+
+    function resetSeenPracticeItems() {
+      setSeenPracticeItems({});
+      if (currentLessonData) renderPracticeIntelligence(currentLessonData);
+      status("Practice seen markers reset.", "ok");
+    }
+
+    function applyPracticeAction(action) {
+      if (action === "facePlacement") {
+        setSelect("blueprintStyle", "facePlacement");
+        setSelect("drawOrderMode", "faceFirstTest");
+      }
+      if (action === "shapeControl") {
+        setSelect("blueprintStyle", "silhouetteReadability");
+        setSelect("drawOrderMode", "silhouetteDrill");
+      }
+      if (action === "tinyLimbs") {
+        setSelect("blueprintStyle", "tinyLimbLogic");
+        setSelect("drawOrderMode", "accessoryLast");
+      }
+      if (action === "iconRead") {
+        setSelect("blueprintStyle", "stickerReadability");
+        setSelect("drawOrderMode", "tinyIconPass");
+        setSelect("creativeMode", "glossyIcon");
+      }
+      if (action === "shadeReady") {
+        setSelect("drawOrderMode", "shadeReady");
+        showTab("tab-shade");
+      }
+      if (action === "version2") {
+        setSelect("drawOrderMode", "finalPolish");
+      }
+      newLesson();
+      status("Applied practice helper to this lesson.", "ok");
+    }
+
+    function practiceActionForSkill(skillKey) {
+      const map = {
+        facePlacement: "facePlacement",
+        shapeControl: "shapeControl",
+        expressionDesign: "facePlacement",
+        tinyLimbs: "tinyLimbs",
+        objectCharacter: "shapeControl",
+        iconReadability: "iconRead",
+        colorReadability: "iconRead",
+        shadingBasics: "shadeReady",
+        cleanLines: "version2",
+        accessoryBalance: "tinyLimbs"
+      };
+      return map[skillKey] || "shapeControl";
+    }
+
+    function renderPracticeToolCard({ id, title, doText, why, exercise, avoid, actionLabel, action }) {
+      const seen = getSeenPracticeItems();
+      const isSeen = !!seen[id];
+      return `
+        <article class="practice-tool-card ${isSeen ? "practice-seen" : ""}" data-practice-id="${id}">
+          <div class="practice-tool-head">
+            <strong>${title}</strong>
+            <button type="button" data-seen-button onclick="markPracticeSeen('${id}')">${isSeen ? "Seen" : "Mark seen"}</button>
+          </div>
+          <div class="practice-tool-row"><b>Do:</b> ${doText}</div>
+          <div class="practice-tool-row"><b>Why:</b> ${why}</div>
+          <div class="practice-tool-row"><b>Mini exercise:</b> ${exercise}</div>
+          <div class="practice-tool-row"><b>Avoid:</b> ${avoid}</div>
+          ${action ? `<button type="button" class="practice-apply-btn" onclick="applyPracticeAction('${action}')">${actionLabel || "Apply this"}</button>` : ""}
+        </article>
+      `;
+    }
+
     function renderPracticeIntelligence(data) {
       const skill = skillFocusData[data.skillFocus] || skillFocusData.shapeControl;
       const subjectRules = getSubjectRules(data.type);
-      const anatomy = [
-        `Base shape: ${data.subjectBase}`,
-        `Readability cue: keep one clear ${data.subjectName.toLowerCase()} detail.`,
-        `Expression source: ${data.emotionName} face formula.`,
-        `Twist: ${data.twistName}`,
-        `Danger zone: too many tiny details.`
-      ];
       const version2 = getVersion2Challenge(data);
+      const subjectName = data.subjectName || "mascot";
+      const emotionName = data.emotionName || "emotion";
+      const twistName = data.twistName || "tiny twist";
+      const skillAction = practiceActionForSkill(data.skillFocus);
+
+      const cards = {
+        skill: {
+          id: `skill-${data.skillFocus || "auto"}-${data.type || "mascot"}`,
+          title: skill.title || "Practice Focus",
+          doText: skill.goal || "Focus on one drawing skill before polishing.",
+          why: "One clear practice target keeps the lesson from becoming a pile of cute parts.",
+          exercise: (skill.drills && skill.drills[0]) || "Draw the same mascot twice: one rough version, one cleaner version.",
+          avoid: (skill.drills && skill.drills[1]) || "Do not fix everything at once.",
+          actionLabel: "Apply focus path",
+          action: skillAction
+        },
+        anatomy: {
+          id: `anatomy-${data.type || "mascot"}-${data.limbStyle || "limb"}`,
+          title: "Mascot Anatomy",
+          doText: `Build the ${subjectName.toLowerCase()} from ${data.subjectBase || "one readable body"} before adding expression or polish.`,
+          why: "Mascot anatomy works when the big body reads first and details stay secondary.",
+          exercise: `Draw the body with no face, then add only the ${emotionName.toLowerCase()} face and ${twistName.toLowerCase()}.`,
+          avoid: "Do not add limbs, backdrop, texture, and accessories before the body silhouette works.",
+          actionLabel: "Apply shape drill",
+          action: "shapeControl"
+        },
+        rules: {
+          id: `rules-${data.type || "mascot"}-${data.emotion || "emotion"}`,
+          title: "Subject Mini-Rules",
+          doText: subjectRules[0] || `Keep the selected subject recognizable as ${subjectName}.`,
+          why: "Mood and flavor should modify the subject, not replace it.",
+          exercise: `${subjectRules[1] || "Choose one subject cue and make it slightly larger."} Then zoom out.`,
+          avoid: subjectRules[2] || "Avoid tiny details that steal attention from the face.",
+          actionLabel: "Apply icon test",
+          action: "iconRead"
+        },
+        version2: {
+          id: `version2-${data.skillFocus || "focus"}-${data.type || "mascot"}`,
+          title: version2.title || "Version 2 Challenge",
+          doText: version2.body || "Redraw the mascot with one intentional improvement.",
+          why: "Version 2 turns a prompt into actual practice. The first drawing finds the idea; the second teaches it.",
+          exercise: "Set a five-minute timer and redraw only the weakest part. Keep the subject and emotion the same.",
+          avoid: "Do not make a totally new mascot. Version 2 should be a focused redraw.",
+          actionLabel: "Apply redraw path",
+          action: "version2"
+        }
+      };
 
       const skillBox = document.getElementById("skillFocusCard");
       const anatomyBox = document.getElementById("anatomyCard");
       const rulesBox = document.getElementById("subjectRulesCard");
       const versionBox = document.getElementById("version2Card");
 
-      if (skillBox) skillBox.innerHTML = `<b>${skill.title}</b><br>${skill.goal}<ul>${skill.drills.map(x => `<li>${x}</li>`).join("")}</ul>`;
-      if (anatomyBox) anatomyBox.innerHTML = `<ul>${anatomy.map(x => `<li>${x}</li>`).join("")}</ul>`;
-      if (rulesBox) rulesBox.innerHTML = `<ul>${subjectRules.map(x => `<li>${x}</li>`).join("")}<li>${emotionBlueprintBadge(data.emotion)}</li><li>${twistBlueprintBadge(data.twist)}</li></ul>`;
-      if (versionBox) versionBox.innerHTML = `<b>${version2.title}</b><br>${version2.body}`;
+      if (skillBox) skillBox.innerHTML = renderPracticeToolCard(cards.skill);
+      if (anatomyBox) anatomyBox.innerHTML = renderPracticeToolCard(cards.anatomy);
+      if (rulesBox) rulesBox.innerHTML = renderPracticeToolCard(cards.rules);
+      if (versionBox) versionBox.innerHTML = renderPracticeToolCard(cards.version2);
     }
 
-    function getVersion2Challenge(data) {
+        function getVersion2Challenge(data) {
       const skill = data.skillFocus;
       if (skill === "facePlacement") return { title: "Face Fix Version", body: "Draw the same mascot again, but move the face lower and make the mouth smaller." };
       if (skill === "shapeControl") return { title: "Silhouette Version", body: "Keep the face the same, but redraw the body shape three different ways." };
@@ -4480,6 +4672,249 @@ ${currentBlueprint ? `<section><h2>Blueprint</h2>${currentBlueprint}</section>` 
       };
     }
 
+
+    const shadeAmplifierMap = {
+      softerShadow: {
+        label: "Softer shadow",
+        preset: { shadeIntensity: "tinyShade" },
+        summary: "Soften every shadow edge and lower the contrast. The mascot should feel plush, airy, and beginner-safe.",
+        sections: [
+          { heading: "Amplifier move", items: [
+            "Use one large soft shadow instead of several small ones.",
+            "Lower Multiply opacity before adding more shading.",
+            "Blend the shadow edge gently, but keep the face untouched."
+          ]},
+          { heading: "Procreate adjustment", items: [
+            "Set the shadow layer to Multiply around 12–20%.",
+            "Use a soft airbrush or soft pencil.",
+            "Erase shadow softly near the eyes and mouth."
+          ]}
+        ],
+        note: "Soft does not mean invisible. Keep just enough shadow to show volume."
+      },
+      stickerPolish: {
+        label: "Sticker polish",
+        preset: { shadeStyle: "stickerShine", shadeIntensity: "cleanIcon" },
+        summary: "Make the mascot read like a clean sticker: bold silhouette, simple shadow, crisp shine.",
+        sections: [
+          { heading: "Amplifier move", items: [
+            "Use a clear outer edge and avoid fuzzy interior clutter.",
+            "Put one neat shadow under the body or lower edge.",
+            "Use one clean highlight shape, not scattered shine dots."
+          ]},
+          { heading: "Icon-safe rule", items: [
+            "Zoom out and delete tiny marks that vanish.",
+            "Keep the face as the clearest detail.",
+            "Backdrop should be softer than the mascot edge."
+          ]}
+        ],
+        note: "Sticker polish is mostly restraint wearing a cute jacket."
+      },
+      plushVolume: {
+        label: "Plush volume",
+        preset: { shadeStyle: "softPlush", materialFeel: "plush" },
+        summary: "Push the shading toward stuffed-toy softness with round bulges and gentle seam-like shadows.",
+        sections: [
+          { heading: "Amplifier move", items: [
+            "Curve shadows around the lower body like soft stuffing.",
+            "Add a tiny compression shadow under limbs or patches.",
+            "Keep highlights wide and low contrast."
+          ]},
+          { heading: "Texture limit", items: [
+            "Use one soft fuzz pass at very low opacity.",
+            "Do not cover the whole body in texture.",
+            "Round every shadow shape."
+          ]}
+        ],
+        note: "Plush mascots should feel squishable, not sculpted from stone."
+      },
+      glossyShine: {
+        label: "Glossy shine",
+        preset: { shadeStyle: "gummyGloss", materialFeel: "glossySticker" },
+        summary: "Add candy-like shine while keeping the mascot readable and not slippery with too many highlights.",
+        sections: [
+          { heading: "Amplifier move", items: [
+            "Add one larger shine on the light side.",
+            "Add one tiny secondary sparkle only if the body still reads.",
+            "Keep shine away from the mouth and eyes unless it is a deliberate eye sparkle."
+          ]},
+          { heading: "Layer plan", items: [
+            "Put shine on a separate layer above color.",
+            "Use Normal or Add at low opacity.",
+            "Erase shine edges cleanly for sticker polish."
+          ]}
+        ],
+        note: "Gloss is a spotlight, not confetti."
+      },
+      spookyGlow: {
+        label: "Spooky glow",
+        preset: { shadeStyle: "spookyGlow", lightDirection: "underGlow", lightingType: "spookyUnderlight" },
+        summary: "Use eerie cute under-glow or moon glow without making the mascot scary or muddy.",
+        sections: [
+          { heading: "Amplifier move", items: [
+            "Place glow under the body or behind the silhouette.",
+            "Keep the face readable and softly lit.",
+            "Use purple, blue, teal, or pale mint instead of black shadow."
+          ]},
+          { heading: "Avoid", items: [
+            "Do not darken the eye area.",
+            "Do not add horror texture.",
+            "Do not make the backdrop stronger than the mascot."
+          ]}
+        ],
+        note: "Spooky-cute is a whisper with tiny fangs."
+      },
+      dreamyAtmosphere: {
+        label: "Dreamy atmosphere",
+        preset: { lightDirection: "frontSoft", backdropStyle: "glowHalo" },
+        summary: "Make the shading feel floaty, soft, and calm with glow halos and low-contrast edges.",
+        sections: [
+          { heading: "Amplifier move", items: [
+            "Use soft glow behind the mascot, not over the face.",
+            "Keep shadows pale and slightly blurred.",
+            "Let the backdrop support the mood with tiny stars or haze."
+          ]},
+          { heading: "Color cue", items: [
+            "Use lavender, peach, opal teal, or powder blue for atmosphere.",
+            "Avoid gray shadows.",
+            "Use one quiet highlight."
+          ]}
+        ],
+        note: "Dreamy means less pressure, not less structure."
+      },
+      iconRead: {
+        label: "Cleaner icon read",
+        preset: { shadeStyle: "flatIcon", shadeIntensity: "cleanIcon" },
+        summary: "Reduce shading complexity so the mascot survives thumbnail size.",
+        sections: [
+          { heading: "Amplifier move", items: [
+            "Use one shadow shape and one highlight shape.",
+            "Increase edge clarity before adding texture.",
+            "Remove tiny shadow fragments around the face."
+          ]},
+          { heading: "Thumbnail test", items: [
+            "Zoom out until the mascot is tiny.",
+            "If a detail disappears, delete or enlarge it.",
+            "The face and subject should still read first."
+          ]}
+        ],
+        note: "If it works small, it will work large."
+      },
+      reduceMuddy: {
+        label: "Reduce muddy shading",
+        preset: { shadowStrength: "soft" },
+        summary: "Clean up gray, heavy, or overmixed shading by separating roles and lowering opacity.",
+        sections: [
+          { heading: "Amplifier move", items: [
+            "Replace gray shadow with a darker/cooler version of the body color.",
+            "Put shadow, blush, and glow on separate layers.",
+            "Erase any shadow crossing the face."
+          ]},
+          { heading: "Procreate fix", items: [
+            "Lower shadow opacity before repainting.",
+            "Use clipping masks to keep shadows inside the body.",
+            "Use one clean multiply layer instead of several muddy layers."
+          ]}
+        ],
+        note: "Mud usually means too many layers are trying to be important."
+      },
+      faceSafe: {
+        label: "Face-safe lighting",
+        preset: {},
+        summary: "Protect the eyes and mouth from shadows, shine, texture, and backdrop effects.",
+        sections: [
+          { heading: "Amplifier move", items: [
+            "Keep the face zone slightly brighter than the surrounding body.",
+            "Stop shadows before they cross the eyes or mouth.",
+            "Move sparkles and gloss marks away from the expression."
+          ]},
+          { heading: "Readability rule", items: [
+            "If the face is not readable, nothing else matters yet.",
+            "Use cheeks or tiny blush instead of heavy face shading.",
+            "Check the face at small size."
+          ]}
+        ],
+        note: "The face is the mascot’s tiny command center."
+      },
+      rimGlow: {
+        label: "More rim glow",
+        preset: { lightDirection: "backRim", lightingType: "backlightRim" },
+        summary: "Add a gentle rim light around the silhouette for magical separation without over-lighting the inside.",
+        sections: [
+          { heading: "Amplifier move", items: [
+            "Place a thin glow along the outer edge opposite the main shadow.",
+            "Keep rim glow broken and soft, not a full neon outline.",
+            "Use rim glow to separate the mascot from the backdrop."
+          ]},
+          { heading: "Layer plan", items: [
+            "Use a clipped highlight layer or layer behind the line art.",
+            "Try Add or Screen at low opacity.",
+            "Blur slightly, then erase near the face if needed."
+          ]}
+        ],
+        note: "Rim glow is moonlight, not a laser fence."
+      }
+    };
+
+    let activeShadeAmplifiers = [];
+
+    function setShadeControlValue(id, value) {
+      const el = document.getElementById(id);
+      if (!el || !value) return;
+      if (Array.from(el.options).some(option => option.value === value)) {
+        el.value = value;
+      }
+    }
+
+    function applyShadeAmplifier(key) {
+      const amp = shadeAmplifierMap[key];
+      if (!amp) return;
+
+      activeShadeAmplifiers = [key, ...activeShadeAmplifiers.filter(item => item !== key)].slice(0, 3);
+
+      if (amp.preset) {
+        Object.entries(amp.preset).forEach(([id, value]) => setShadeControlValue(id, value));
+      }
+
+      renderShadeMap();
+      renderShadeContext();
+      renderShadeOutput(applyShadeAmplifiersToPlan(shadingLabFallback()));
+
+      const statusBox = document.getElementById("shadeAmplifierStatus");
+      if (statusBox) {
+        statusBox.textContent = `Active amplifier: ${amp.label}.`;
+      }
+      status(`Shade Lab amplifier applied: ${amp.label}`, "ok");
+    }
+
+    function applyShadeAmplifiersToPlan(plan) {
+      if (!plan || !activeShadeAmplifiers.length) return plan;
+
+      const active = activeShadeAmplifiers
+        .map(key => shadeAmplifierMap[key])
+        .filter(Boolean);
+
+      if (!active.length) return plan;
+
+      const amplifierSections = active.flatMap(amp => amp.sections || []);
+      const chips = active.map(amp => amp.label).join(" + ");
+
+      return {
+        ...plan,
+        title: `${plan.title || "Shade Lab"} + Amplifiers`,
+        summary: `${plan.summary || ""} Active amplifier blend: ${chips}.`.trim(),
+        sections: [
+          {
+            heading: "Active shade amplifiers",
+            items: active.map(amp => `${amp.label}: ${amp.summary}`)
+          },
+          ...amplifierSections,
+          ...(plan.sections || [])
+        ],
+        note: `${active[0].note || ""} ${plan.note || ""}`.trim()
+      };
+    }
+
     function renderShadeOutput(data) {
       const title = document.getElementById("shadeOutputTitle");
       const body = document.getElementById("shadeOutputBody");
@@ -4566,10 +5001,10 @@ ${currentBlueprint ? `<section><h2>Blueprint</h2>${currentBlueprint}</section>` 
       status("Building shading plan...", "");
       try {
         const data = await callShadingModel();
-        renderShadeOutput(data);
+        renderShadeOutput(applyShadeAmplifiersToPlan(data));
         status("Shading plan ready.", "ok");
       } catch (err) {
-        renderShadeOutput(shadingLabFallback());
+        renderShadeOutput(applyShadeAmplifiersToPlan(shadingLabFallback()));
         status(err.message + " Showing offline shading plan instead.", "bad");
       }
     }
@@ -4592,7 +5027,7 @@ ${currentBlueprint ? `<section><h2>Blueprint</h2>${currentBlueprint}</section>` 
       }
       renderShadeContext();
       renderShadeMap();
-      renderShadeOutput(shadingLabFallback());
+      renderShadeOutput(applyShadeAmplifiersToPlan(shadingLabFallback()));
       status("Shade Lab preset applied.", "ok");
     }
 
@@ -6107,6 +6542,33 @@ function generalLessonFallback() {
       return relevant;
     }
 
+
+    function getSeenRecipeCards() {
+      try {
+        return JSON.parse(localStorage.getItem("mascotSparkSeenRecipeCards") || "{}");
+      } catch {
+        return {};
+      }
+    }
+
+    function setSeenRecipeCards(items) {
+      localStorage.setItem("mascotSparkSeenRecipeCards", JSON.stringify(items || {}));
+    }
+
+    function markRecipeSeen(id) {
+      const seen = getSeenRecipeCards();
+      seen[id] = true;
+      setSeenRecipeCards(seen);
+      const card = document.querySelector(`[data-recipe-card="${id}"]`);
+      if (card) {
+        card.classList.add("practice-seen");
+        const btn = card.querySelector("[data-recipe-seen]");
+        if (btn) btn.textContent = "Seen";
+      }
+      status("Marked recipe card as seen.", "ok");
+    }
+
+
     function renderMascotRecipeCards(data = currentLessonData) {
       const box = document.getElementById("mascotRecipeCards");
       if (!box) return;
@@ -6115,9 +6577,13 @@ function generalLessonFallback() {
         box.innerHTML = '<div class="recipe-card"><strong>Recipe cards</strong><span>Generate a mascot lesson to see how the ingredients connect.</span></div>';
         return;
       }
+      const seenRecipe = getSeenRecipeCards();
       box.innerHTML = cards.map(card => `
-        <article class="recipe-card" data-recipe-card="${card.key}">
-          <strong>${card.title}</strong>
+        <article class="recipe-card ${seenRecipe[card.key] ? "practice-seen" : ""}" data-recipe-card="${card.key}">
+          <div class="practice-tool-head">
+            <strong>${card.title}</strong>
+            <button type="button" data-recipe-seen onclick="markRecipeSeen('${card.key}')">${seenRecipe[card.key] ? "Seen" : "Mark seen"}</button>
+          </div>
           <span>${card.body}</span>
           <small>${card.note}</small>
         </article>
@@ -6206,7 +6672,7 @@ function generalLessonFallback() {
       const limbStyle = getLimbStyle(limbStyleKey);
       const flavor = document.getElementById("customIdea").value.trim() || flavors[document.getElementById("ideaPreset").value] || ""; // flavor-only: never replaces subject
       const palette = palettes[document.getElementById("paletteMood").value] || { label: "Auto", colors: [] };
-      const blueprintStyle = document.getElementById("blueprintStyle").value;
+      const blueprintStyle = syncBlueprintSelectToUniversal();
       const drawOrderMode = document.getElementById("drawOrderMode").value;
       const skillFocus = getEffectiveSkillFocus(type, emotion, blueprintStyle);
       const lightingType = document.getElementById("lightingType")?.value || "topLeft";
@@ -6311,11 +6777,11 @@ function generalLessonFallback() {
         );
       }
 
-      if (blueprintStyle === "autoSubject") {
+      if (blueprintStyle === "silhouetteReadability") {
         phases.unshift(["Use the subject guide", "Let the blueprint show the key construction logic for the selected mascot family before you add the face.", "Do not treat every subject like the same generic blob."]);
       }
 
-      if (blueprintStyle === "faceMap") {
+      if (blueprintStyle === "facePlacement") {
         phases.splice(2, 0,
           ["Use the face map", "Place eyes on the lower face line, then put the mouth close underneath.", "A mascot often looks wrong because of face placement."],
           ["Test face height", "Move the same face slightly lower on a duplicate sketch and compare which version feels cuter.", "Do not redraw the whole mascot when only the face is off."]
@@ -6326,7 +6792,7 @@ function generalLessonFallback() {
         phases.unshift(["Trace body only first", "Use the blueprint as a body-only tracing guide. Hide all detail thinking until the outer shape works.", "Do not start with the eyes."]);
       }
 
-      if (blueprintStyle === "limbMap") {
+      if (blueprintStyle === "tinyLimbLogic") {
         phases.splice(Math.min(4, phases.length), 0, ["Place limbs in zones", "Use the limb map circles to add tiny arms and feet. Keep every limb smaller than the face area.", "Large limbs make beginner mascots feel clumsy."]);
       }
 

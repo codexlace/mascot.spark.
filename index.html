@@ -11,14 +11,14 @@
   <link rel="apple-touch-icon" href="./icon-192.png" />
   <link rel="icon" type="image/png" sizes="192x192" href="./icon-192.png" />
   <link rel="icon" type="image/png" sizes="512x512" href="./icon-512.png" />
-  <title>Mascot Spark V68 — Mascot Recipe Cards</title>
+  <title>Mascot Spark V71 — Practice Intelligence Tools</title>
   <style>
     /* =========================================================
        STITCHED HALO BLOOM — EXACT 3 MODE VARIABLES
     ========================================================= */
 
     /* =========================================================
-       V68 COLOR + GLASS HARMONY
+       V71 COLOR + GLASS HARMONY
        Exact Light / Random Pastel / Dark colors mapped into
        the existing glass, glow, and celestial atmosphere skin.
     ========================================================= */
@@ -3081,7 +3081,7 @@
 
   
 /* =========================
-   V64 Mascot Recipe Cards Placement
+   V64 Practice Intelligence Tools Placement
    Lighting logic moved out of Lesson and into Shade Lab.
    ========================= */
 
@@ -3119,7 +3119,7 @@
 
   
 /* =========================
-   V64 Mascot Recipe Cards
+   V64 Practice Intelligence Tools
    Visual-only surface pass. No layout/logic rewrite.
    ========================= */
 
@@ -3294,7 +3294,7 @@
 
   
 /* =========================
-   V68 Component Color Harmony
+   V71 Component Color Harmony
    Keeps glass/glow texture while applying exact theme color roles.
    ========================= */
 
@@ -3419,7 +3419,7 @@
 
   
 /* =========================
-   V68 Mascot Recipe Cards
+   V71 Practice Intelligence Tools
    Draw-first cards and guided mode now use selected Drawing Paths.
    ========================= */
 
@@ -3438,7 +3438,7 @@
 
   
 /* =========================
-   V68 Mascot Recipe Chemistry Cards
+   V71 Mascot Recipe Chemistry Cards
    Additive lesson layer. No existing systems removed.
    ========================= */
 
@@ -3494,6 +3494,135 @@
   margin-top: 8px;
   color: color-mix(in srgb, var(--color-primary) 72%, var(--color-muted));
   font-weight: 800;
+}
+
+  
+/* =========================
+   V71 Practice Intelligence Tools
+   Adds directional shading pushes without image generation.
+   ========================= */
+
+.shade-amplifier-panel {
+  margin-top: 14px;
+  padding: 14px;
+  border-radius: 22px;
+  border: 1px solid color-mix(in srgb, var(--color-accent) 34%, var(--color-border));
+  background: color-mix(in srgb, var(--color-surface-2) 78%, transparent);
+  box-shadow:
+    inset 0 1px 0 rgba(255,255,255,.12),
+    0 14px 34px var(--shadow-base, rgba(0,0,0,.12));
+}
+
+.shade-amplifier-panel h3 {
+  margin: 0 0 4px;
+}
+
+.shade-amplifier-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(135px, 1fr));
+  gap: 8px;
+  margin-top: 10px;
+}
+
+.shade-amplifier-grid button {
+  min-height: 42px;
+  padding: 9px 10px;
+  font-size: 13px;
+}
+
+.shade-amplifier-status {
+  margin-top: 10px;
+  color: var(--color-muted);
+}
+
+.shade-amplifier-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  margin: 0 6px 6px 0;
+  padding: 6px 9px;
+  border-radius: 999px;
+  background: color-mix(in srgb, var(--color-accent) 16%, var(--color-surface-2));
+  border: 1px solid color-mix(in srgb, var(--color-accent) 32%, var(--color-border));
+  color: var(--color-text);
+  font-size: 12px;
+  font-weight: 800;
+}
+
+  
+/* =========================
+   V71 Practice Intelligence Tools
+   Interactive seen markers and apply buttons.
+   ========================= */
+
+.section-title-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  margin-top: 18px;
+}
+
+.section-title-row h3 {
+  margin: 0;
+}
+
+.compact-reset-btn {
+  min-height: 34px;
+  padding: 7px 10px;
+  font-size: 12px;
+}
+
+.practice-tool-card {
+  display: grid;
+  gap: 8px;
+}
+
+.practice-tool-head {
+  display: flex;
+  align-items: start;
+  justify-content: space-between;
+  gap: 10px;
+}
+
+.practice-tool-head button,
+.recipe-card [data-recipe-seen] {
+  min-height: 30px;
+  padding: 6px 9px;
+  border-radius: 999px;
+  font-size: 12px;
+}
+
+.practice-tool-row {
+  color: var(--color-muted);
+  line-height: 1.35;
+}
+
+.practice-tool-row b {
+  color: var(--color-text);
+}
+
+.practice-apply-btn {
+  width: 100%;
+  margin-top: 4px;
+}
+
+.practice-seen {
+  opacity: .55;
+  filter: saturate(.8);
+}
+
+.practice-seen::after {
+  content: "Seen";
+  display: inline-flex;
+  width: fit-content;
+  margin-top: 6px;
+  padding: 4px 8px;
+  border-radius: 999px;
+  background: color-mix(in srgb, var(--success-base, var(--color-accent)) 25%, transparent);
+  color: var(--color-muted);
+  font-size: 11px;
+  font-weight: 900;
 }
 
   </style>
@@ -3768,7 +3897,7 @@
         <section class="controls">
           <div class="panel">
             <label for="blueprintStyle">Universal blueprint variation</label>
-            <select id="blueprintStyle"></select>
+            <select id="blueprintStyle" onchange="newLesson()"></select>
             <p class="small universal-blueprint-note">Principle guides, not exact mascot templates.</p>
             <p class="small">Choose guide type.</p>
           </div>
@@ -3976,6 +4105,26 @@
               </button>
             </div>
 
+
+            <section class="shade-amplifier-panel" aria-label="Shade Lab amplifiers">
+              <h3>Practice Intelligence Tools</h3>
+              <p class="small">Push the shading advice in one direction without changing the mascot.</p>
+              <div class="shade-amplifier-grid">
+                <button type="button" onclick="applyShadeAmplifier('softerShadow')">Softer shadow</button>
+                <button type="button" onclick="applyShadeAmplifier('stickerPolish')">Sticker polish</button>
+                <button type="button" onclick="applyShadeAmplifier('plushVolume')">Plush volume</button>
+                <button type="button" onclick="applyShadeAmplifier('glossyShine')">Glossy shine</button>
+                <button type="button" onclick="applyShadeAmplifier('spookyGlow')">Spooky glow</button>
+                <button type="button" onclick="applyShadeAmplifier('dreamyAtmosphere')">Dreamy atmosphere</button>
+                <button type="button" onclick="applyShadeAmplifier('iconRead')">Cleaner icon read</button>
+                <button type="button" onclick="applyShadeAmplifier('reduceMuddy')">Reduce muddy shading</button>
+                <button type="button" onclick="applyShadeAmplifier('faceSafe')">Face-safe lighting</button>
+                <button type="button" onclick="applyShadeAmplifier('rimGlow')">More rim glow</button>
+              </div>
+              <p id="shadeAmplifierStatus" class="small shade-amplifier-status">No amplifier selected.</p>
+            </section>
+
+
             <div class="coach-context-card">
               <strong>Current shade context</strong>
               <div id="shadeContext" class="coach-context-list"></div>
@@ -4146,7 +4295,10 @@
             </div>
           </div>
 
-          <h3>Practice intelligence</h3>
+          <div class="section-title-row">
+            <h3>Practice intelligence</h3>
+            <button type="button" class="utility-action compact-reset-btn" onclick="resetSeenPracticeItems()">Reset seen</button>
+          </div>
           <div class="practice-intel-grid">
             <div class="intel-card">
               <strong>Practice Focus</strong>
@@ -4342,7 +4494,7 @@
     </section>
 
       <footer class="final-footer" aria-label="App version">
-      <span id="finalBuildBadge">Mascot Spark V68 · Shade Lab Lighting + Shadow Logic · Cache mascot-spark-v54</span>
+      <span id="finalBuildBadge">Mascot Spark V71 · Shade Lab Lighting + Shadow Logic · Cache mascot-spark-v54</span>
     </footer>
   </main>
   <script src="./app.js"></script>
